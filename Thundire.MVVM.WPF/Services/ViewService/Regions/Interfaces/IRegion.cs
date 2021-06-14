@@ -1,4 +1,4 @@
-﻿namespace Thundire.MVVM.WPF.Services.ViewService.Regions
+﻿namespace Thundire.MVVM.WPF.Services.ViewService.Regions.Interfaces
 {
     public interface IRegion
     {
