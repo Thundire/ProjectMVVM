@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Thundire.MVVM.WPF.Services.ViewService.Interfaces
+namespace Thundire.MVVM.WPF.Services.Interfaces
 {
     public interface IDIContainer
     {
