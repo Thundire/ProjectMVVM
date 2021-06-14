@@ -7,6 +7,5 @@ namespace Thundire.MVVM.WPF.Services.ViewService.Interfaces
         void Build();
         ViewRegister.ViewRegistrationBuilder Register<TView>(string mark = null) where TView : IView;
         ViewRegister.ViewRegistrationBuilder Register<TView, TViewModel>(string mark = null) where TView : IView;
-        void AddSubViewTemplates(Action<ITemplatesRegister> templatesRegistration);
     }
 }

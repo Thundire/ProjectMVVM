@@ -32,11 +32,6 @@ namespace Thundire.MVVM.WPF.Services.ViewService
             return builder;
         }
 
-        public void AddSubViewTemplates(Action<ITemplatesRegister> templatesRegistration)
-        {
-            templatesRegistration?.Invoke(new TemplatesRegister());
-        }
-
         public void Build()
         {
             foreach (var builder in _builders)
@@ -45,7 +40,6 @@ namespace Thundire.MVVM.WPF.Services.ViewService
                 _builder.RegisterType(builder.ViewModel, builder.ViewModelMode);
                 _cache.Add(builder.Build());
             }
-            _builder.RegisterTypeAs(typeof(TemplatesRegister),typeof(ITemplatesSelectorFactory),LifeTimeMode.Transient);
         }
         
         public class ViewRegistrationBuilder
