@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using Thundire.MVVM.WPF.Services.ViewService.Regions.Interfaces;
 using Thundire.MVVM.WPF.Services.ViewService.Regions.Models;
 
@@ -42,16 +41,9 @@ namespace Thundire.MVVM.WPF.Services.ViewService.Regions
             {
                 PropertyChangedCallback = RegionChanged
             });
-
-        public static readonly DependencyProperty PanelBackgroundProperty = DependencyProperty.Register(
-            nameof(PanelBackground),
-            typeof(Brush),
-            typeof(RegionView),
-            new(default(Brush)));
-
+        
         public bool IsPanelVisible { get => (bool)GetValue(IsPanelVisibleProperty); set => SetValue(IsPanelVisibleProperty, value); }
         public IViewRegion Region { get => (IViewRegion)GetValue(RegionProperty); set => SetValue(RegionProperty, value); }
-        public Brush PanelBackground { get => (Brush)GetValue(PanelBackgroundProperty); set => SetValue(PanelBackgroundProperty, value); }
         
         private ContentPresenter ContentPresenter
         {
