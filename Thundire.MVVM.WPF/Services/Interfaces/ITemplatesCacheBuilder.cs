@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Thundire.MVVM.WPF.Services.ViewService.Regions.Interfaces
+namespace Thundire.MVVM.WPF.Services.Interfaces
 {
     public interface ITemplatesCacheBuilder
     {
