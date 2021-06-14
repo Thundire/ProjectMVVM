@@ -7,7 +7,7 @@ using Thundire.MVVM.WPF.Services.Interfaces;
 
 namespace Thundire.MVVM.WPF.Services
 {
-    internal class DataTemplatesRegister : ITemplatesCache, ITemplatesRegister
+    public class DataTemplatesRegister : ITemplatesCache, ITemplatesRegister
     {
         private readonly Dictionary<string, Template> _templates = new();
 
