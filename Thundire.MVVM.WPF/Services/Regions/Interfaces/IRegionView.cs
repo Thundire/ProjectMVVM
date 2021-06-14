@@ -1,6 +1,6 @@
-﻿using Thundire.MVVM.WPF.Services.ViewService.Regions.Models;
+﻿using Thundire.MVVM.WPF.Services.Regions.Models;
 
-namespace Thundire.MVVM.WPF.Services.ViewService.Regions.Interfaces
+namespace Thundire.MVVM.WPF.Services.Regions.Interfaces
 {
     public interface IRegionView
     {

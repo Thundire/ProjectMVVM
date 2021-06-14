@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Thundire.MVVM.WPF.Services.ViewService.Regions.Models
+namespace Thundire.MVVM.WPF.Services.Regions.Models
 {
     public class PresenterData
     {

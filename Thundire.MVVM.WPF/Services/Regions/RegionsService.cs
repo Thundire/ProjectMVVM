@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using Thundire.MVVM.WPF.Services.Interfaces;
-using Thundire.MVVM.WPF.Services.ViewService.Regions.Interfaces;
+using Thundire.MVVM.WPF.Services.Regions.Interfaces;
 
-namespace Thundire.MVVM.WPF.Services.ViewService.Regions
+namespace Thundire.MVVM.WPF.Services.Regions
 {
     public class RegionsService
     {

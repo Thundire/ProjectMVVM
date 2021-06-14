@@ -1,11 +1,11 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using Thundire.MVVM.WPF.Services.ViewService.Regions.Interfaces;
-using Thundire.MVVM.WPF.Services.ViewService.Regions.Models;
+using Thundire.MVVM.WPF.Services.Regions.Interfaces;
+using Thundire.MVVM.WPF.Services.Regions.Models;
 
 // ReSharper disable InconsistentNaming
 
-namespace Thundire.MVVM.WPF.Services.ViewService.Regions
+namespace Thundire.MVVM.WPF.Services.Regions
 {
     [TemplatePart(Name = Part_CloseBtn, Type = typeof(Button))]
     [TemplatePart(Name = Part_SwitchVisibilityStateBtn, Type = typeof(Button))]

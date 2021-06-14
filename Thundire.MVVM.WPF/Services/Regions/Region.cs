@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Thundire.MVVM.WPF.Services.Interfaces;
-using Thundire.MVVM.WPF.Services.ViewService.Regions.Interfaces;
-using Thundire.MVVM.WPF.Services.ViewService.Regions.Models;
+using Thundire.MVVM.WPF.Services.Regions.Interfaces;
+using Thundire.MVVM.WPF.Services.Regions.Models;
 
-namespace Thundire.MVVM.WPF.Services.ViewService.Regions
+namespace Thundire.MVVM.WPF.Services.Regions
 {
     internal class Region : IRegion, IViewRegion
     {
