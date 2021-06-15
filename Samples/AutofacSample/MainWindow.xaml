@@ -4,9 +4,36 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AutofacSample"
+        xmlns:vms="clr-namespace:AutofacSample.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        d:DataContext="{d:DesignInstance vms:MainVM}">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
 
+        <Grid>
+            <DockPanel>
+                <DockPanel Width="200">
+                    <Button DockPanel.Dock="Top"
+                            Content="Add"
+                            Command="{Binding AddContentCommand}"/>
+
+                    <Button DockPanel.Dock="Bottom"
+                            Content="OpenPanel"/>
+
+                    <ContentPresenter Content="{Binding Selected}"
+                                      ContentTemplate="{StaticResource Preview}"/>
+                </DockPanel>
+
+                <ListView ItemsSource="{Binding Contents}"
+                          SelectedItem="{Binding Selected}"
+                          ItemTemplate="{StaticResource Preview}"
+                          Background="Transparent"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
+            </DockPanel>
+        </Grid>
     </Grid>
 </Window>

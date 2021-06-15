@@ -1,6 +1,8 @@
 ﻿using Autofac;
 using AutofacSample.ViewModels;
 
+using Thundire.MVVM.WPF.Autofac;
+
 namespace AutofacSample.SubCode
 {
     public static class ContainerConfiguration
@@ -47,6 +49,10 @@ namespace AutofacSample.SubCode
 
         private static ContainerBuilder RegisterViews(this ContainerBuilder builder)
         {
+            builder.AddViewHandlerService(register =>
+            {
+                register.Register<MainWindow, MainVM>(ViewsKeys.Main);
+            });
             return builder;
         }
     }
