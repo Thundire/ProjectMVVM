@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using AutofacSample.ViewModels;
 
 namespace AutofacSample.SubCode
 {
@@ -33,6 +34,8 @@ namespace AutofacSample.SubCode
 
         private static ContainerBuilder RegisterServices(this ContainerBuilder builder)
         {
+            builder.RegisterType<ContentObjectVM>().InstancePerDependency();
+            builder.RegisterType<ChangeDescriptionVM>().InstancePerDependency();
             return builder;
         }
 
