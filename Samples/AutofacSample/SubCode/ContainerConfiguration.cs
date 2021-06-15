@@ -1,6 +1,8 @@
 ﻿using Autofac;
 using AutofacSample.ViewModels;
 
+using System;
+
 using Thundire.MVVM.WPF.Autofac;
 
 namespace AutofacSample.SubCode
@@ -53,6 +55,12 @@ namespace AutofacSample.SubCode
             {
                 register.Register<MainWindow, MainVM>(ViewsKeys.Main);
             });
+
+            builder.AddRegionsService(cacheBuilder =>
+            {
+                cacheBuilder.FromResourceDictionary(new("Resources/DataTemplates.xaml", UriKind.RelativeOrAbsolute));
+            });
+
             return builder;
         }
     }

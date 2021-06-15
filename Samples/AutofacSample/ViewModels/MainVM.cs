@@ -3,6 +3,8 @@ using System.Windows.Input;
 using AutofacSample.SubCode;
 using Thundire.MVVM.WPF.Commands.Relay;
 using Thundire.MVVM.WPF.Observable.Base;
+using Thundire.MVVM.WPF.Services.Regions;
+using Thundire.MVVM.WPF.Services.Regions.Interfaces;
 
 namespace AutofacSample.ViewModels
 {
@@ -13,11 +15,16 @@ namespace AutofacSample.ViewModels
         private ICommand _addContentCommand;
         
 
-        public MainVM(DataFakeService fakeService)
+        public MainVM(DataFakeService fakeService, RegionsService regionsService)
         {
+            Region1 = regionsService.CreateRegion("1");
+            Region2 = regionsService.CreateRegion("2");
+
             _fakeService = fakeService;
             Contents = new(_fakeService.ContentObjectFaker.Generate(20));
             Selected = Contents[0];
+
+            ShowRegionCommand = new RelayCommand(ShowRegion);
         }
 
         public ObservableCollection<ContentObjectVM> Contents { get; set; }
@@ -27,9 +34,21 @@ namespace AutofacSample.ViewModels
             set => Set(ref _selected, value);
         }
 
+        public IRegion Region1 { get; }
+
+        public IRegion Region2 { get; }
+
         public ICommand AddContentCommand => _addContentCommand ??= new RelayCommand(() =>
         {
             Contents.Add(_fakeService.ContentObjectFaker.Generate(1)[0]);
         });
+
+        public ICommand ShowRegionCommand { get; }
+
+        private void ShowRegion()
+        {
+            Region1.Change(Selected, "Test1");
+            Region1.Open();
+        }
     }
 }

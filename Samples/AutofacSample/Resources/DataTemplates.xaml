@@ -9,11 +9,13 @@
     </DataTemplate>
 
     <DataTemplate x:Key="Test1" DataType="{x:Type vms:ContentObjectVM}">
-        <StackPanel Background="Green">
-            <TextBlock Text="{Binding Header}"/>
-            <TextBlock Text="{Binding Description}" TextWrapping="Wrap"/>
-            <Button Content="Change Description"/>
-        </StackPanel>
+        <DockPanel Background="LightSlateGray">
+            <Button DockPanel.Dock="Bottom" Content="Change Description" Command="{Binding OpenChangeDescriptionCommand}"/>
+            <StackPanel>
+                <TextBlock Text="{Binding Header}" FontSize="20"/>
+                <TextBlock Text="{Binding Description}" TextWrapping="Wrap"/>
+            </StackPanel>
+        </DockPanel>
     </DataTemplate>
 
     <DataTemplate x:Key="Test2" DataType="{x:Type vms:ContentObjectVM}">
@@ -24,9 +26,9 @@
     </DataTemplate>
 
     <DataTemplate x:Key="ChangeDescription" DataType="{x:Type vms:ChangeDescriptionVM}">
-        <StackPanel>
+        <DockPanel>
+            <Button DockPanel.Dock="Bottom" Content="Confirm" Command="{Binding Confirm}"/>
             <TextBox Text="{Binding Description}" TextWrapping="Wrap"/>
-            <Button Content="Confirm" Command="{Binding Confirm}"/>
-        </StackPanel>
+        </DockPanel>
     </DataTemplate>
 </ResourceDictionary>
