@@ -1,4 +1,6 @@
 ﻿using Autofac;
+using Autofac_QA_Test.ViewModels;
+using Thundire.MVVM.WPF.Autofac;
 
 namespace Autofac_QA_Test.AppConfiguration
 {
@@ -28,6 +30,11 @@ namespace Autofac_QA_Test.AppConfiguration
 
         private static ContainerBuilder RegisterViews(this ContainerBuilder builder)
         {
+            builder.AddViewHandlerService(register =>
+            {
+                register.Register<MainWindow, MainVM>(ViewsKeys.Main);
+            });
+
             return builder;
         }
     }
