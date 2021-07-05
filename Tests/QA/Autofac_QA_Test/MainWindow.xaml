@@ -5,10 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Autofac_QA_Test"
         xmlns:viewModels="clr-namespace:Autofac_QA_Test.ViewModels"
+        xmlns:regions="clr-namespace:Thundire.MVVM.WPF.Services.Regions;assembly=Thundire.MVVM.WPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         d:DataContext="{d:DesignInstance viewModels:MainVM}">
-    <Grid>
-
-    </Grid>
+    <DockPanel>
+        <regions:RegionView DockPanel.Dock="Right" Region="{Binding Region}"/>
+        <Button DockPanel.Dock="Bottom" Content="Open" Command="{Binding OpenRegionCommand}"/>
+        <ListBox ItemsSource="{Binding Models}" SelectedItem="{Binding SelectedModel}"/>
+    </DockPanel>
 </Window>
