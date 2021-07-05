@@ -11,6 +11,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{8EEC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutofacSample", "Samples\AutofacSample\AutofacSample.csproj", "{63D7183C-A70D-43BB-98A8-A73748DAA1BE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E6AB0D24-BE0C-48C1-B425-6BC1FF5B918F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "QA", "QA", "{E69F32C6-7AAC-45F6-B38E-8CFB61D56E7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Autofac_QA_Test", "Tests\QA\Autofac_QA_Test\Autofac_QA_Test.csproj", "{01350E08-6769-4487-BE8A-99B362DC2792}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,12 +35,18 @@ Global
 		{63D7183C-A70D-43BB-98A8-A73748DAA1BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63D7183C-A70D-43BB-98A8-A73748DAA1BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63D7183C-A70D-43BB-98A8-A73748DAA1BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01350E08-6769-4487-BE8A-99B362DC2792}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01350E08-6769-4487-BE8A-99B362DC2792}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01350E08-6769-4487-BE8A-99B362DC2792}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01350E08-6769-4487-BE8A-99B362DC2792}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{63D7183C-A70D-43BB-98A8-A73748DAA1BE} = {8EEC6221-A170-4668-A271-CF7CA95E608D}
+		{E69F32C6-7AAC-45F6-B38E-8CFB61D56E7B} = {E6AB0D24-BE0C-48C1-B425-6BC1FF5B918F}
+		{01350E08-6769-4487-BE8A-99B362DC2792} = {E69F32C6-7AAC-45F6-B38E-8CFB61D56E7B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {834DC942-9BF3-465A-8BEF-C844CD9ACEF5}
