@@ -25,6 +25,8 @@ namespace Autofac_QA_Test.AppConfiguration
 
         private static ContainerBuilder RegisterViewModels(this ContainerBuilder builder)
         {
+            builder.RegisterType<FooVM>();
+            builder.RegisterType<BarVM>();
             return builder;
         }
 
