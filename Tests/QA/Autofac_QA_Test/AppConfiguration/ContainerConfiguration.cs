@@ -1,5 +1,7 @@
 ﻿using Autofac;
 using Autofac_QA_Test.ViewModels;
+using System;
+
 using Thundire.MVVM.WPF.Autofac;
 
 namespace Autofac_QA_Test.AppConfiguration
@@ -35,6 +37,11 @@ namespace Autofac_QA_Test.AppConfiguration
             builder.AddViewHandlerService(register =>
             {
                 register.Register<MainWindow, MainVM>(ViewsKeys.Main);
+            });
+
+            builder.AddRegionsService(cacheBuilder =>
+            {
+                cacheBuilder.FromResourceDictionary(new("Templates.xaml", UriKind.RelativeOrAbsolute));
             });
 
             return builder;
