@@ -6,18 +6,19 @@ using Thundire.MVVM.WPF.Services.Regions.Models;
 
 namespace Thundire.MVVM.WPF.Services.Regions
 {
-    internal class Region : IRegion, IViewRegion
+    internal class StackViewsRegion : IRegion, IViewRegion
     {
         private readonly ITemplatesCache _register;
         private readonly Stack<PresenterData> _dataCache = new();
 
-        public Region(ITemplatesCache register) => _register = register;
+        public StackViewsRegion(ITemplatesCache register) => _register = register;
 
         public IRegionView RegionView { get; set; }
 
         public void Open()
         {
-            if (_dataCache.TryPop(out var view)) RegionView.Change(view);
+            if (RegionView.CurrentData is null)
+                throw new InvalidOperationException("Region View don't has any View to show, first call method Change");
             RegionView.Show();
         }
 
@@ -26,6 +27,7 @@ namespace Thundire.MVVM.WPF.Services.Regions
             if (!_dataCache.TryPop(out var view))
             {
                 RegionView.Close();
+                RegionView.Change(null);
                 return;
             }
             RegionView.Change(view);
@@ -33,14 +35,10 @@ namespace Thundire.MVVM.WPF.Services.Regions
 
         public void Change(object content, string presenterKey = null)
         {
-            if (RegionView.CurrentData is { } currentView)
+            if (RegionView.CurrentData is { } currentView && content.GetType() == currentView.Template.DataType as Type)
             {
-                _dataCache.Push(currentView);
-                if (content.GetType() == currentView.Template.DataType as Type)
-                {
-                    RegionView.ChangeContent(content);
-                    return;
-                }
+                RegionView.ChangeContent(content);
+                return;
             }
 
             var template = _register.GetTemplate(content, presenterKey);
@@ -51,7 +49,10 @@ namespace Thundire.MVVM.WPF.Services.Regions
                     Data = { ["content"] = content, ["template"] = template }
                 };
             }
-            _dataCache.Push(new(content, template));
+
+            var presenter = new PresenterData(content, template);
+            _dataCache.Push(presenter);
+            RegionView.Change(presenter);
         }
     }
 }

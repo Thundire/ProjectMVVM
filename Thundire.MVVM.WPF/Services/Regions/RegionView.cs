@@ -75,8 +75,8 @@ namespace Thundire.MVVM.WPF.Services.Regions
                 _currentData = value;
                 if (ContentPresenter is { } presenter)
                 {
-                    presenter.Content = value.Content;
-                    presenter.ContentTemplate = value.Template;
+                    presenter.Content = value?.Content;
+                    presenter.ContentTemplate = value?.Template;
                 }
             }
         }
