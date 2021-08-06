@@ -1,8 +1,11 @@
 ﻿using Autofac;
 using Autofac_QA_Test.ViewModels;
 using System;
-
+using Autofac_QA_Test.RegionsTests;
+using Autofac_QA_Test.RegionsTests.SinglePageRegionTest;
+using Autofac_QA_Test.RegionsTests.StackViewsRegionTest;
 using Thundire.MVVM.WPF.Autofac;
+using Thundire.MVVM.WPF.Services.Regions;
 
 namespace Autofac_QA_Test.AppConfiguration
 {
@@ -29,6 +32,9 @@ namespace Autofac_QA_Test.AppConfiguration
         {
             builder.RegisterType<FooVM>();
             builder.RegisterType<BarVM>();
+            builder.RegisterType<SinglePageRegionTestMainVM>().InstancePerDependency();
+            builder.RegisterType<StackViewsRegionTestMainVM>().InstancePerDependency();
+            builder.RegisterType<RegionsMainVM>();
             return builder;
         }
 

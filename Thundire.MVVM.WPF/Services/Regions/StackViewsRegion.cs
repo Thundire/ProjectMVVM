@@ -9,8 +9,8 @@ namespace Thundire.MVVM.WPF.Services.Regions
     internal class StackViewsRegion : IRegion, IViewRegion
     {
         private readonly ITemplatesCache _register;
-        private readonly Stack<PresenterData> _dataCache = new();
-
+        private readonly List<PresenterData> _dataCache = new();
+        private int _index = -1;
         public StackViewsRegion(ITemplatesCache register) => _register = register;
 
         public IRegionView RegionView { get; set; }
@@ -24,21 +24,28 @@ namespace Thundire.MVVM.WPF.Services.Regions
 
         public void Close()
         {
-            if (!_dataCache.TryPop(out var view))
+            if (_index > 0)
             {
-                RegionView.Close();
-                RegionView.Change(null);
+                _dataCache.Remove(_dataCache[_index]);
+                RegionView.Change(_dataCache[--_index]);
                 return;
             }
-            RegionView.Change(view);
+            _dataCache.Clear();
+            _index--;
+            RegionView.Close();
+            RegionView.Change(null);
         }
 
         public void Change(object content, string presenterKey = null)
         {
-            if (RegionView.CurrentData is { } currentView && content.GetType() == currentView.Template.DataType as Type)
+            if (RegionView.CurrentData is { } currentView)
             {
-                RegionView.ChangeContent(content);
-                return;
+                if(currentView.GetHashCode() == content.GetHashCode()) return;
+                if (content.GetType() == (currentView.Template.DataType as Type))
+                {
+                    RegionView.ChangeContent(content);
+                    return;
+                }
             }
 
             var template = _register.GetTemplate(content, presenterKey);
@@ -51,8 +58,9 @@ namespace Thundire.MVVM.WPF.Services.Regions
             }
 
             var presenter = new PresenterData(content, template);
-            _dataCache.Push(presenter);
             RegionView.Change(presenter);
+            _dataCache.Add(RegionView.CurrentData);
+            _index++;
         }
     }
 }
