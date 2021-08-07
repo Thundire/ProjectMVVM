@@ -16,7 +16,7 @@ namespace Thundire.MVVM.WPF.Services.Navigator
             _container = container;
         }
 
-        public IReadOnlyDictionary<string, INavigablePage> GetPagesFromGroup(string group)
+        public IDictionary<string, INavigablePage> GetPagesFromGroup(string group)
         {
             var groupInfo = _register.GetGroup(group);
             if (groupInfo.Count <= 0) return new Dictionary<string, INavigablePage>();

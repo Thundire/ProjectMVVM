@@ -9,7 +9,11 @@ namespace Thundire.MVVM.WPF.Services.Navigator
         private readonly IPagesContainer _container;
         private NavigationService _navigator;
 
-        public Navigator(IPagesContainer container) => _container = container;
+        public Navigator(IPagesContainer container)
+        {
+            _container = container;
+            Pages = new Dictionary<string, INavigablePage>();
+        }
 
         public NavigationService NavigationService
         {
@@ -22,7 +26,7 @@ namespace Thundire.MVVM.WPF.Services.Navigator
             }
         }
 
-        private IReadOnlyDictionary<string, INavigablePage> Pages { get; set; }
+        private IDictionary<string, INavigablePage> Pages { get; set; }
 
         public string CurrentPage { get; private set; }
 
@@ -36,6 +40,7 @@ namespace Thundire.MVVM.WPF.Services.Navigator
             if (!Pages.TryGetValue(pageName, out var page))
             {
                 page = _container.GetPage(pageName);
+                Pages.TryAdd(pageName, page);
             }
 
             if (NavigationService.Navigate(page, data)) CurrentPage = pageName;
