@@ -12,7 +12,7 @@ namespace Autofac_QA_Test.RegionsTests.SinglePageRegionTest
     {
         private IRegion Region { get; }
 
-        public SinglePageRegionTestMainVM(RegionsService regionsService)
+        public SinglePageRegionTestMainVM(IRegionsFactory regionsService)
         {
             Region = regionsService.GetRegion(RegionsKeys.SinglePageRegion);
             

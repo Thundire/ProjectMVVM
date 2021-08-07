@@ -1,14 +1,13 @@
 ﻿using Autofac_QA_Test.RegionsTests.SinglePageRegionTest;
 using Autofac_QA_Test.RegionsTests.StackViewsRegionTest;
 using Thundire.MVVM.WPF.Observable.Base;
-using Thundire.MVVM.WPF.Services.Regions;
 using Thundire.MVVM.WPF.Services.Regions.Interfaces;
 
 namespace Autofac_QA_Test.RegionsTests
 {
     public class RegionsMainVM : NotifyBase
     {
-        public RegionsMainVM(RegionsService regionsService,
+        public RegionsMainVM(IRegionsFactory regionsService,
                              SinglePageRegionTestMainVM singlePageRegionMain,
                              StackViewsRegionTestMainVM stackViewsRegionMain)
         {

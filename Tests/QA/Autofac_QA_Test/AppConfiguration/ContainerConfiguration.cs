@@ -48,7 +48,9 @@ namespace Autofac_QA_Test.AppConfiguration
             builder.AddRegionsService(cacheBuilder =>
             {
                 cacheBuilder.FromResourceDictionary(new("Templates.xaml", UriKind.RelativeOrAbsolute));
-            });
+            }, regions => regions
+                    .RegisterSinglePageRegion(RegionsKeys.SinglePageRegion)
+                    .RegisterStackViewsRegion(RegionsKeys.StackViewsRegion));
 
             return builder;
         }

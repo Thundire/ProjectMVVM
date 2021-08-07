@@ -11,7 +11,7 @@ namespace Autofac_QA_Test.RegionsTests.StackViewsRegionTest
     {
         private IRegion Region { get; }
 
-        public StackViewsRegionTestMainVM(RegionsService regionsService)
+        public StackViewsRegionTestMainVM(IRegionsFactory regionsService)
         {
             Region = regionsService.GetRegion(RegionsKeys.StackViewsRegion);
 

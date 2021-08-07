@@ -4,7 +4,7 @@ using Thundire.MVVM.WPF.Services.Regions.Interfaces;
 
 namespace Thundire.MVVM.WPF.Services.Regions
 {
-    public class RegionsService
+    public class RegionsService : IRegionsFactory, IRegionsRegistrator
     {
         private static Dictionary<string, IRegion> Regions { get; } = new();
 
@@ -28,6 +28,18 @@ namespace Thundire.MVVM.WPF.Services.Regions
             return Regions.TryAdd(key, region)
                 ? region
                 : Regions[key];
+        }
+
+        public IRegionsRegistrator RegisterSinglePageRegion(string key)
+        {
+            CreateSinglePageRegion(key);
+            return this;
+        }
+
+        public IRegionsRegistrator RegisterStackViewsRegion(string key)
+        {
+            CreateStackViewsRegion(key);
+            return this;
         }
     }
 }
