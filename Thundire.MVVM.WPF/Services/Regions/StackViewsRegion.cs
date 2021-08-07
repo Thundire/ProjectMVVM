@@ -6,37 +6,42 @@ using Thundire.MVVM.WPF.Services.Regions.Models;
 
 namespace Thundire.MVVM.WPF.Services.Regions
 {
-    internal class Region : IRegion, IViewRegion
+    internal class StackViewsRegion : IRegion, IViewRegion
     {
         private readonly ITemplatesCache _register;
-        private readonly Stack<PresenterData> _dataCache = new();
-
-        public Region(ITemplatesCache register) => _register = register;
+        private readonly List<PresenterData> _dataCache = new();
+        private int _index = -1;
+        public StackViewsRegion(ITemplatesCache register) => _register = register;
 
         public IRegionView RegionView { get; set; }
 
         public void Open()
         {
-            if (_dataCache.TryPop(out var view)) RegionView.Change(view);
+            if (RegionView.CurrentData is null)
+                throw new InvalidOperationException("Region View don't has any View to show, first call method Change");
             RegionView.Show();
         }
 
         public void Close()
         {
-            if (!_dataCache.TryPop(out var view))
+            if (_index > 0)
             {
-                RegionView.Close();
+                _dataCache.Remove(_dataCache[_index]);
+                RegionView.Change(_dataCache[--_index]);
                 return;
             }
-            RegionView.Change(view);
+            _dataCache.Clear();
+            _index--;
+            RegionView.Close();
+            RegionView.Change(null);
         }
 
         public void Change(object content, string presenterKey = null)
         {
             if (RegionView.CurrentData is { } currentView)
             {
-                _dataCache.Push(currentView);
-                if (content.GetType() == currentView.Template.DataType as Type)
+                if(currentView.GetHashCode() == content.GetHashCode()) return;
+                if (content.GetType() == (currentView.Template.DataType as Type))
                 {
                     RegionView.ChangeContent(content);
                     return;
@@ -51,7 +56,11 @@ namespace Thundire.MVVM.WPF.Services.Regions
                     Data = { ["content"] = content, ["template"] = template }
                 };
             }
-            _dataCache.Push(new(content, template));
+
+            var presenter = new PresenterData(content, template);
+            RegionView.Change(presenter);
+            _dataCache.Add(RegionView.CurrentData);
+            _index++;
         }
     }
 }

@@ -9,9 +9,34 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         d:DataContext="{d:DesignInstance viewModels:MainVM}">
-    <DockPanel>
-        <regions:RegionView DockPanel.Dock="Right" Region="{Binding Region}"/>
-        <Button DockPanel.Dock="Bottom" Content="Open" Command="{Binding OpenRegionCommand}"/>
-        <ListBox ItemsSource="{Binding Models}" SelectedItem="{Binding SelectedModel}"/>
-    </DockPanel>
+    <TabControl>
+        <TabItem Header="Regions Tests" DataContext="{Binding RegionsMainVM}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <TabControl>
+                    <TabItem Header="SinglePageTests" DataContext="{Binding SinglePageRegionMain}">
+                        <StackPanel>
+                            <Button Content="Open Foo" Command="{Binding OpenFooCommand}"/>
+                            <Button Content="Open Bar" Command="{Binding OpenBarCommand}"/>
+                        </StackPanel>
+                    </TabItem>
+
+                    <TabItem Header="StackViewTests" DataContext="{Binding StackViewsRegionMain}">
+                        <StackPanel>
+                            <Button Content="Open Foo" Command="{Binding OpenFooCommand}"/>
+                            <Button Content="Open Bar" Command="{Binding OpenBarCommand}"/>
+                        </StackPanel>
+                    </TabItem>
+                </TabControl>
+
+                <regions:RegionView Grid.Column="1" Region="{Binding SinglePageRegion}"/>
+                <regions:RegionView Grid.Column="1" Region="{Binding StackViewsRegion}"/>
+            </Grid>
+        </TabItem>
+        
+    </TabControl>
 </Window>

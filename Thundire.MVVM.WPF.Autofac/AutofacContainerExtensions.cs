@@ -4,6 +4,7 @@ using Autofac.Builder;
 using Thundire.MVVM.WPF.Services;
 using Thundire.MVVM.WPF.Services.Interfaces;
 using Thundire.MVVM.WPF.Services.Regions;
+using Thundire.MVVM.WPF.Services.Regions.Interfaces;
 using Thundire.MVVM.WPF.Services.ViewService;
 using Thundire.MVVM.WPF.Services.ViewService.Interfaces;
 using Thundire.MVVM.WPF.Services.ViewService.Models;
@@ -23,13 +24,17 @@ namespace Thundire.MVVM.WPF.Autofac
             builder.RegisterType<ViewHandlerService>().As<IViewHandlerService>();
         }
 
-        public static void AddRegionsService(this ContainerBuilder builder, Action<ITemplatesCacheBuilder> configuration)
+        public static void AddRegionsService(
+            this ContainerBuilder builder,
+            Action<ITemplatesCacheBuilder> configuration,
+            Action<IRegionsRegistrator> regionsPreregistration = null)
         {
-            ITemplatesRegister register = new DataTemplatesRegister();
+            DataTemplatesRegister register = new();
             register.AddTemplates(configuration);
-
+            var regionsService = new RegionsService(register);
+            regionsPreregistration?.Invoke(regionsService);
             builder.RegisterInstance(register).As<ITemplatesCache>();
-            builder.RegisterType<RegionsService>();
+            builder.RegisterInstance(regionsService).As<IRegionsFactory>();
         }
 
         public static void SetLifeTimeMode<TImplementer>(
