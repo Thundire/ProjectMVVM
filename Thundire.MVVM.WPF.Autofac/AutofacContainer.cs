@@ -23,5 +23,11 @@ namespace Thundire.MVVM.WPF.Autofac
             var result = _services.Resolve(type);
             return result;
         }
+
+        public TService Resolve<TService>()
+        {
+            var result = _services.Resolve<TService>();
+            return result;
+        }
     }
 }

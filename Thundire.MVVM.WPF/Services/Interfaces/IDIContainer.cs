@@ -6,5 +6,6 @@ namespace Thundire.MVVM.WPF.Services.Interfaces
     {
         bool IsRegistered(Type type);
         object Resolve(Type type);
+        TService Resolve<TService>();
     }
 }
