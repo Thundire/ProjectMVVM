@@ -5,17 +5,17 @@ using Thundire.MVVM.WPF.Observable.Base;
 
 namespace Thundire.MVVM.WPF.Observable.EditForm
 {
-    public abstract class EditFormBase : NotifyBase
+    public abstract class EditFormVM : NotifyBase
     {
-        protected EditFormBase()
+        protected EditFormVM()
         {
             CloseFormCommand = new RelayCommand(() => EndWork(new() { Result = false }));
         }
 
         public event EventHandler<EditFormResultArgs> OnWorkDone;
 
-        public ICommand ConfirmCommand { get; init; }
-        public ICommand CancelCommand { get; init; }
+        public ICommand ConfirmCommand { get; protected init; }
+        public ICommand CancelCommand { get; protected init; }
 
         public ICommand CloseFormCommand { get; }
 
