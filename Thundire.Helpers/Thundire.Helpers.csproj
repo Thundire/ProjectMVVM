@@ -2,6 +2,27 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Version>0.0.0.1</Version>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Authors>Thundire</Authors>
+    <Description>Library with extensions of .net that simplify some work</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Thundire/ProjectMVVM</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Thundire/ProjectMVVM</RepositoryUrl>
+    <Copyright>ftarxos@gmail.com</Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Thundire.Helpers.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
 </Project>
