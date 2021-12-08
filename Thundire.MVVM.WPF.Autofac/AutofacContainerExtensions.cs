@@ -3,6 +3,8 @@ using Autofac;
 using Autofac.Builder;
 using Thundire.MVVM.WPF.Services;
 using Thundire.MVVM.WPF.Services.Interfaces;
+using Thundire.MVVM.WPF.Services.Navigator.Interfaces;
+using Thundire.MVVM.WPF.Services.Navigator;
 using Thundire.MVVM.WPF.Services.Regions;
 using Thundire.MVVM.WPF.Services.Regions.Interfaces;
 using Thundire.MVVM.WPF.Services.ViewService;
@@ -35,6 +37,15 @@ namespace Thundire.MVVM.WPF.Autofac
             regionsPreregistration?.Invoke(regionsService);
             builder.RegisterInstance(register).As<ITemplatesCache>();
             builder.RegisterInstance(regionsService).As<IRegionsFactory>();
+        }
+
+        public static void AddPages(this ContainerBuilder builder, Action<IPagesRegistration> registration)
+        {
+            builder.RegisterType<Navigator>().As<INavigator>().InstancePerDependency();
+            var pagesRegister = new PagesRegistration(new AutofacContainerBuilder(builder));
+            registration.Invoke(pagesRegister);
+            builder.RegisterInstance(pagesRegister.GetRegister());
+            builder.RegisterType<PagesContainer>().As<IPagesContainer>();
         }
 
         public static void SetLifeTimeMode<TImplementer>(
