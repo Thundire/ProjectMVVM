@@ -6,7 +6,7 @@ namespace Thundire.MVVM.Core.Observable
 {
     public class NotifyBase : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         /// <summary>
         /// Notifies subscribers when a property value has been updated
