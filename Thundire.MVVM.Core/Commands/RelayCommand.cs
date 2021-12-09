@@ -14,7 +14,7 @@ namespace Thundire.MVVM.Core.Commands
         }
 
         public override bool CanExecute(object? parameter) => 
-            base.CanExecute(parameter) && parameter is TParameter value && (_canExecute?.Invoke(value) ?? true);
+            parameter is TParameter value && (_canExecute?.Invoke(value) ?? true);
 
         public override void Execute(object? parameter)
         {
@@ -34,7 +34,7 @@ namespace Thundire.MVVM.Core.Commands
             _canExecute = canExecute;
         }
 
-        public override bool CanExecute(object? parameter) => base.CanExecute(parameter) && (_canExecute?.Invoke() ?? true);
+        public override bool CanExecute(object? parameter) => _canExecute?.Invoke() ?? true;
 
         public override void Execute(object? parameter) => _execute.Invoke();
     }

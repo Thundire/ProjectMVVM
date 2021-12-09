@@ -2,10 +2,12 @@
 {
     public abstract class CommandBase : IExecutableCommand
     {
-        public bool Executable { get; set; }
+        public virtual bool Executable { get; set; }
 
-        public virtual bool CanExecute(object? parameter) => Executable;
+        bool IExecutableCommand.CanExecute(object? parameter) => Executable && CanExecute(parameter);
+        void IExecutableCommand.Execute(object? parameter) => Execute(parameter);
 
+        public virtual bool CanExecute(object? parameter) => true;
         public abstract void Execute(object? parameter);
     }
 }
