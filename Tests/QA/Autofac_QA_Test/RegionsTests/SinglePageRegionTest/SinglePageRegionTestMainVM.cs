@@ -1,10 +1,10 @@
 ﻿using Autofac_QA_Test.ViewModels;
+
 using System.Windows.Input;
 
+using Thundire.MVVM.Core.Observable;
 using Thundire.MVVM.WPF.Commands.Relay;
-using Thundire.MVVM.WPF.Observable.Base;
 using Thundire.MVVM.WPF.Services.Regions.Interfaces;
-using Thundire.MVVM.WPF.Services.Regions;
 
 namespace Autofac_QA_Test.RegionsTests.SinglePageRegionTest
 {
@@ -15,7 +15,7 @@ namespace Autofac_QA_Test.RegionsTests.SinglePageRegionTest
         public SinglePageRegionTestMainVM(IRegionsFactory regionsService)
         {
             Region = regionsService.GetRegion(RegionsKeys.SinglePageRegion);
-            
+
             OpenBarCommand = new RelayCommand(OpenBar);
             OpenFooCommand = new RelayCommand(OpenFoo);
         }

@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Thundire.MVVM.Core\Thundire.MVVM.Core.csproj" />
     <ProjectReference Include="..\..\..\Thundire.MVVM.WPF.Autofac\Thundire.MVVM.WPF.Autofac.csproj" />
     <ProjectReference Include="..\..\..\Thundire.MVVM.WPF\Thundire.MVVM.WPF.csproj" />
   </ItemGroup>

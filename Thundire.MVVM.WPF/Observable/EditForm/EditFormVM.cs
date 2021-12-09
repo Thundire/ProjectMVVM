@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
+using Thundire.MVVM.Core.Observable;
 using Thundire.MVVM.WPF.Commands.Relay;
-using Thundire.MVVM.WPF.Observable.Base;
 
 namespace Thundire.MVVM.WPF.Observable.EditForm
 {
