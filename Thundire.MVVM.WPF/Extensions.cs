@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 
-namespace Thundire.MVVM.WPF.Observable
+using Thundire.MVVM.WPF.Commands;
+
+namespace Thundire.MVVM.WPF
 {
     public static class Extensions
     {
@@ -18,6 +20,14 @@ namespace Thundire.MVVM.WPF.Observable
             {
                 self.Add(item);
             }
+        }
+
+        public static bool Set<T>(this IWpfCommand self, ref T field, T value, bool isExecutingDependsOnIt)
+        {
+            if (Equals(field, value)) return false;
+            field = value;
+            if (isExecutingDependsOnIt) self.RaiseCanExecuteChanged();
+            return true;
         }
     }
 }
