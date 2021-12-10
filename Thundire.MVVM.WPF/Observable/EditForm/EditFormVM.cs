@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Windows.Input;
+
 using Thundire.MVVM.Core.Observable;
-using Thundire.MVVM.WPF.Commands.Relay;
+using Thundire.MVVM.WPF.Commands;
 
 namespace Thundire.MVVM.WPF.Observable.EditForm
 {
     public abstract class EditFormVM : NotifyBase
     {
-        protected EditFormVM()
+        protected EditFormVM(IWpfCommandsFactory commandsFactory)
         {
-            CloseFormCommand = new RelayCommand(() => EndWork(new() { Result = false }));
+            CloseFormCommand = commandsFactory.CreateAsBase(() => EndWork(new() { Result = false }));
         }
 
         public event EventHandler<EditFormResultArgs> OnWorkDone;

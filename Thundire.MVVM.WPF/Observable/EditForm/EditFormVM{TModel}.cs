@@ -1,7 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
+
 using Thundire.Helpers;
-using Thundire.MVVM.WPF.Commands.Relay;
+using Thundire.MVVM.WPF.Commands;
 
 namespace Thundire.MVVM.WPF.Observable.EditForm
 {
@@ -12,9 +13,9 @@ namespace Thundire.MVVM.WPF.Observable.EditForm
         protected TModel _backup;
         // ReSharper restore InconsistentNaming
 
-        protected EditFormVM()
+        protected EditFormVM(IWpfCommandsFactory commandsFactory) : base(commandsFactory)
         {
-            CancelCommand = new RelayCommand(CancelExecute);
+            CancelCommand = commandsFactory.CreateAsBase(CancelExecute);
         }
 
         public virtual TModel ToEdit
