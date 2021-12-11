@@ -1,4 +1,4 @@
-﻿namespace Thundire.MVVM.WPF.Services.Interfaces
+﻿namespace Thundire.MVVM.WPF.Abstractions.Dialogs
 {
     public interface IIODialogsService
     {
