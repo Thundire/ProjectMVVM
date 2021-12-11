@@ -4,7 +4,7 @@ using Thundire.MVVM.WPF.Abstractions.Regions;
 
 // ReSharper disable InconsistentNaming
 
-namespace Thundire.MVVM.WPF.Regions
+namespace Thundire.MVVM.WPF.Controls
 {
     [TemplatePart(Name = Part_CloseBtn, Type = typeof(Button))]
     [TemplatePart(Name = Part_SwitchVisibilityStateBtn, Type = typeof(Button))]

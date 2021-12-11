@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Autofac_QA_Test"
         xmlns:viewModels="clr-namespace:Autofac_QA_Test.ViewModels"
         xmlns:regions="clr-namespace:Thundire.MVVM.WPF.Regions;assembly=Thundire.MVVM.WPF"
+        xmlns:controls="clr-namespace:Thundire.MVVM.WPF.Controls;assembly=Thundire.MVVM.WPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         d:DataContext="{d:DesignInstance viewModels:MainVM}">
@@ -33,8 +34,8 @@
                     </TabItem>
                 </TabControl>
 
-                <regions:RegionView Grid.Column="1" Region="{Binding SinglePageRegion}"/>
-                <regions:RegionView Grid.Column="1" Region="{Binding StackViewsRegion}"/>
+                <controls:RegionView Grid.Column="1" Region="{Binding SinglePageRegion}"/>
+                <controls:RegionView Grid.Column="1" Region="{Binding StackViewsRegion}"/>
             </Grid>
         </TabItem>
         
