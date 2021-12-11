@@ -1,6 +1,5 @@
 ﻿using Microsoft.Win32;
 using Thundire.MVVM.WPF.Abstractions.Dialogs;
-using Thundire.MVVM.WPF.Services.Interfaces;
 
 namespace Thundire.MVVM.WPF.Services
 {

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Thundire.MVVM.WPF.Abstractions.TemplatesCache;
-using Thundire.MVVM.WPF.Services.Interfaces;
 using Thundire.MVVM.WPF.Services.Regions.Interfaces;
 
 namespace Thundire.MVVM.WPF.Services.Regions

@@ -1,7 +1,6 @@
 ﻿using System;
-using Thundire.MVVM.WPF.Services.ViewService.Models;
 
-namespace Thundire.MVVM.WPF.Services.Interfaces
+namespace Thundire.MVVM.WPF.Abstractions.DependencyInjection
 {
     public interface IDIContainerBuilder
     {

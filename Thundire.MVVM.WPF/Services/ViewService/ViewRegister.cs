@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Thundire.MVVM.WPF.Services.Interfaces;
+using Thundire.MVVM.WPF.Abstractions.DependencyInjection;
 using Thundire.MVVM.WPF.Services.ViewService.Interfaces;
 using Thundire.MVVM.WPF.Services.ViewService.Models;
 

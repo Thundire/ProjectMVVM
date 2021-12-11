@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Thundire.MVVM.WPF.Services.Interfaces;
+using Thundire.MVVM.WPF.Abstractions.DependencyInjection;
 using Thundire.MVVM.WPF.Services.Navigator.Interfaces;
 using Thundire.MVVM.WPF.Services.ViewService.Models;
 
