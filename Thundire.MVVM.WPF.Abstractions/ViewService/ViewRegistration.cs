@@ -6,7 +6,7 @@ namespace Thundire.MVVM.WPF.Abstractions.ViewService
     {
         public string Mark { get; init; }
         public Type View { get; init; }
-        public Type ViewModel { get; init; }
+        public Type? ViewModel { get; init; }
         public bool ViewModelRequired { get; init; }
 
 
@@ -14,7 +14,7 @@ namespace Thundire.MVVM.WPF.Abstractions.ViewService
         {
         }
 
-        public ViewRegistration(string mark, Type view, Type viewModel = null)
+        public ViewRegistration(string mark, Type view, Type? viewModel = null)
         {
             if (!IsView(view)) throw new ArgumentException(null, nameof(view)) { Data = { [nameof(view)] = view } };
 
