@@ -2,8 +2,9 @@
 using System.ComponentModel;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Thundire.Helpers;
-using Thundire.MVVM.WPF.Commands;
+using Thundire.MVVM.WPF.Abstractions.Commands;
 
 namespace Thundire.MVVM.WPF.Observable.EditForm
 {

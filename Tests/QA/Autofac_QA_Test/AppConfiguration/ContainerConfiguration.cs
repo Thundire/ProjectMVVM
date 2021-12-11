@@ -6,7 +6,7 @@ using Autofac_QA_Test.RegionsTests.StackViewsRegionTest;
 using Autofac_QA_Test.ViewModels;
 
 using System;
-
+using Thundire.MVVM.WPF.Abstractions.Commands;
 using Thundire.MVVM.WPF.Autofac;
 using Thundire.MVVM.WPF.Commands;
 

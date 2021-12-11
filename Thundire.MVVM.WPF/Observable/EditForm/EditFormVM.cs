@@ -1,8 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
+
 using Thundire.Helpers;
 using Thundire.MVVM.Core.Observable;
-using Thundire.MVVM.WPF.Commands;
+using Thundire.MVVM.WPF.Abstractions.Commands;
 
 namespace Thundire.MVVM.WPF.Observable.EditForm
 {

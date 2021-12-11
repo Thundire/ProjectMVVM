@@ -1,10 +1,9 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 using System.Windows.Threading;
-
 using Thundire.MVVM.Core.Commands;
 
-namespace Thundire.MVVM.WPF.Commands
+namespace Thundire.MVVM.WPF.Abstractions.Commands
 {
     public interface IWpfCommand : IExecutableCommand
     {

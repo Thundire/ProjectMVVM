@@ -1,9 +1,9 @@
 ﻿using Autofac_QA_Test.ViewModels;
 
 using System.Windows.Input;
-using Thundire.MVVM.Core.Commands;
+
 using Thundire.MVVM.Core.Observable;
-using Thundire.MVVM.WPF.Commands;
+using Thundire.MVVM.WPF.Abstractions.Commands;
 using Thundire.MVVM.WPF.Services.Regions.Interfaces;
 
 namespace Autofac_QA_Test.RegionsTests.StackViewsRegionTest

@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Thundire.MVVM.WPF.Commands
+namespace Thundire.MVVM.WPF.Abstractions.Commands
 {
     public interface IWpfCommandsFactory
     {
