@@ -1,4 +1,4 @@
-﻿namespace Thundire.MVVM.WPF.Services.ViewService.Interfaces
+﻿namespace Thundire.MVVM.WPF.Abstractions.ViewHandler
 {
     public interface IViewRegistrationBuilder
     {

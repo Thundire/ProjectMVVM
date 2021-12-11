@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows;
-using Thundire.MVVM.WPF.Services.ViewService.Interfaces;
 
-namespace Thundire.MVVM.WPF.Services.ViewService.Models
+using Thundire.MVVM.WPF.Abstractions.ViewHandler;
+
+namespace Thundire.MVVM.WPF.Services.ViewService
 {
     public class View
     {
@@ -36,10 +37,10 @@ namespace Thundire.MVVM.WPF.Services.ViewService.Models
 
         public async ValueTask HandleCloseSelf(CloseViewEventArgs args)
         {
-            if(_isCloseHandled) return;
+            if (_isCloseHandled) return;
             _isCloseHandled = true;
             _cachedView.Close();
-            if(OnClose is not null)
+            if (OnClose is not null)
                 await OnClose.Invoke(_key, args);
             OnUnsubscribeFromCache?.Invoke(_key);
         }

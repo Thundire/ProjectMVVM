@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Thundire.MVVM.WPF.Services.ViewService.Models
+namespace Thundire.MVVM.WPF.Abstractions.ViewHandler
 {
     public class CloseViewEventArgs
     {

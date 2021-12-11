@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Threading;
 
-namespace Thundire.MVVM.WPF.Services.ViewService.Interfaces
+namespace Thundire.MVVM.WPF.Abstractions.ViewHandler
 {
     public interface IWindowView : IView
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
+
 using Thundire.MVVM.WPF.Abstractions.DependencyInjection;
-using Thundire.MVVM.WPF.Services.ViewService.Interfaces;
-using Thundire.MVVM.WPF.Services.ViewService.Models;
+using Thundire.MVVM.WPF.Abstractions.ViewHandler;
 
 namespace Thundire.MVVM.WPF.Services.ViewService
 {
@@ -14,7 +14,7 @@ namespace Thundire.MVVM.WPF.Services.ViewService
         public ViewRegister(IDIContainerBuilder builder) => _container = builder;
 
         public IReadOnlyList<ViewRegistration> Registrations => _cache;
-        
+
         public IViewRegistrationBuilder Register<TView>(string mark) where TView : IView
         {
             var builder = new ViewRegistrationBuilder(typeof(TView)).MarkAs(mark);

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using Thundire.MVVM.WPF.Abstractions.DependencyInjection;
 using Thundire.MVVM.WPF.Abstractions.PagesNavigator;
-using Thundire.MVVM.WPF.Services.ViewService.Models;
 
 namespace Thundire.MVVM.WPF.Services.Navigator
 {
