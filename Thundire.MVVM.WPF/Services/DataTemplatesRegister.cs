@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using Thundire.MVVM.WPF.Abstractions.TemplatesCache;
 using Thundire.MVVM.WPF.Services.Interfaces;
 
 namespace Thundire.MVVM.WPF.Services

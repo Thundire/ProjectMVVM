@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Thundire.MVVM.WPF.Services.Interfaces
+namespace Thundire.MVVM.WPF.Abstractions.TemplatesCache
 {
     public interface ITemplatesCache
     {

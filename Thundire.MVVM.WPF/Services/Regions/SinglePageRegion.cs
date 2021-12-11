@@ -1,5 +1,5 @@
 ﻿using System;
-
+using Thundire.MVVM.WPF.Abstractions.TemplatesCache;
 using Thundire.MVVM.WPF.Services.Interfaces;
 using Thundire.MVVM.WPF.Services.Regions.Interfaces;
 
