@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Thundire.MVVM.WPF.Services.Regions.Models
+namespace Thundire.MVVM.WPF.Abstractions.Regions
 {
     public class PresenterData
     {

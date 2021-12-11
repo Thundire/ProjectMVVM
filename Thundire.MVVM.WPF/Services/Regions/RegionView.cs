@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using Thundire.MVVM.WPF.Services.Regions.Interfaces;
-using Thundire.MVVM.WPF.Services.Regions.Models;
+using Thundire.MVVM.WPF.Abstractions.Regions;
 
 // ReSharper disable InconsistentNaming
 

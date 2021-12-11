@@ -2,7 +2,7 @@
 using Autofac_QA_Test.RegionsTests.StackViewsRegionTest;
 
 using Thundire.MVVM.Core.Observable;
-using Thundire.MVVM.WPF.Services.Regions.Interfaces;
+using Thundire.MVVM.WPF.Abstractions.Regions;
 
 namespace Autofac_QA_Test.RegionsTests
 {
