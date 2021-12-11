@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Thundire.MVVM.WPF.Services.Navigator
+namespace Thundire.MVVM.WPF.Abstractions.PagesNavigator
 {
     public class PageRegistrationInfo
     {

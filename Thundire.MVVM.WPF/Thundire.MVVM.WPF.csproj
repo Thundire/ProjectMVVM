@@ -37,8 +37,4 @@
     <ProjectReference Include="..\Thundire.MVVM.WPF.Abstractions\Thundire.MVVM.WPF.Abstractions.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\Interfaces\" />
-  </ItemGroup>
-
 </Project>

@@ -2,9 +2,9 @@
 using Autofac;
 using Autofac.Builder;
 using Thundire.MVVM.WPF.Abstractions.DependencyInjection;
+using Thundire.MVVM.WPF.Abstractions.PagesNavigator;
 using Thundire.MVVM.WPF.Abstractions.TemplatesCache;
 using Thundire.MVVM.WPF.Services;
-using Thundire.MVVM.WPF.Services.Navigator.Interfaces;
 using Thundire.MVVM.WPF.Services.Navigator;
 using Thundire.MVVM.WPF.Services.Regions;
 using Thundire.MVVM.WPF.Services.Regions.Interfaces;

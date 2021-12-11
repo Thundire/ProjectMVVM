@@ -1,4 +1,4 @@
-﻿namespace Thundire.MVVM.WPF.Services.Navigator.Interfaces
+﻿namespace Thundire.MVVM.WPF.Abstractions.PagesNavigator
 {
     public interface IPagesGroupRegistration
     {

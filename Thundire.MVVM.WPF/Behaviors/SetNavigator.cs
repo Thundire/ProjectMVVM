@@ -2,8 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using System.Windows;
-
-using Thundire.MVVM.WPF.Services.Navigator.Interfaces;
+using Thundire.MVVM.WPF.Abstractions.PagesNavigator;
 
 namespace Thundire.MVVM.WPF.Behaviors
 {
