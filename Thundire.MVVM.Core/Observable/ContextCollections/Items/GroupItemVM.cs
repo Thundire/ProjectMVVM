@@ -27,7 +27,7 @@ namespace Thundire.MVVM.Core.Observable.ContextCollections.Items
         public bool HasSelectedItems => Inner.Any(i => i.IsSelected);
         public bool IsAllItemsSelected => Inner.All(i => i.IsSelected);
 
-        private ObservableCollection<SingleItemVM> Inner { get; }
+        public ObservableCollection<SingleItemVM> Inner { get; }
 
         public int Length => Inner.Count;
 
