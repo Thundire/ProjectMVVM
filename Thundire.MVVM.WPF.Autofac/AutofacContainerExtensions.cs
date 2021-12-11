@@ -7,11 +7,11 @@ using Thundire.MVVM.WPF.Abstractions.DependencyInjection;
 using Thundire.MVVM.WPF.Abstractions.PagesNavigator;
 using Thundire.MVVM.WPF.Abstractions.Regions;
 using Thundire.MVVM.WPF.Abstractions.TemplatesCache;
-using Thundire.MVVM.WPF.Abstractions.ViewHandler;
-using Thundire.MVVM.WPF.Services;
-using Thundire.MVVM.WPF.Services.Navigator;
-using Thundire.MVVM.WPF.Services.Regions;
-using Thundire.MVVM.WPF.Services.ViewService;
+using Thundire.MVVM.WPF.Abstractions.ViewService;
+using Thundire.MVVM.WPF.PagesNavigator;
+using Thundire.MVVM.WPF.Regions;
+using Thundire.MVVM.WPF.TemplatesCache;
+using Thundire.MVVM.WPF.ViewService;
 
 namespace Thundire.MVVM.WPF.Autofac
 {

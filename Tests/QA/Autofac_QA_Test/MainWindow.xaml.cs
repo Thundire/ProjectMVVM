@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using Thundire.MVVM.WPF.Abstractions.ViewHandler;
+using Thundire.MVVM.WPF.Abstractions.ViewService;
 
 namespace Autofac_QA_Test
 {

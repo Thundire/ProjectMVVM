@@ -3,7 +3,7 @@ using System.Windows;
 using Moq;
 using Thundire.MVVM.WPF.Abstractions.Regions;
 using Thundire.MVVM.WPF.Abstractions.TemplatesCache;
-using Thundire.MVVM.WPF.Services.Regions;
+using Thundire.MVVM.WPF.Regions;
 using Xunit;
 
 namespace Thundire.MVVM.WPF.UnitTests.RegionService
