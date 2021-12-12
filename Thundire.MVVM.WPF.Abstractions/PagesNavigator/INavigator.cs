@@ -2,7 +2,7 @@
 {
     public interface INavigator
     {
-        string CurrentPage { get; }
+        string? CurrentPage { get; }
 
         void NavigateTo(string pageName, object data);
         void UsePagesGroup(string group);

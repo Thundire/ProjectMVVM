@@ -7,7 +7,7 @@ namespace Thundire.MVVM.WPF.PagesNavigator
     public class Navigator : INavigator, INavigationHandler
     {
         private readonly IPagesContainer _container;
-        private NavigationService _navigator;
+        private NavigationService? _navigator;
 
         public Navigator(IPagesContainer container)
         {
@@ -15,7 +15,7 @@ namespace Thundire.MVVM.WPF.PagesNavigator
             Pages = new Dictionary<string, INavigablePage>();
         }
 
-        public NavigationService NavigationService
+        public NavigationService? NavigationService
         {
             get => _navigator;
             set
@@ -28,7 +28,7 @@ namespace Thundire.MVVM.WPF.PagesNavigator
 
         private IDictionary<string, INavigablePage> Pages { get; set; }
 
-        public string CurrentPage { get; private set; }
+        public string? CurrentPage { get; private set; }
 
         public void UsePagesGroup(string group)
         {
@@ -43,7 +43,7 @@ namespace Thundire.MVVM.WPF.PagesNavigator
                 Pages.TryAdd(pageName, page);
             }
 
-            if (NavigationService.Navigate(page, data)) CurrentPage = pageName;
+            if (NavigationService?.Navigate(page, data) is true) CurrentPage = pageName;
         }
 
         private static void OnLoadComplete(object sender, NavigationEventArgs args)

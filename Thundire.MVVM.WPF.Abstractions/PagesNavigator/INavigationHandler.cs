@@ -4,6 +4,6 @@ namespace Thundire.MVVM.WPF.Abstractions.PagesNavigator
 {
     public interface INavigationHandler
     {
-        NavigationService NavigationService { get; set; }
+        NavigationService? NavigationService { get; set; }
     }
 }
