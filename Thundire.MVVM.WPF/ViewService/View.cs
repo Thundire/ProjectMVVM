@@ -31,8 +31,8 @@ namespace Thundire.MVVM.WPF.ViewService
             }
         }
 
-        public event Action<object> OnUnsubscribeFromCache;
-        public CloseViewEventHandler OnClose { get; set; }
+        public event Action<object>? OnUnsubscribeFromCache;
+        public CloseViewEventHandler? OnClose { get; set; }
 
         public async ValueTask HandleCloseSelf(CloseViewEventArgs args)
         {
@@ -43,7 +43,7 @@ namespace Thundire.MVVM.WPF.ViewService
                 await OnClose.Invoke(_key, args);
             OnUnsubscribeFromCache?.Invoke(_key);
         }
-        private async void WindowOnClosed(object sender, EventArgs e)
+        private async void WindowOnClosed(object? sender, EventArgs e)
         {
             if (_isCloseHandled) return;
             _isCloseHandled = true;

@@ -16,14 +16,14 @@ namespace Thundire.MVVM.WPF.ViewService
 
         public IViewRegistrationBuilder Register<TView>(string mark) where TView : IView
         {
-            var builder = new ViewRegistrationBuilder(typeof(TView)).MarkAs(mark);
+            var builder = new ViewRegistrationBuilder(typeof(TView), mark);
             _builders.Add(builder.AsRegistration());
             return builder;
         }
 
         public IViewRegistrationBuilder Register<TView, TViewModel>(string mark) where TView : IView
         {
-            var builder = new ViewRegistrationBuilder(typeof(TView)).MarkAs(mark).WithViewModel<TViewModel>();
+            var builder = new ViewRegistrationBuilder(typeof(TView), mark).WithViewModel<TViewModel>();
             _builders.Add(builder.AsRegistration());
             return builder;
         }
@@ -33,7 +33,7 @@ namespace Thundire.MVVM.WPF.ViewService
             foreach (var builder in _builders)
             {
                 _container.RegisterType(builder.View, builder.ViewMode);
-                _container.RegisterType(builder.ViewModel, builder.ViewModelMode);
+                if(builder.HasViewModel) _container.RegisterType(builder.ViewModel!, builder.ViewModelMode);
                 _cache.Add(builder.Build());
             }
         }

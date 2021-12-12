@@ -6,30 +6,35 @@ using Thundire.MVVM.WPF.Abstractions.ViewService;
 
 namespace Thundire.MVVM.WPF.ViewService
 {
-    public partial class ViewHandlerService : IViewHandlerService
+    public partial class ViewHandlerService : IViewHandlerService, IViewsCache
     {
-        private static IDIContainer _container;
-        private static IReadOnlyList<ViewRegistration> _registrations;
-        private static readonly Dictionary<object, View> WindowsCache = new();
+        private static IDIContainer? _container;
+        private static IReadOnlyList<ViewRegistration>? _registrations;
+        private static readonly Dictionary<object, View> ViewsCache = new();
         
         public ViewHandlerService(IDIContainer container, IViewRegisterCache cache)
         {
-            _container = container;
-            _registrations = cache.Registrations;
+            _container ??= container;
+            _registrations ??= cache.Registrations;
         }
 
-        public IViewOpener Search(string mark) => new ViewHandler(mark);
+        public IViewOpener Search(string mark) => new ViewHandler(mark, this);
         public IViewCloser Search(object connector)
         {
-            if (!WindowsCache.TryGetValue(connector, out var view))
+            if (!ViewsCache.TryGetValue(connector, out var view))
                 throw new ArgumentException("Connector not supported");
-            return new ViewHandler(view);
+            return new ViewHandler(view!, this);
         }
 
-        private static View Get(string mark)
+        public bool TryGetView(object owner, out View view)
         {
-            if (_registrations.FirstOrDefault(r => r.Mark == mark) is not { } registration) return null;
-            if (!_container.IsRegistered(registration.View)) return null;
+            return ViewsCache.TryGetValue(owner, out view);
+        }
+
+        public View Get(string mark)
+        {
+            if (_registrations!.FirstOrDefault(r => r.Mark == mark) is not { } registration) return null;
+            if (!_container!.IsRegistered(registration.View)) return null;
 
             var view = _container.Resolve(registration.View);
             if (view is not IView subscriber)
@@ -47,12 +52,12 @@ namespace Thundire.MVVM.WPF.ViewService
         {
             var cache = new View(viewModel) { CachedView = view };
             cache.OnUnsubscribeFromCache += UnsubscribeFromCache;
-            WindowsCache[viewModel] = cache;
+            ViewsCache[viewModel] = cache;
             return cache;
         }
         private static void UnsubscribeFromCache(object viewModel)
         {
-            WindowsCache.Remove(viewModel);
+            ViewsCache.Remove(viewModel);
         }
     }
 }

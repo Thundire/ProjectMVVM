@@ -16,7 +16,7 @@ namespace Thundire.MVVM.WPF.Abstractions.ViewService
 
         public ViewRegistration(string mark, Type view, Type? viewModel = null)
         {
-            if (!IsView(view)) throw new ArgumentException(null, nameof(view)) { Data = { [nameof(view)] = view } };
+            if (!IsView(view)) throw new ArgumentException("View type must inherit IView interface", nameof(view)) { Data = { [nameof(view)] = view } };
 
             Mark = mark;
             View = view;
@@ -27,7 +27,7 @@ namespace Thundire.MVVM.WPF.Abstractions.ViewService
 
         private static bool IsView(Type view) =>
             view is null
-                ? throw new ArgumentNullException(nameof(view)) { Data = { [nameof(view)] = null } }
+                ? throw new ArgumentNullException(nameof(view), "Type of view was null")
                 : view.GetInterface(nameof(IView)) is not null;
 
     }
