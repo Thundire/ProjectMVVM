@@ -63,7 +63,7 @@ namespace Thundire.MVVM.WPF.Controls
             set
             {
                 _contentPanel = value;
-                if (value.Visibility is Visibility.Visible) IsPanelVisible = true;
+                if (value?.Visibility is Visibility.Visible) IsPanelVisible = true;
             }
         }
 
