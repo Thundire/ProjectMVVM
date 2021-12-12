@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
+using System.Windows;
 using System.Windows.Markup;
 using Thundire.MVVM.WPF.Converters.Base;
 
@@ -16,21 +17,26 @@ namespace Thundire.MVVM.WPF.Converters.EnumToView
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is null) return "";
-            foreach (var one in Enum.GetValues(parameter as Type ?? throw new InvalidOperationException()))
+            // ReSharper disable once InvertIf
+            if (parameter is Enum enumToParse)
             {
-                if (value.Equals(one))
-                    return (one as Enum).GetDescription();
+                foreach (Enum enumValue in Enum.GetValues(enumToParse.GetType()))
+                {
+                    if (Equals(value, enumValue))
+                        return enumValue.GetDescription();
+                }
             }
+
             return "";
         }
 
         public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is null) return null;
-            return Enum.GetValues(parameter as Type ?? throw new InvalidOperationException())
-                .Cast<object>()
-                .FirstOrDefault(one => value.ToString() == (one as Enum).GetDescription());
+            if (parameter is not Enum enumToParse) return DependencyProperty.UnsetValue;
+            var enumResult = Enum.GetValues(enumToParse.GetType())
+                .Cast<Enum>()
+                .FirstOrDefault(enumValue => value.ToString() == enumValue.GetDescription());
+            return enumResult ?? DependencyProperty.UnsetValue;
         }
     }
 
@@ -45,7 +51,7 @@ namespace Thundire.MVVM.WPF.Converters.EnumToView
         public static string GetDescription(this Enum enumElement)
         {
             var field = enumElement.GetType().GetField(enumElement.ToString());
-            var attribute = (field ?? throw new InvalidOperationException()).GetCustomAttribute<DescriptionAttribute>();
+            var attribute = field?.GetCustomAttribute<DescriptionAttribute>();
             return attribute?.Description ?? enumElement.ToString();
         }
     }
