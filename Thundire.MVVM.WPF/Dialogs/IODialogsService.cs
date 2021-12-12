@@ -17,7 +17,7 @@ namespace Thundire.MVVM.WPF.Dialogs
 
             if (dlg.ShowDialog() is not true)
             {
-                selectedFile = null;
+                selectedFile = string.Empty;
                 return false;
             }
 
@@ -35,7 +35,7 @@ namespace Thundire.MVVM.WPF.Dialogs
 
             if (dlg.ShowDialog() is not true)
             {
-                selectedFile = null;
+                selectedFile = string.Empty;
                 return false;
             }
 
