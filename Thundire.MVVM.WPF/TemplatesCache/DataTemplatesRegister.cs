@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+
 using Thundire.MVVM.WPF.Abstractions.TemplatesCache;
 
 namespace Thundire.MVVM.WPF.TemplatesCache
@@ -17,17 +18,17 @@ namespace Thundire.MVVM.WPF.TemplatesCache
             configuration?.Invoke(factory);
         }
 
-        public DataTemplate GetTemplate(object content, string presenterKey = null)
+        public DataTemplate? GetTemplate(object content, string? presenterKey = null)
         {
             if ((!string.IsNullOrEmpty(presenterKey) || !string.IsNullOrWhiteSpace(presenterKey)) && _templates.TryGetValue(presenterKey, out var template))
             {
-                return template.DataTemplate;
+                return template!.DataTemplate;
             }
-            
+
             var type = content.GetType();
             var query = _templates.Values.Select(value => (value, expected: value.ContentType))
-                .Where(@t => @t.expected == type || type.IsAssignableTo(@t.expected))
-                .Select(@t => @t.value.DataTemplate);
+                .Where(t => t.expected == type || type.IsAssignableTo(t.expected))
+                .Select(t => t.value.DataTemplate);
             return query.FirstOrDefault();
         }
 
@@ -64,14 +65,14 @@ namespace Thundire.MVVM.WPF.TemplatesCache
                     if (template.DataType is not Type dataType)
                         throw new InvalidOperationException("All data templates in resource must have data type assigned as x:Type");
 
-                    if (!_templates.TryAdd(entry.Key.ToString(), new(dataType, template)))
+                    if (entry.Key.ToString() is { } dataTemplateKey && !_templates.TryAdd(dataTemplateKey, new(dataType, template)))
                         throw new InvalidOperationException($"Cannot register template with key: {entry.Key}");
                 }
             }
 
             private static void RegisterTemplateInResources(DataTemplate template)
             {
-                if (template is null) 
+                if (template is null)
                     throw new ArgumentNullException(nameof(template), "Template was null");
 
                 Application.Current.Resources.Add(Guid.NewGuid(), template);

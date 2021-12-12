@@ -2,7 +2,7 @@
 {
     public interface IRegionView
     {
-        PresenterData CurrentData { get; }
+        PresenterData? CurrentData { get; }
 
         void Show();
         void Close();
