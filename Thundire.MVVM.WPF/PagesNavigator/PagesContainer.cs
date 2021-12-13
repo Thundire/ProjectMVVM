@@ -21,20 +21,19 @@ namespace Thundire.MVVM.WPF.PagesNavigator
             var groupInfo = _register.GetGroup(group);
             if (groupInfo.Count <= 0) return new Dictionary<string, INavigablePage>();
             return groupInfo
-                .Where(info => _container.IsRegistered(info.PageType))
                 .Select(info =>
                 {
-                    var page = _container.Resolve(info.PageType);
-                    return (name: info.PageName, page: page as INavigablePage);
+                    var page = (INavigablePage)_container.Resolve(info.PageType);
+                    return (name: info.PageName, page);
                 })
                 .ToDictionary(result => result.name, tuple => tuple.page);
         }
 
-        public INavigablePage GetPage(string pageName)
+        public INavigablePage? GetPage(string pageName)
         {
             var pageInfo = _register.GetPage(pageName);
             if (pageInfo is null) return null;
-            return _container.Resolve(pageInfo.PageType) as INavigablePage;
+            return (INavigablePage)_container.Resolve(pageInfo.PageType);
         }
     }
 }

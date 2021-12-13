@@ -13,6 +13,6 @@ namespace Thundire.MVVM.WPF.PagesNavigator
 
         public IReadOnlyList<PageRegistrationInfo> GetGroup(string group) => Register.Where(info => info.GroupName == @group).ToImmutableList();
 
-        public PageRegistrationInfo GetPage(string pageName) => Register.FirstOrDefault(info => info.PageName == pageName);
+        public PageRegistrationInfo? GetPage(string pageName) => Register.FirstOrDefault(info => info.PageName == pageName);
     }
 }

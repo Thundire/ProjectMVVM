@@ -37,10 +37,9 @@ namespace Thundire.MVVM.WPF.PagesNavigator
 
         public void NavigateTo(string pageName, object data)
         {
-            if (!Pages.TryGetValue(pageName, out var page))
+            if (!Pages.TryGetValue(pageName, out var page) && _container.GetPage(pageName) is { } containerPage)
             {
-                page = _container.GetPage(pageName);
-                Pages.TryAdd(pageName, page);
+                Pages.TryAdd(pageName, containerPage);
             }
 
             if (NavigationService?.Navigate(page, data) is true) CurrentPage = pageName;
