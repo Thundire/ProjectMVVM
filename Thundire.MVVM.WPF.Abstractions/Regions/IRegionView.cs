@@ -8,5 +8,6 @@
         void Close();
         void Change(PresenterData view);
         void ChangeContent(object content);
+        void ClearView();
     }
 }

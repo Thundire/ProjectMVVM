@@ -10,24 +10,34 @@ namespace Thundire.MVVM.WPF.Regions
         
         protected override void ChangeRegion(IRegionView regionView, object content, string? presenterKey = null)
         {
-            if (regionView.CurrentData is { } currentView)
+            PresenterData? presenter;
+            // regionView don't contains any presenter, so set new
+            if (regionView.CurrentData is not { } currentView)
             {
-                if (content.GetType() == currentView.Template.DataType as Type)
-                {
-                    regionView.ChangeContent(content);
-                    return;
-                }
+                presenter = presenterKey is null
+                    ? CreatePresenterData(content)
+                    : CreatePresenterData(content, presenterKey);
+                regionView.Change(presenter);
+                return;
             }
 
-            var template = TemplatesRegister.GetTemplate(content, presenterKey);
-            if (content is null || template is null)
+            if (presenterKey is not null)
             {
-                throw new InvalidOperationException("Can't find presenter or content is null")
-                {
-                    Data = { ["content"] = content, ["template"] = template }
-                };
+                if(currentView.PresenterKey == presenterKey) return;
+
+                presenter = CreatePresenterData(content, presenterKey);
+                regionView.Change(presenter);
             }
-            regionView.Change(new(content, template));
+
+            // if template for content is valuable, change only content
+            if (content.GetType() == currentView.Template.DataType as Type)
+            {
+                regionView.ChangeContent(content);
+                return;
+            }
+
+            presenter = CreatePresenterData(content);
+            regionView.Change(presenter);
         }
     }
 }

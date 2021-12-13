@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using Thundire.MVVM.WPF.Abstractions.Regions;
 using Thundire.MVVM.WPF.Abstractions.TemplatesCache;
 
@@ -9,33 +10,68 @@ namespace Thundire.MVVM.WPF.Regions
     {
         private readonly List<PresenterData> _dataCache = new();
         private int _index = -1;
-        public StackViewsRegion(ITemplatesCache register) : base(register) {}
-        
+        public StackViewsRegion(ITemplatesCache register) : base(register) { }
+
+        // TODO: possible that we just switching from edit to preview and back
+        // TODO: possible tree node call that expect return to previous node, in that way even for new content need prepare new presenter
         protected override void ChangeRegion(IRegionView regionView, object content, string? presenterKey = null)
         {
-            if (regionView.CurrentData is { } currentView)
+            PresenterData? presenter;
+            // regionView don't contains any presenter, so add new
+            if (regionView.CurrentData is not { } currentViewData)
             {
-                if (currentView.GetHashCode() == content.GetHashCode()) return;
-                if (content.GetType() == (currentView.Template.DataType as Type))
+                presenter = presenterKey is null
+                    ? CreatePresenterData(content)
+                    : CreatePresenterData(content, presenterKey);
+                regionView.Change(presenter);
+                AddNewPresenter(presenter);
+                return;
+            }
+
+            // PresenterKey not null
+            if (presenterKey is not null)
+            {
+                // Check that content is same as in previous presenter
+                if (currentViewData.Content.GetHashCode() == content.GetHashCode())
+                {
+                    // do nothing if presenter is same
+                    if (currentViewData.PresenterKey == presenterKey) return;
+
+                    // change presenter and add it to cache, because we change presenter for current content
+                    presenter = CreatePresenterData(content, presenterKey);
+                    regionView.Change(presenter);
+                    AddNewPresenter(presenter);
+                    return;
+                }
+
+                // if presenter for new content same just switch content
+                if (currentViewData.PresenterKey == presenterKey)
                 {
                     regionView.ChangeContent(content);
                     return;
                 }
+
+                // change presenter and add it to cache, because presenter must be changed
+                presenter = CreatePresenterData(content, presenterKey);
+                regionView.Change(presenter);
+                AddNewPresenter(presenter);
+                return;
             }
 
-            var template = TemplatesRegister.GetTemplate(content, presenterKey);
-            if (content is null || template is null)
+            // PresenterKey is null
+            // if content not changed, do nothing
+            if (currentViewData.Content.GetHashCode() == content.GetHashCode()) return;
+            // if template still valuable, change only content
+            if (content.GetType() == currentViewData.Template.DataType as Type)
             {
-                throw new InvalidOperationException("Can't find presenter or content is null")
-                {
-                    Data = { ["content"] = content, ["template"] = template }
-                };
+                regionView.ChangeContent(content);
+                return;
             }
 
-            var presenter = new PresenterData(content, template);
+            // Content was changed and current template cannot handle it, so find and add new
+            presenter = CreatePresenterData(content);
             regionView.Change(presenter);
-            _dataCache.Add(regionView.CurrentData);
-            _index++;
+            AddNewPresenter(presenter);
         }
 
         protected override void CloseRegion(IRegionView regionView)
@@ -49,7 +85,13 @@ namespace Thundire.MVVM.WPF.Regions
             _dataCache.Clear();
             _index--;
             regionView.Close();
-            regionView.Change(null);
+            regionView.ClearView();
+        }
+
+        private void AddNewPresenter(PresenterData presenter)
+        {
+            _dataCache.Add(presenter);
+            _index++;
         }
     }
 }

@@ -49,5 +49,35 @@ namespace Thundire.MVVM.WPF.Regions
                 throw new InvalidOperationException("Region View don't has any View to show, first call method Change");
             regionView.Show();
         }
+
+        protected PresenterData CreatePresenterData(object content, string presenterKey)
+        {
+            var template = TemplatesRegister.GetTemplate(content, presenterKey);
+            if (template is null)
+            {
+                throw new InvalidOperationException("Can't find presenter for content")
+                {
+                    Data = { [nameof(content)] = content, [nameof(presenterKey)] = presenterKey }
+                };
+            }
+
+            var presenter = new PresenterData(content, template) { PresenterKey = presenterKey };
+            return presenter;
+        }
+
+        protected PresenterData CreatePresenterData(object content)
+        {
+            var template = TemplatesRegister.GetTemplate(content);
+            if (template is null)
+            {
+                throw new InvalidOperationException("Can't find presenter for content")
+                {
+                    Data = { ["content"] = content }
+                };
+            }
+
+            var presenter = new PresenterData(content, template);
+            return presenter;
+        }
     }
 }

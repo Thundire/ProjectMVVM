@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Markup;
 
 using Thundire.MVVM.WPF.Abstractions.Regions;
 
@@ -104,6 +105,15 @@ namespace Thundire.MVVM.WPF.Controls
         {
             if (CurrentData is not null) CurrentData.Content = content;
             if (ContentPresenter is not null) ContentPresenter.Content = content;
+        }
+
+        public void ClearView()
+        {
+            if (ContentPresenter is not null)
+            {
+                ContentPresenter.ContentTemplate = null;
+            }
+            CurrentData = null;
         }
 
         public override void OnApplyTemplate()
