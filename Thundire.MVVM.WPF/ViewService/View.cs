@@ -7,29 +7,33 @@ namespace Thundire.MVVM.WPF.ViewService
 {
     public class View
     {
-        private readonly object _key;
+        private readonly string? _mark;
+        private readonly object? _key;
         private readonly IView _cachedView;
 
         private bool _isCloseHandled;
 
-        public View(object viewModel)
+        public View(IView view, string mark) : this(view)
+        {
+            _mark = mark;
+        }
+
+        public View(IView view, object viewModel): this(view)
         {
             _key = viewModel;
         }
 
-        public IView CachedView
+        private View(IView view)
         {
-            get => _cachedView;
-            init
+            _cachedView = view;
+            if (view is IWindowView window)
             {
-                _cachedView = value;
-                if (value is IWindowView window)
-                {
-                    window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                    window.Closed += WindowOnClosed;
-                }
+                window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                window.Closed += WindowOnClosed;
             }
         }
+
+        public IView CachedView => _cachedView;
 
         public event Action<object>? OnUnsubscribeFromCache;
         public CloseViewEventHandler? OnClose { get; set; }
@@ -41,7 +45,7 @@ namespace Thundire.MVVM.WPF.ViewService
             _cachedView.Close();
             if (OnClose is not null)
                 await OnClose.Invoke(_key, args);
-            OnUnsubscribeFromCache?.Invoke(_key);
+            if(_key is not null) OnUnsubscribeFromCache?.Invoke(_key);
         }
         private async void WindowOnClosed(object? sender, EventArgs e)
         {
@@ -50,7 +54,7 @@ namespace Thundire.MVVM.WPF.ViewService
             _cachedView.Close();
             if (OnClose is not null)
                 await OnClose.Invoke(sender, new(e));
-            OnUnsubscribeFromCache?.Invoke(_key);
+            if (_key is not null) OnUnsubscribeFromCache?.Invoke(_key);
         }
     }
 }

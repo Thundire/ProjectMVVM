@@ -7,7 +7,7 @@ namespace Thundire.MVVM.WPF.Abstractions.ViewService
         public string Mark { get; init; }
         public Type View { get; init; }
         public Type? ViewModel { get; init; }
-        public bool ViewModelRequired { get; init; }
+        public bool HasViewModel => ViewModel is not null;
 
 
         public ViewRegistration(Type view) : this(string.Empty, view)
@@ -21,7 +21,6 @@ namespace Thundire.MVVM.WPF.Abstractions.ViewService
             Mark = mark;
             View = view;
             ViewModel = viewModel;
-            ViewModelRequired = viewModel is not null;
         }
 
 

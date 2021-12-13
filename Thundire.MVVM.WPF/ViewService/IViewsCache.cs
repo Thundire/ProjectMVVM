@@ -1,8 +1,10 @@
-﻿namespace Thundire.MVVM.WPF.ViewService
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Thundire.MVVM.WPF.ViewService
 {
     public interface IViewsCache
     {
         View Get(string mark);
-        bool TryGetView(object owner, out View view);
+        bool TryGetView(object owner,[NotNullWhen(true)] out View? view);
     }
 }

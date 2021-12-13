@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Thundire.MVVM.WPF.Abstractions.DependencyInjection;
 using Thundire.MVVM.WPF.Abstractions.ViewService;
@@ -26,31 +27,31 @@ namespace Thundire.MVVM.WPF.ViewService
             return new ViewHandler(view!, this);
         }
 
-        public bool TryGetView(object owner, out View view)
+        public bool TryGetView(object owner,[NotNullWhen(true)] out View? view)
         {
             return ViewsCache.TryGetValue(owner, out view);
         }
 
         public View Get(string mark)
         {
-            if (_registrations!.FirstOrDefault(r => r.Mark == mark) is not { } registration) return null;
-            if (!_container!.IsRegistered(registration.View)) return null;
+            if (_registrations is null || _container is null) throw new InvalidOperationException("View service was not correctly initialized");
+            if (_registrations.FirstOrDefault(r => r.Mark == mark) is not { } registration) throw new InvalidOperationException("Mark was not registered");
 
             var view = _container.Resolve(registration.View);
             if (view is not IView subscriber)
                 throw new InvalidOperationException($"Invalid registration of view marked as {mark}");
 
-            if (!registration.ViewModelRequired || !_container.IsRegistered(registration.ViewModel))
-                return new View(null) {CachedView = subscriber};
+            if (!registration.HasViewModel)
+                return new View(subscriber, mark);
 
-            var viewModel = _container.Resolve(registration.ViewModel);
+            var viewModel = _container.Resolve(registration.ViewModel!);
             subscriber.DataContext = viewModel;
             
             return RegisterInCache(viewModel, subscriber);
         }
         private static View RegisterInCache<TView>(object viewModel, TView view) where TView : class, IView
         {
-            var cache = new View(viewModel) { CachedView = view };
+            var cache = new View(view, viewModel);
             cache.OnUnsubscribeFromCache += UnsubscribeFromCache;
             ViewsCache[viewModel] = cache;
             return cache;
