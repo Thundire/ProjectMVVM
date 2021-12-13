@@ -22,11 +22,6 @@
     <Copyright>ftarxos@gmail.com</Copyright>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>Thundire.MVVM.WPF.key.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
@@ -39,6 +34,10 @@
     <ProjectReference Include="..\Thundire.Helpers\Thundire.Helpers.csproj" />
     <ProjectReference Include="..\Thundire.MVVM.Core\Thundire.MVVM.Core.csproj" />
     <ProjectReference Include="..\Thundire.MVVM.WPF.Abstractions\Thundire.MVVM.WPF.Abstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Thundire.MVVM.WPF.UnitTests"/>
   </ItemGroup>
 
 </Project>
