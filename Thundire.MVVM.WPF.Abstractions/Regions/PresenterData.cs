@@ -10,6 +10,7 @@ namespace Thundire.MVVM.WPF.Abstractions.Regions
             Template = template;
         }
 
+        public string? PresenterKey { get; set; }
         public object Content { get; set; }
         public DataTemplate Template { get; set; }
     }

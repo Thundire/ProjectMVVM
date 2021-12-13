@@ -12,7 +12,7 @@ namespace Thundire.MVVM.WPF.Regions
 
         public RegionsService(ITemplatesCache templatesCache) => _templatesCache = templatesCache;
 
-        public IRegion GetRegion(string key) => Regions.TryGetValue(key, out var region) ? region : null;
+        public IRegion? GetRegion(string key) => Regions.TryGetValue(key, out var region) ? region : null;
 
         public IRegion CreateSinglePageRegion(string key)
         {

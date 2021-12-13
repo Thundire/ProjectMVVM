@@ -22,7 +22,9 @@ namespace Thundire.MVVM.WPF.Converters.ValueConverters
         }
         
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) => 
-            Enumeration is {Count: > 0} ? string.Join(", ", Enumeration) : null;
+            Enumeration is {Count: > 0} 
+                ? string.Join(", ", Enumeration) 
+                : string.Empty;
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {

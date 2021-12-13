@@ -4,49 +4,40 @@ using Thundire.MVVM.WPF.Abstractions.TemplatesCache;
 
 namespace Thundire.MVVM.WPF.Regions
 {
-    internal class SinglePageRegion : IRegion, IViewRegion
+    internal class SinglePageRegion : RegionBase
     {
-        private readonly ITemplatesCache _register;
-
-        public SinglePageRegion(ITemplatesCache register)
+        public SinglePageRegion(ITemplatesCache register) : base(register){}
+        
+        protected override void ChangeRegion(IRegionView regionView, object content, string? presenterKey = null)
         {
-            _register = register;
-        }
-
-        public IRegionView RegionView { get; set; }
-
-        public void Change(object content, string presenterKey = null)
-        {
-            if (RegionView.CurrentData is { } currentView)
+            PresenterData? presenter;
+            // regionView don't contains any presenter, so set new
+            if (regionView.CurrentData is not { } currentView)
             {
-                if (content.GetType() == currentView.Template.DataType as Type)
-                {
-                    RegionView.ChangeContent(content);
-                    return;
-                }
+                presenter = presenterKey is null
+                    ? CreatePresenterData(content)
+                    : CreatePresenterData(content, presenterKey);
+                regionView.Change(presenter);
+                return;
             }
 
-            var template = _register.GetTemplate(content, presenterKey);
-            if (content is null || template is null)
+            if (presenterKey is not null)
             {
-                throw new InvalidOperationException("Can't find presenter or content is null")
-                {
-                    Data = { ["content"] = content, ["template"] = template }
-                };
+                if(currentView.PresenterKey == presenterKey) return;
+
+                presenter = CreatePresenterData(content, presenterKey);
+                regionView.Change(presenter);
             }
-            RegionView.Change(new(content, template));
-        }
 
-        public void Close()
-        {
-            RegionView.Close();
-        }
+            // if template for content is valuable, change only content
+            if (content.GetType() == currentView.Template.DataType as Type)
+            {
+                regionView.ChangeContent(content);
+                return;
+            }
 
-        public void Open()
-        {
-            if (RegionView.CurrentData is null)
-                throw new InvalidOperationException("Region View don't has any View to show, first call method Change");
-            RegionView.Show();
+            presenter = CreatePresenterData(content);
+            regionView.Change(presenter);
         }
     }
 }

@@ -25,7 +25,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Thundire.Helpers", "Thundir
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Thundire.MVVM.Core", "Thundire.MVVM.Core\Thundire.MVVM.Core.csproj", "{1E9B7E5E-9454-4BDB-88D8-AEE36E43C8B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thundire.MVVM.WPF.Abstractions", "Thundire.MVVM.WPF.Abstractions\Thundire.MVVM.WPF.Abstractions.csproj", "{430C480C-4B95-4ED7-8014-63CD554E5DCE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Thundire.MVVM.WPF.Abstractions", "Thundire.MVVM.WPF.Abstractions\Thundire.MVVM.WPF.Abstractions.csproj", "{430C480C-4B95-4ED7-8014-63CD554E5DCE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FAFF318C-22D0-465A-9A7F-FF42915AE58A}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

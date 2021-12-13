@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Markup;
+
 using Thundire.MVVM.WPF.Abstractions.Regions;
 
 // ReSharper disable InconsistentNaming
@@ -17,12 +19,12 @@ namespace Thundire.MVVM.WPF.Controls
         private const string Part_Content = nameof(Part_Content);
         private const string Part_ContentPanel = nameof(Part_ContentPanel);
 
-        private Button _closeButton;
-        private Button _switchVisibilityStateButton;
-        private UIElement _contentPanel;
-        private ContentPresenter _contentPresenter;
+        private Button? _closeButton;
+        private Button? _switchVisibilityStateButton;
+        private UIElement? _contentPanel;
+        private ContentPresenter? _contentPresenter;
 
-        private PresenterData _currentData;
+        private PresenterData? _currentData;
 
         static RegionView() => DefaultStyleKeyProperty.OverrideMetadata(typeof(RegionView), new FrameworkPropertyMetadata(typeof(RegionView)));
 
@@ -40,11 +42,11 @@ namespace Thundire.MVVM.WPF.Controls
             {
                 PropertyChangedCallback = RegionChanged
             });
-        
+
         public bool IsPanelVisible { get => (bool)GetValue(IsPanelVisibleProperty); set => SetValue(IsPanelVisibleProperty, value); }
         public IViewRegion Region { get => (IViewRegion)GetValue(RegionProperty); set => SetValue(RegionProperty, value); }
-        
-        private ContentPresenter ContentPresenter
+
+        private ContentPresenter? ContentPresenter
         {
             get => _contentPresenter;
             set
@@ -56,17 +58,17 @@ namespace Thundire.MVVM.WPF.Controls
             }
         }
 
-        private UIElement ContentPanel
+        private UIElement? ContentPanel
         {
             get => _contentPanel;
             set
             {
                 _contentPanel = value;
-                if (value.Visibility is Visibility.Visible) IsPanelVisible = true;
+                if (value?.Visibility is Visibility.Visible) IsPanelVisible = true;
             }
         }
 
-        public PresenterData CurrentData
+        public PresenterData? CurrentData
         {
             get => _currentData;
             private set
@@ -101,19 +103,25 @@ namespace Thundire.MVVM.WPF.Controls
 
         public void ChangeContent(object content)
         {
-            CurrentData.Content = content;
+            if (CurrentData is not null) CurrentData.Content = content;
+            if (ContentPresenter is not null) ContentPresenter.Content = content;
+        }
+
+        public void ClearView()
+        {
             if (ContentPresenter is not null)
             {
-                ContentPresenter.Content = content;
+                ContentPresenter.ContentTemplate = null;
             }
+            CurrentData = null;
         }
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
 
-            ConfigureCloseButton(GetTemplateChild(Part_CloseBtn) as Button);
-            ConfigureSwitchVisibilityStateButton(GetTemplateChild(Part_SwitchVisibilityStateBtn) as Button);
+            if (GetTemplateChild(Part_CloseBtn) is Button closeButton) ConfigureCloseButton(closeButton);
+            if (GetTemplateChild(Part_SwitchVisibilityStateBtn) is Button visibilitySwitchButton) ConfigureSwitchVisibilityStateButton(visibilitySwitchButton);
             ContentPresenter = GetTemplateChild(Part_Content) as ContentPresenter;
             ContentPanel = GetTemplateChild(Part_ContentPanel) as UIElement;
         }
@@ -122,14 +130,14 @@ namespace Thundire.MVVM.WPF.Controls
         {
             if (_closeButton is { } btn) btn.Click -= CloseButtonClick;
             _closeButton = value;
-            if (value is { }) value.Click += CloseButtonClick;
+            value.Click += CloseButtonClick;
         }
 
         private void ConfigureSwitchVisibilityStateButton(Button value)
         {
             if (_switchVisibilityStateButton is { } btn) btn.Click -= SwitchVisibilityState;
             _switchVisibilityStateButton = value;
-            if (value is { }) value.Click += SwitchVisibilityState;
+            value.Click += SwitchVisibilityState;
         }
 
         private static void RegionChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -152,6 +160,7 @@ namespace Thundire.MVVM.WPF.Controls
 
         private void SwitchVisibilityState(object sender, RoutedEventArgs e)
         {
+            if (ContentPanel is null) return;
             if (IsPanelVisible)
             {
                 ContentPanel.Visibility = Visibility.Collapsed;

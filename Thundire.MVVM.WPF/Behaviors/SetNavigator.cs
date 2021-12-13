@@ -14,9 +14,9 @@ namespace Thundire.MVVM.WPF.Behaviors
             typeof(SetNavigator),
             new(default(INavigationHandler), NavigatorChanged));
 
-        public INavigationHandler Navigator { get => (INavigationHandler)GetValue(NavigatorProperty); set => SetValue(NavigatorProperty, value); }
+        public INavigationHandler? Navigator { get => (INavigationHandler)GetValue(NavigatorProperty); set => SetValue(NavigatorProperty, value); }
 
-        private NavigationService _navigator;
+        private NavigationService? _navigator;
 
         protected override void OnAttached()
         {
@@ -25,7 +25,7 @@ namespace Thundire.MVVM.WPF.Behaviors
 
         protected override void OnDetaching()
         {
-            Navigator.NavigationService = null;
+            if(Navigator is not null) Navigator.NavigationService = null;
             _navigator = null;
         }
 

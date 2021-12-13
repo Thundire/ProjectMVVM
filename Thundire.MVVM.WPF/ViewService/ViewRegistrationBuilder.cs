@@ -7,27 +7,23 @@ namespace Thundire.MVVM.WPF.ViewService
     internal class ViewRegistrationBuilder : IViewRegistrationBuilder, IViewRegistration
     {
         public Type View { get; }
-        public Type ViewModel { get; private set; }
+        public Type? ViewModel { get; private set; }
         private string Mark { get; set; }
         public LifeTimeMode ViewMode { get; private set; } = LifeTimeMode.Transient;
         public LifeTimeMode ViewModelMode { get; private set; } = LifeTimeMode.Transient;
+        public bool HasViewModel => ViewModel is not null;
 
-        public ViewRegistrationBuilder(Type view)
+        public ViewRegistrationBuilder(Type view, string mark)
         {
             if (!view.IsAssignableTo(typeof(IView)))
                 throw new ArgumentException("View must inherit from IView");
             View = view;
+            Mark = mark;
         }
 
         public IViewRegistrationBuilder WithViewModel<TViewModel>()
         {
             ViewModel = typeof(TViewModel);
-            return this;
-        }
-
-        public IViewRegistrationBuilder MarkAs(string mark)
-        {
-            Mark = mark;
             return this;
         }
 

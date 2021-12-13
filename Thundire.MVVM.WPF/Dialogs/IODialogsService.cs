@@ -5,7 +5,7 @@ namespace Thundire.MVVM.WPF.Dialogs
 {
     public class IODialogsService : IIODialogsService
     {
-        public bool SaveFile(string title, out string selectedFile, string defaultFileName = null, string filter = "All files (*.*)|*.*")
+        public bool SaveFile(string title, out string selectedFile, string? defaultFileName = null, string filter = "All files (*.*)|*.*")
         {
             var dlg = new SaveFileDialog
             {
@@ -17,7 +17,7 @@ namespace Thundire.MVVM.WPF.Dialogs
 
             if (dlg.ShowDialog() is not true)
             {
-                selectedFile = null;
+                selectedFile = string.Empty;
                 return false;
             }
 
@@ -35,7 +35,7 @@ namespace Thundire.MVVM.WPF.Dialogs
 
             if (dlg.ShowDialog() is not true)
             {
-                selectedFile = null;
+                selectedFile = string.Empty;
                 return false;
             }
 

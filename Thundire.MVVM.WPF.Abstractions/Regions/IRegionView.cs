@@ -2,11 +2,12 @@
 {
     public interface IRegionView
     {
-        PresenterData CurrentData { get; }
+        PresenterData? CurrentData { get; }
 
         void Show();
         void Close();
         void Change(PresenterData view);
         void ChangeContent(object content);
+        void ClearView();
     }
 }

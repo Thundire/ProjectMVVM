@@ -8,7 +8,7 @@ namespace Thundire.MVVM.WPF.Abstractions.ViewService
     {
         event EventHandler Closed;
         Dispatcher Dispatcher { get; }
-        Window Owner { get; set; }
+        Window? Owner { get; set; }
         WindowStartupLocation WindowStartupLocation { get; set; }
 
         void Show();

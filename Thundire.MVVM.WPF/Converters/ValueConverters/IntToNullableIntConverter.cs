@@ -4,6 +4,7 @@ using Thundire.MVVM.WPF.Converters.Base;
 
 namespace Thundire.MVVM.WPF.Converters.ValueConverters
 {
+#nullable disable
     public class IntToNullableIntConverter : ConverterBase
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture) => 
@@ -12,4 +13,5 @@ namespace Thundire.MVVM.WPF.Converters.ValueConverters
         public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => 
             value is int number ? new int?(number) : null;
     }
+#nullable enable
 }

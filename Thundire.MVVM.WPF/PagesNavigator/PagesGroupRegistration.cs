@@ -26,11 +26,6 @@ namespace Thundire.MVVM.WPF.PagesNavigator
             GroupRegister[pageCallName] = page;
         }
 
-        public IEnumerable<PageRegistrationInfo> GetPages() => GroupRegister.Select(pair => new PageRegistrationInfo()
-        {
-            GroupName = _name,
-            PageName = pair.Key,
-            PageType = pair.Value
-        });
+        public IEnumerable<PageRegistrationInfo> GetPages() => GroupRegister.Select(pair => new PageRegistrationInfo(pair.Key, _name, pair.Value));
     }
 }

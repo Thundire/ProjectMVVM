@@ -29,7 +29,7 @@ namespace Thundire.MVVM.WPF.PagesNavigator
             var pageType = typeof(TPage);
             if (Exist(pageName, pageType)) throw new InvalidOperationException("Page already registered");
             _builder.RegisterType(pageType, LifeTimeMode.Transient);
-            Register.Add(new() { PageName = pageName, PageType = typeof(TPage) });
+            Register.Add(new(pageName, typeof(TPage)));
         }
 
         public IPagesInfoRegister GetRegister() => new PagesInfoRegister(Register);

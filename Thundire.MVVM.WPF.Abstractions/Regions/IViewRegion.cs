@@ -2,7 +2,7 @@
 {
     public interface IViewRegion
     {
-        IRegionView RegionView { get; set; }
+        IRegionView? RegionView { get; set; }
 
         void Close();
     }

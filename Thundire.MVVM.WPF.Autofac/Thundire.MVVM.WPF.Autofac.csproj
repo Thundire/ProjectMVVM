@@ -13,11 +13,6 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>Thundire.MVVM.WPF.Autofac.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <Authors>Thundire</Authors>
     <Description>MVVM package view handler service registration implementation support in Autofac</Description>
     <Copyright>ftarxos@gmail.com</Copyright>

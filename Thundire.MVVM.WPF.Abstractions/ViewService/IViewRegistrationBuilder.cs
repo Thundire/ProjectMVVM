@@ -3,7 +3,6 @@
     public interface IViewRegistrationBuilder
     {
         IViewRegistration AsRegistration();
-        IViewRegistrationBuilder MarkAs(string mark);
         IViewRegistrationBuilder ViewAsSingleton();
         IViewRegistrationBuilder ViewAsTransient();
         IViewRegistrationBuilder ViewModelAsSingleton();
