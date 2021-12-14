@@ -5,7 +5,7 @@ using Thundire.MVVM.WPF.Abstractions.TemplatesCache;
 
 namespace Thundire.MVVM.WPF.Regions
 {
-    public abstract class RegionBase : IRegion, IViewRegion
+    public abstract class RegionBase : IRegion
     {
         protected readonly ITemplatesCache TemplatesRegister;
 
