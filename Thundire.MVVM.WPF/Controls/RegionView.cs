@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Markup;
 
 using Thundire.MVVM.WPF.Abstractions.Regions;
 
@@ -28,12 +27,6 @@ namespace Thundire.MVVM.WPF.Controls
 
         static RegionView() => DefaultStyleKeyProperty.OverrideMetadata(typeof(RegionView), new FrameworkPropertyMetadata(typeof(RegionView)));
 
-        public static readonly DependencyProperty IsPanelVisibleProperty = DependencyProperty.Register(
-            nameof(IsPanelVisible),
-            typeof(bool),
-            typeof(RegionView),
-            new(default(bool)));
-
         public static readonly DependencyProperty RegionProperty = DependencyProperty.Register(
             nameof(Region),
             typeof(IViewRegion),
@@ -43,7 +36,29 @@ namespace Thundire.MVVM.WPF.Controls
                 PropertyChangedCallback = RegionChanged
             });
 
-        public bool IsPanelVisible { get => (bool)GetValue(IsPanelVisibleProperty); set => SetValue(IsPanelVisibleProperty, value); }
+        public static readonly DependencyProperty IsContentVisibleProperty = DependencyProperty.Register(
+            nameof(IsContentVisible),
+            typeof(bool),
+            typeof(RegionView),
+            new FrameworkPropertyMetadata(default(bool))
+            {
+                PropertyChangedCallback = HandleContentVisibility
+            });
+
+
+        public static readonly DependencyProperty IsOpenProperty = DependencyProperty.Register(
+            nameof(IsOpen),
+            typeof(bool),
+            typeof(RegionView),
+            new FrameworkPropertyMetadata(default(bool))
+            {
+                PropertyChangedCallback = OpenStatusChangedHandle
+            });
+
+
+        public bool IsOpen { get => (bool)GetValue(IsOpenProperty); set => SetValue(IsOpenProperty, value); }
+        public bool IsContentVisible { get => (bool)GetValue(IsContentVisibleProperty); set => SetValue(IsContentVisibleProperty, value); }
+
         public IViewRegion Region { get => (IViewRegion)GetValue(RegionProperty); set => SetValue(RegionProperty, value); }
 
         private ContentPresenter? ContentPresenter
@@ -64,7 +79,7 @@ namespace Thundire.MVVM.WPF.Controls
             set
             {
                 _contentPanel = value;
-                if (value?.Visibility is Visibility.Visible) IsPanelVisible = true;
+                IsContentVisible = value?.Visibility is Visibility.Visible;
             }
         }
 
@@ -82,14 +97,27 @@ namespace Thundire.MVVM.WPF.Controls
             }
         }
 
+        private static void HandleContentVisibility(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+        }
+
+        private static void OpenStatusChangedHandle(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (d is not RegionView regionView) return;
+            if (e.NewValue is true)
+            {
+                regionView.IsContentVisible = true;
+            }
+        }
+
         public void Show()
         {
-            if (Visibility is Visibility.Collapsed or Visibility.Hidden) Visibility = Visibility.Visible;
+            IsOpen = true;
         }
 
         public void Close()
         {
-            if (Visibility is Visibility.Visible or Visibility.Hidden) Visibility = Visibility.Collapsed;
+            IsOpen = false;
         }
 
         public void Change(PresenterData data)
@@ -161,14 +189,7 @@ namespace Thundire.MVVM.WPF.Controls
         private void SwitchVisibilityState(object sender, RoutedEventArgs e)
         {
             if (ContentPanel is null) return;
-            if (IsPanelVisible)
-            {
-                ContentPanel.Visibility = Visibility.Collapsed;
-                IsPanelVisible = false;
-                return;
-            }
-            ContentPanel.Visibility = Visibility.Visible;
-            IsPanelVisible = true;
+            IsContentVisible = !IsContentVisible;
         }
     }
 }

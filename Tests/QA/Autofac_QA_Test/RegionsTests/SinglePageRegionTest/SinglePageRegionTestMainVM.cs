@@ -1,4 +1,5 @@
-﻿using Autofac_QA_Test.ViewModels;
+﻿using System.Diagnostics;
+using Autofac_QA_Test.ViewModels;
 
 using System.Windows.Input;
 
@@ -18,12 +19,18 @@ namespace Autofac_QA_Test.RegionsTests.SinglePageRegionTest
 
             OpenBarCommand = commandsFactory.CreateAsBase(OpenBar);
             OpenFooCommand = commandsFactory.CreateAsBase(OpenFoo);
+            CloseRegionCommand = commandsFactory.CreateAsBase(() =>
+            {
+                Region.Close();
+                Debug.WriteLine("Closed");
+            });
         }
 
         private void OpenFoo()
         {
             Region.Change(new FooVM());
             Region.Open();
+            Debug.WriteLine("Open");
         }
 
         private void OpenBar()
@@ -34,5 +41,6 @@ namespace Autofac_QA_Test.RegionsTests.SinglePageRegionTest
 
         public ICommand OpenBarCommand { get; }
         public ICommand OpenFooCommand { get; }
+        public ICommand CloseRegionCommand { get; }
     }
 }

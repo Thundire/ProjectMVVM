@@ -79,18 +79,29 @@
 
 
         <ControlTemplate.Triggers>
-            <Trigger Property="IsPanelVisible" Value="True">
+            <Trigger Property="IsContentVisible" Value="True">
                 <Setter TargetName="Part_SwitchVisibilityStateBtn" Property="Content" Value="&#xE970;"/>
+                <Setter TargetName="Part_ContentPanel" Property="Visibility" Value="Visible"/>
             </Trigger>
 
-            <Trigger Property="IsPanelVisible" Value="False">
+            <Trigger Property="IsContentVisible" Value="False">
                 <Setter TargetName="Part_SwitchVisibilityStateBtn" Property="Content" Value="&#xE96F;"/>
+                <Setter TargetName="Part_ContentPanel" Property="Visibility" Value="Collapsed"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <Style TargetType="{x:Type controls:RegionView}">
         <Setter Property="Template" Value="{StaticResource RegionTemplate}"/>
-        <Setter Property="Visibility" Value="Collapsed"/>
+        <Setter Property="IsContentVisible" Value="True"/>
+        <Setter Property="IsOpen" Value="False"/>
+        <Style.Triggers>
+            <Trigger Property="IsOpen" Value="True">
+                <Setter Property="Visibility" Value="Visible"/>
+            </Trigger>
+            <Trigger Property="IsOpen" Value="False">
+                <Setter Property="Visibility" Value="Collapsed"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>
