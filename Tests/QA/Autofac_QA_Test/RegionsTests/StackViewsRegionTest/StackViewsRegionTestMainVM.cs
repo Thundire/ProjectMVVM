@@ -1,9 +1,10 @@
-﻿using System.Windows.Input;
-using Autofac_QA_Test.ViewModels;
-using Thundire.MVVM.WPF.Commands.Relay;
-using Thundire.MVVM.WPF.Observable.Base;
-using Thundire.MVVM.WPF.Services.Regions;
-using Thundire.MVVM.WPF.Services.Regions.Interfaces;
+﻿using Autofac_QA_Test.ViewModels;
+
+using System.Windows.Input;
+
+using Thundire.MVVM.Core.Observable;
+using Thundire.MVVM.WPF.Abstractions.Commands;
+using Thundire.MVVM.WPF.Abstractions.Regions;
 
 namespace Autofac_QA_Test.RegionsTests.StackViewsRegionTest
 {
@@ -11,12 +12,12 @@ namespace Autofac_QA_Test.RegionsTests.StackViewsRegionTest
     {
         private IRegion Region { get; }
 
-        public StackViewsRegionTestMainVM(IRegionsFactory regionsService)
+        public StackViewsRegionTestMainVM(IRegionsFactory regionsService, IWpfCommandsFactory commandsFactory)
         {
             Region = regionsService.GetRegion(RegionsKeys.StackViewsRegion);
 
-            OpenBarCommand = new RelayCommand(OpenBar);
-            OpenFooCommand = new RelayCommand(OpenFoo);
+            OpenBarCommand = commandsFactory.CreateAsBase(OpenBar);
+            OpenFooCommand = commandsFactory.CreateAsBase(OpenFoo);
         }
 
         private void OpenFoo()

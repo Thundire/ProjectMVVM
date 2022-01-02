@@ -8,6 +8,6 @@ namespace System.Collections.Generic
         /// <summary>
         /// Validates that the <paramref name="enumerable"/> is not null and contains items.
         /// </summary>
-        public static bool IsNotNullOrEmpty<T>(this IEnumerable<T> enumerable) => enumerable != null && enumerable.Any();
+        public static bool IsNotNullOrEmpty<T>(this IEnumerable<T>? enumerable) => enumerable is not null && enumerable.Any();
     }
 }

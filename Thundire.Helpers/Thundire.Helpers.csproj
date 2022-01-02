@@ -1,7 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
 
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -20,9 +21,9 @@
     <Copyright>ftarxos@gmail.com</Copyright>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>Thundire.Helpers.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="Thundire.MVVM.WPF.UnitTests"/>
+  </ItemGroup>
+  
 
 </Project>

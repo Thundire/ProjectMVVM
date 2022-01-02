@@ -1,6 +1,6 @@
 ﻿using System;
 using Autofac;
-using Thundire.MVVM.WPF.Services.Interfaces;
+using Thundire.MVVM.WPF.Abstractions.DependencyInjection;
 
 namespace Thundire.MVVM.WPF.Autofac
 {

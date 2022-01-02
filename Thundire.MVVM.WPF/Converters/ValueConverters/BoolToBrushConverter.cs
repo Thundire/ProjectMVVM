@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Globalization;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Markup;
 using System.Windows.Media;
@@ -12,13 +14,13 @@ namespace Thundire.MVVM.WPF.Converters.ValueConverters
     public class BoolToBrushConverter : ConverterBase
     {
         [ConstructorArgument("successBrush")]
-        public Brush SuccessBrush { get; set; }
+        public Brush? SuccessBrush { get; set; }
 
         [ConstructorArgument("failureBrush")]
-        public Brush FailureBrush { get; set; }
+        public Brush? FailureBrush { get; set; }
 
         [ConstructorArgument("wrongConversionBrush")]
-        public Brush WrongConversionBrush { get; set; }
+        public Brush? WrongConversionBrush { get; set; }
         
         public BoolToBrushConverter()
         {
@@ -40,8 +42,13 @@ namespace Thundire.MVVM.WPF.Converters.ValueConverters
         
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is bool v) return v ? SuccessBrush : FailureBrush;
-            return WrongConversionBrush;
+            var brush = value switch
+                        {
+                            true  => SuccessBrush,
+                            false => FailureBrush,
+                            _     => WrongConversionBrush
+                        };
+            return brush ?? DependencyProperty.UnsetValue;
         }
     }
 }

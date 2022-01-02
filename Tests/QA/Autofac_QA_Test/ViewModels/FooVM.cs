@@ -1,9 +1,9 @@
-﻿using Thundire.MVVM.WPF.Observable.Base;
+﻿using Thundire.MVVM.Core.Observable;
 
 namespace Autofac_QA_Test.ViewModels
 {
     public class FooVM : NotifyBase
     {
-        
+
     }
 }

@@ -1,21 +1,23 @@
-﻿using System;
-using Autofac;
+﻿using Autofac;
 using Autofac.Builder;
-using Thundire.MVVM.WPF.Services;
-using Thundire.MVVM.WPF.Services.Interfaces;
-using Thundire.MVVM.WPF.Services.Navigator.Interfaces;
-using Thundire.MVVM.WPF.Services.Navigator;
-using Thundire.MVVM.WPF.Services.Regions;
-using Thundire.MVVM.WPF.Services.Regions.Interfaces;
-using Thundire.MVVM.WPF.Services.ViewService;
-using Thundire.MVVM.WPF.Services.ViewService.Interfaces;
-using Thundire.MVVM.WPF.Services.ViewService.Models;
+
+using System;
+
+using Thundire.MVVM.WPF.Abstractions.DependencyInjection;
+using Thundire.MVVM.WPF.Abstractions.PagesNavigator;
+using Thundire.MVVM.WPF.Abstractions.Regions;
+using Thundire.MVVM.WPF.Abstractions.TemplatesCache;
+using Thundire.MVVM.WPF.Abstractions.ViewService;
+using Thundire.MVVM.WPF.PagesNavigator;
+using Thundire.MVVM.WPF.Regions;
+using Thundire.MVVM.WPF.TemplatesCache;
+using Thundire.MVVM.WPF.ViewService;
 
 namespace Thundire.MVVM.WPF.Autofac
 {
     public static class AutofacContainerExtensions
     {
-        public static void AddViewHandlerService(this ContainerBuilder builder, Action<IViewRegister> registration) 
+        public static void AddViewHandlerService(this ContainerBuilder builder, Action<IViewRegister> registration)
         {
             var viewRegister = new ViewRegister(new AutofacContainerBuilder(builder));
             registration?.Invoke(viewRegister);

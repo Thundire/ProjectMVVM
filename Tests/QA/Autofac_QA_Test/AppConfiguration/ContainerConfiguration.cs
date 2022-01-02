@@ -1,11 +1,14 @@
 ﻿using Autofac;
-using Autofac_QA_Test.ViewModels;
-using System;
+
 using Autofac_QA_Test.RegionsTests;
 using Autofac_QA_Test.RegionsTests.SinglePageRegionTest;
 using Autofac_QA_Test.RegionsTests.StackViewsRegionTest;
+using Autofac_QA_Test.ViewModels;
+
+using System;
+using Thundire.MVVM.WPF.Abstractions.Commands;
 using Thundire.MVVM.WPF.Autofac;
-using Thundire.MVVM.WPF.Services.Regions;
+using Thundire.MVVM.WPF.Commands;
 
 namespace Autofac_QA_Test.AppConfiguration
 {
@@ -25,6 +28,7 @@ namespace Autofac_QA_Test.AppConfiguration
 
         private static ContainerBuilder RegisterServices(this ContainerBuilder builder)
         {
+            builder.RegisterType<WpfCommandsFactory>().As<IWpfCommandsFactory>();
             return builder;
         }
 

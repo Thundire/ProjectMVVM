@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Autofac_QA_Test"
         xmlns:viewModels="clr-namespace:Autofac_QA_Test.ViewModels"
-        xmlns:regions="clr-namespace:Thundire.MVVM.WPF.Services.Regions;assembly=Thundire.MVVM.WPF"
+        xmlns:regions="clr-namespace:Thundire.MVVM.WPF.Regions;assembly=Thundire.MVVM.WPF"
+        xmlns:controls="clr-namespace:Thundire.MVVM.WPF.Controls;assembly=Thundire.MVVM.WPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         d:DataContext="{d:DesignInstance viewModels:MainVM}">
@@ -18,10 +19,27 @@
                 </Grid.ColumnDefinitions>
 
                 <TabControl>
+                    <TabControl.Resources>
+                        <Style TargetType="ToggleButton">
+                            <Style.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Content" Value="Close"/>
+                                </Trigger>
+
+                                <Trigger Property="IsChecked" Value="False">
+                                    <Setter Property="Content" Value="Open"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TabControl.Resources>
                     <TabItem Header="SinglePageTests" DataContext="{Binding SinglePageRegionMain}">
                         <StackPanel>
                             <Button Content="Open Foo" Command="{Binding OpenFooCommand}"/>
                             <Button Content="Open Bar" Command="{Binding OpenBarCommand}"/>
+                            <Button Content="Close Region" Command="{Binding CloseRegionCommand}"/>
+                            <ToggleButton IsChecked="{Binding ElementName=single, Path=IsOpen}"/>
+                            <CheckBox Content="Region Open" IsChecked="{Binding ElementName=single, Path=IsOpen}"/>
+                            <CheckBox Content="Content Visible" IsChecked="{Binding ElementName=single, Path=IsContentVisible}"/>
                         </StackPanel>
                     </TabItem>
 
@@ -33,8 +51,8 @@
                     </TabItem>
                 </TabControl>
 
-                <regions:RegionView Grid.Column="1" Region="{Binding SinglePageRegion}"/>
-                <regions:RegionView Grid.Column="1" Region="{Binding StackViewsRegion}"/>
+                <controls:RegionView Name="single" Grid.Column="1" Region="{Binding SinglePageRegion}"/>
+                <controls:RegionView Grid.Column="1" Region="{Binding StackViewsRegion}"/>
             </Grid>
         </TabItem>
         

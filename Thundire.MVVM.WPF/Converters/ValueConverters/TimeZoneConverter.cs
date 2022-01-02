@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Windows;
 using Thundire.MVVM.WPF.Converters.Base;
 
 namespace Thundire.MVVM.WPF.Converters.ValueConverters
@@ -10,14 +11,14 @@ namespace Thundire.MVVM.WPF.Converters.ValueConverters
         {
             if (value is string zoneId)
                 return TimeZoneInfo.FindSystemTimeZoneById(zoneId);
-            return null;
+            return DependencyProperty.UnsetValue;
         }
 
         public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value is TimeZoneInfo zone)
                 return zone.Id;
-            return null;
+            return DependencyProperty.UnsetValue;
         }
     }
 }

@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Windows;
 using Moq;
-using Thundire.MVVM.WPF.Services.Interfaces;
-using Thundire.MVVM.WPF.Services.Regions;
-using Thundire.MVVM.WPF.Services.Regions.Interfaces;
-using Thundire.MVVM.WPF.Services.Regions.Models;
+using Thundire.MVVM.WPF.Abstractions.Regions;
+using Thundire.MVVM.WPF.Abstractions.TemplatesCache;
+using Thundire.MVVM.WPF.Regions;
 using Xunit;
 
 namespace Thundire.MVVM.WPF.UnitTests.RegionService
