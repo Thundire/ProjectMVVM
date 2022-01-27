@@ -12,11 +12,6 @@ namespace Thundire.MVVM.WPF.Autofac
         {
             _services = services;
         }
-        
-        public bool IsRegistered(Type type)
-        {
-            return _services.IsRegistered(type);
-        }
 
         public object Resolve(Type type)
         {
