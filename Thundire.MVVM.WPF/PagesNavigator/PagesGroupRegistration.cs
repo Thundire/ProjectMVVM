@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Thundire.MVVM.WPF.Abstractions.DependencyInjection;
+using Thundire.Core.DIContainer;
 using Thundire.MVVM.WPF.Abstractions.PagesNavigator;
 
 namespace Thundire.MVVM.WPF.PagesNavigator

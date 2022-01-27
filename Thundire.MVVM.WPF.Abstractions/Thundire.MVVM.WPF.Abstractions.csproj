@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DiContainers\Thundire.Core.DIContainer\Thundire.Core.DIContainer.csproj" />
     <ProjectReference Include="..\Thundire.MVVM.Core\Thundire.MVVM.Core.csproj" />
   </ItemGroup>
 

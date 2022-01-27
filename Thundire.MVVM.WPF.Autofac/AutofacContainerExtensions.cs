@@ -2,8 +2,7 @@
 using Autofac.Builder;
 
 using System;
-
-using Thundire.MVVM.WPF.Abstractions.DependencyInjection;
+using Thundire.Core.DIContainer;
 using Thundire.MVVM.WPF.Abstractions.PagesNavigator;
 using Thundire.MVVM.WPF.Abstractions.Regions;
 using Thundire.MVVM.WPF.Abstractions.TemplatesCache;

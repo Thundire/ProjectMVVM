@@ -36,6 +36,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DiContainersRegistrations",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thundire.MVVM.MicrosoftDIContainer", "DiContainers\Thundire.MVVM.MicrosoftDIContainer\Thundire.MVVM.MicrosoftDIContainer.csproj", "{59DB26F9-DAD5-4752-9104-3351D7310F66}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thundire.Core.DIContainer", "DiContainers\Thundire.Core.DIContainer\Thundire.Core.DIContainer.csproj", "{1F429D35-5048-4F09-829A-C2575CD4E25F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,6 +80,10 @@ Global
 		{59DB26F9-DAD5-4752-9104-3351D7310F66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59DB26F9-DAD5-4752-9104-3351D7310F66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59DB26F9-DAD5-4752-9104-3351D7310F66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F429D35-5048-4F09-829A-C2575CD4E25F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F429D35-5048-4F09-829A-C2575CD4E25F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F429D35-5048-4F09-829A-C2575CD4E25F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F429D35-5048-4F09-829A-C2575CD4E25F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,6 +96,7 @@ Global
 		{26443D1A-9BE6-4C15-AC68-AF0689E7FD03} = {3054B438-962F-4C9B-A18A-709A7246B6B7}
 		{3054B438-962F-4C9B-A18A-709A7246B6B7} = {E6AB0D24-BE0C-48C1-B425-6BC1FF5B918F}
 		{59DB26F9-DAD5-4752-9104-3351D7310F66} = {DF83858A-8369-4E48-9800-376FDFFB5084}
+		{1F429D35-5048-4F09-829A-C2575CD4E25F} = {DF83858A-8369-4E48-9800-376FDFFB5084}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {834DC942-9BF3-465A-8BEF-C844CD9ACEF5}

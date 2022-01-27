@@ -1,8 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
 using System;
-
-using Thundire.MVVM.WPF.Abstractions.DependencyInjection;
+using Thundire.Core.DIContainer;
 
 namespace Thundire.MVVM.MicrosoftDIContainer
 {

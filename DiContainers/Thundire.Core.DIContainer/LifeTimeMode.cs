@@ -1,4 +1,4 @@
-﻿namespace Thundire.MVVM.WPF.Abstractions.DependencyInjection
+﻿namespace Thundire.Core.DIContainer
 {
     public enum LifeTimeMode
     {

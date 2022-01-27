@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Thundire.MVVM.WPF.Abstractions.DependencyInjection;
+using Thundire.Core.DIContainer;
 using Thundire.MVVM.WPF.Abstractions.ViewService;
 
 namespace Thundire.MVVM.WPF.ViewService
