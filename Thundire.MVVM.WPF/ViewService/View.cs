@@ -18,9 +18,9 @@ namespace Thundire.MVVM.WPF.ViewService
             _mark = mark;
         }
 
-        public View(IView view, object viewModel): this(view)
+        public View(IView view, object key): this(view)
         {
-            _key = viewModel;
+            _key = key;
         }
 
         private View(IView view)
