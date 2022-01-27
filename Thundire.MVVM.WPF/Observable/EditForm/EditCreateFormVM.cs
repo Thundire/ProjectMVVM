@@ -32,7 +32,7 @@ namespace Thundire.MVVM.WPF.Observable.EditForm
 
         private Func<TModel, CancellationToken, Task<bool>>? OnConfirm { get; set; }
 
-        protected virtual async void ConfirmExecute(TModel edited)
+        protected virtual async Task ConfirmExecute(TModel edited)
         {
             if (OnConfirm is not null && await OnConfirm.Invoke(edited, CancellationToken.None))
             {
