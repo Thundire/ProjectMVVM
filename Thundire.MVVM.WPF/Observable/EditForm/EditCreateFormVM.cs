@@ -36,7 +36,7 @@ namespace Thundire.MVVM.WPF.Observable.EditForm
         {
             if (OnConfirm is not null && await OnConfirm.Invoke(edited, CancellationToken.None))
             {
-                EndWork(Result.Ok(edited));
+                EndWork(Result<TModel>.Ok(edited));
             }
         }
 

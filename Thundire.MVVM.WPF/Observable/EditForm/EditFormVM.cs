@@ -2,12 +2,11 @@
 using System.ComponentModel;
 
 using Thundire.Helpers;
-using Thundire.MVVM.Core.Observable;
 using Thundire.MVVM.WPF.Abstractions.Commands;
 
 namespace Thundire.MVVM.WPF.Observable.EditForm
 {
-    public abstract class EditFormVM : NotifyBase
+    public class EditFormVM : EditFormVMBase
     {
         protected EditFormVM(IWpfCommandsFactory commandsFactory)
         {
@@ -16,25 +15,23 @@ namespace Thundire.MVVM.WPF.Observable.EditForm
 
         public event EventHandler<Result>? OnWorkDone;
 
-        public IWpfCommand? ConfirmCommand { get; protected init; }
-        public IWpfCommand? CancelCommand { get; protected init; }
-
-        public IWpfCommand? CloseFormCommand { get; protected init; }
-
         protected virtual void EndWork(Result result) => OnWorkDone?.Invoke(this, result);
     }
 
-    public class EditFormVM<TModel> : EditFormVM where TModel : class, INotifyPropertyChanged, IEquatable<TModel>
+    public class EditFormVM<TModel> : EditFormVMBase where TModel : class, INotifyPropertyChanged, IEquatable<TModel>
     {
         // ReSharper disable InconsistentNaming
         protected TModel? _toEdit;
         protected TModel? _backup;
         // ReSharper restore InconsistentNaming
 
-        protected EditFormVM(IWpfCommandsFactory commandsFactory) : base(commandsFactory)
+        protected EditFormVM(IWpfCommandsFactory commandsFactory)
         {
             CancelCommand = commandsFactory.Create(CancelExecute);
+            CloseFormCommand = commandsFactory.Create(() => EndWork(Result<TModel>.Exit));
         }
+
+        public event EventHandler<Result<TModel>>? OnWorkDone;
 
         public virtual TModel? ToEdit
         {
@@ -50,15 +47,15 @@ namespace Thundire.MVVM.WPF.Observable.EditForm
         {
             if (Equals(_backup, _toEdit))
             {
-                EndWork(Result.Exit);
+                EndWork(Result<TModel>.Exit);
                 return;
             }
             ToEdit = _backup.JsonSerializationDeepCopy();
         }
 
-        protected override void EndWork(Result result)
+        protected void EndWork(Result<TModel> result)
         {
-            base.EndWork(result);
+            OnWorkDone?.Invoke(this, result);
             _backup = null;
         }
     }
