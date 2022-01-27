@@ -55,6 +55,24 @@
                 <controls:RegionView Grid.Column="1" Region="{Binding StackViewsRegion}"/>
             </Grid>
         </TabItem>
+
+        <TabItem Header="View service tests" DataContext="{Binding ViewOpenVM}" IsSelected="True">
+            <ScrollViewer>
+                <StackPanel>
+                    <TextBlock Text="Confirm message"/>
+                    <TextBox Text="{Binding ConfirmMessage}"/>
+                    <Button Content="Open Confirm Window" Command="{Binding OpenConfirmDialogCommand}" HorizontalAlignment="Right"/>
+
+                    <Border Margin="0,8" BorderBrush="Gray" BorderThickness="2"/>
+
+                    <TextBlock Text="Number 1"/>
+                    <TextBox Text="{Binding NumbersVM.Number1}"/>
+                    <TextBlock Text="Number 2"/>
+                    <TextBox Text="{Binding NumbersVM.Number2}"/>
+                    <Button Content="Open Numbers Editor Window" Command="{Binding OpenNumbersEditCommand}" HorizontalAlignment="Right"/>
+                </StackPanel>
+            </ScrollViewer>
+        </TabItem>
         
     </TabControl>
 </Window>

@@ -1,7 +1,11 @@
-﻿namespace Autofac_QA_Test.AppConfiguration
+﻿using System;
+
+namespace Autofac_QA_Test.AppConfiguration
 {
     public static class ViewsKeys
     {
-        public const string Main = "Main";
+        public static readonly string Main = Guid.NewGuid().ToString();
+        public static readonly string Confirm = Guid.NewGuid().ToString();
+        public static readonly string NumbersEditor = Guid.NewGuid().ToString();
     }
 }

@@ -6,6 +6,7 @@ using Autofac_QA_Test.RegionsTests.StackViewsRegionTest;
 using Autofac_QA_Test.ViewModels;
 
 using System;
+using Autofac_QA_Test.Views;
 using Thundire.MVVM.WPF.Abstractions.Commands;
 using Thundire.MVVM.WPF.Autofac;
 using Thundire.MVVM.WPF.Commands;
@@ -39,6 +40,8 @@ namespace Autofac_QA_Test.AppConfiguration
             builder.RegisterType<SinglePageRegionTestMainVM>().InstancePerDependency();
             builder.RegisterType<StackViewsRegionTestMainVM>().InstancePerDependency();
             builder.RegisterType<RegionsMainVM>();
+            builder.RegisterType<ViewOpenVM>();
+            builder.RegisterType<ConfirmVM>();
             return builder;
         }
 
@@ -47,6 +50,8 @@ namespace Autofac_QA_Test.AppConfiguration
             builder.AddViewHandlerService(register =>
             {
                 register.Register<MainWindow, MainVM>(ViewsKeys.Main);
+                register.Register<Confirm>(ViewsKeys.Confirm);
+                register.Register<NumbersEditor, NumbersEditFormVM>(ViewsKeys.NumbersEditor);
             });
 
             builder.AddRegionsService(cacheBuilder =>
