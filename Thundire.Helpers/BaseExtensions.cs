@@ -49,5 +49,32 @@ namespace System
             if (self.Length < toCut.Length && !self.EndsWith(toCut)) return self;
             return self[..^toCut.Length];
         }
+
+        /// <summary>
+        /// Check equality of double values with tolerance precision
+        /// </summary>
+        /// <param name="value">Value</param>
+        /// <param name="other">Other value</param>
+        /// <param name="tolerance">Tolerance precision value</param>
+        /// <returns>True if equality in tolerance precision, false if opposite</returns>
+        public static bool ToleranceEquals(this double value, double other, double tolerance) => Math.Abs(value - other) < tolerance;
+
+        /// <summary>
+        /// Check equality of double values with tolerance precision
+        /// </summary>
+        /// <param name="value">Value</param>
+        /// <param name="other">Other value</param>
+        /// <param name="tolerance">Tolerance precision value</param>
+        /// <returns>True if equality in tolerance precision, false if opposite</returns>
+        public static bool ToleranceEquals(this float value, float other, float tolerance) => Math.Abs(value - other) < tolerance;
+
+        /// <summary>
+        /// Check equality of double values with tolerance precision
+        /// </summary>
+        /// <param name="value">Value</param>
+        /// <param name="other">Other value</param>
+        /// <param name="tolerance">Tolerance precision value</param>
+        /// <returns>True if equality in tolerance precision, false if opposite</returns>
+        public static bool ToleranceEquals(this decimal value, decimal other, decimal tolerance) => Math.Abs(value - other) < tolerance;
     }
 }
