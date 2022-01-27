@@ -1,10 +1,11 @@
-﻿namespace Thundire.MVVM.Core.Commands
+﻿using System.Windows.Input;
+
+namespace Thundire.MVVM.Core.Commands
 {
-    public interface IExecutableCommand
+    public interface IExecutableCommand : ICommand
     {
         bool Executable { get; set; }
 
-        bool CanExecute(object? parameter);
-        void Execute(object? parameter);
+        void NotifyCanExecuteChanged();
     }
 }

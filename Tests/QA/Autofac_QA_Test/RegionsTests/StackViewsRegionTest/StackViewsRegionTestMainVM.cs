@@ -16,8 +16,8 @@ namespace Autofac_QA_Test.RegionsTests.StackViewsRegionTest
         {
             Region = regionsService.GetRegion(RegionsKeys.StackViewsRegion);
 
-            OpenBarCommand = commandsFactory.CreateAsBase(OpenBar);
-            OpenFooCommand = commandsFactory.CreateAsBase(OpenFoo);
+            OpenBarCommand = commandsFactory.Create(OpenBar);
+            OpenFooCommand = commandsFactory.Create(OpenFoo);
         }
 
         private void OpenFoo()

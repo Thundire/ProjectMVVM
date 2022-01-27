@@ -16,7 +16,7 @@ namespace Thundire.MVVM.WPF.Commands
 
         public override bool Executable { get => _executable; set => this.Set(ref _executable, value, true); }
 
-        public event EventHandler? CanExecuteChanged
+        public new event EventHandler? CanExecuteChanged
         {
             add => CommandManager.RequerySuggested += value;
             remove => CommandManager.RequerySuggested -= value;
@@ -33,7 +33,7 @@ namespace Thundire.MVVM.WPF.Commands
 
         public override bool Executable { get => _executable; set => this.Set(ref _executable, value, true); }
 
-        public event EventHandler? CanExecuteChanged
+        public new event EventHandler? CanExecuteChanged
         {
             add => CommandManager.RequerySuggested += value;
             remove => CommandManager.RequerySuggested -= value;

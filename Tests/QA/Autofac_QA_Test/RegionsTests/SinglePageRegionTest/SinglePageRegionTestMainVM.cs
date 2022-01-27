@@ -17,9 +17,9 @@ namespace Autofac_QA_Test.RegionsTests.SinglePageRegionTest
         {
             Region = regionsService.GetRegion(RegionsKeys.SinglePageRegion);
 
-            OpenBarCommand = commandsFactory.CreateAsBase(OpenBar);
-            OpenFooCommand = commandsFactory.CreateAsBase(OpenFoo);
-            CloseRegionCommand = commandsFactory.CreateAsBase(() =>
+            OpenBarCommand = commandsFactory.Create(OpenBar);
+            OpenFooCommand = commandsFactory.Create(OpenFoo);
+            CloseRegionCommand = commandsFactory.Create(() =>
             {
                 Region.Close();
                 Debug.WriteLine("Closed");

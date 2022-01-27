@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Thundire.MVVM.Core.Commands;
 
 namespace Thundire.MVVM.WPF.Abstractions.Commands
 {
-    public interface IWpfCommandsFactory
+    public interface IWpfCommandsFactory : ICommandsFactory
     {
-        IWpfCommand Create(Action execute, Func<bool>? canExecute = null);
-        IWpfCommand Create<T>(Action<T> execute, Func<T, bool>? canExecute = null);
-        IWpfCommand Create(Func<Task> execute, Func<bool>? canExecute = null);
-        IWpfCommand Create<T>(Func<T, Task> execute, Func<T, bool>? canExecute = null);
-
-        ICommand CreateAsBase(Action execute, Func<bool>? canExecute = null);
-        ICommand CreateAsBase<T>(Action<T> execute, Func<T, bool>? canExecute = null);
-        ICommand CreateAsBase(Func<Task> execute, Func<bool>? canExecute = null);
-        ICommand CreateAsBase<T>(Func<T, Task> execute, Func<T, bool>? canExecute = null);
+        new IWpfCommand Create(Action execute, Func<bool>? canExecute = null);
+        new IWpfCommand Create<T>(Action<T> execute, Func<T, bool>? canExecute = null);
+        new IWpfCommand Create(Func<Task> execute, Func<bool>? canExecute = null);
+        new IWpfCommand Create<T>(Func<T, Task> execute, Func<T, bool>? canExecute = null);
     }
 }
