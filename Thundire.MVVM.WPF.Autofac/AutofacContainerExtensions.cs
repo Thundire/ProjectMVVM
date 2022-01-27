@@ -16,13 +16,16 @@ namespace Thundire.MVVM.WPF.Autofac
 {
     public static class AutofacContainerExtensions
     {
+        private static bool _isDIContainerWrapperRegistered;
+
         public static void AddViewHandlerService(this ContainerBuilder builder, Action<IViewRegister> registration)
         {
+            builder.RegisterDIContainer();
+
             var viewRegister = new ViewRegister(new AutofacContainerBuilder(builder));
             registration?.Invoke(viewRegister);
             viewRegister.Build();
 
-            builder.RegisterType<AutofacContainer>().As<IDIContainer>().SingleInstance();
             builder.RegisterInstance(viewRegister).As<IViewRegisterCache>();
             builder.RegisterType<ViewHandlerService>().As<IViewHandlerService>();
         }
@@ -42,6 +45,8 @@ namespace Thundire.MVVM.WPF.Autofac
 
         public static void AddPages(this ContainerBuilder builder, Action<IPagesRegistration> registration)
         {
+            builder.RegisterDIContainer();
+
             builder.RegisterType<Navigator>().As<INavigator>().InstancePerDependency();
             var pagesRegister = new PagesRegistration(new AutofacContainerBuilder(builder));
             registration.Invoke(pagesRegister);
@@ -49,7 +54,7 @@ namespace Thundire.MVVM.WPF.Autofac
             builder.RegisterType<PagesContainer>().As<IPagesContainer>();
         }
 
-        public static void SetLifeTimeMode<TImplementer>(
+        internal static void SetLifeTimeMode<TImplementer>(
             this IRegistrationBuilder<TImplementer, ConcreteReflectionActivatorData, SingleRegistrationStyle> typeBuilder,
             LifeTimeMode mode)
         {
@@ -64,6 +69,13 @@ namespace Thundire.MVVM.WPF.Autofac
                 default:
                     throw new ArgumentOutOfRangeException(nameof(mode), mode, null);
             }
+        }
+
+        private static void RegisterDIContainer(this ContainerBuilder builder)
+        {
+            if (_isDIContainerWrapperRegistered) return;
+            builder.RegisterType<AutofacContainer>().As<IDIContainer>().SingleInstance();
+            _isDIContainerWrapperRegistered = true;
         }
     }
 }
