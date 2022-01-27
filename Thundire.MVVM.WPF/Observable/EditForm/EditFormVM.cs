@@ -10,10 +10,15 @@ namespace Thundire.MVVM.WPF.Observable.EditForm
     {
         protected EditFormVM(IWpfCommandsFactory commandsFactory)
         {
+            ConfirmCommand = commandsFactory.Create(Confirm);
             CloseFormCommand = commandsFactory.Create(() => EndWork(Result.Exit));
+            CancelCommand = commandsFactory.Create(Cancel);
         }
 
         public event EventHandler<Result>? OnWorkDone;
+
+        protected virtual void Confirm() => EndWork(Result.Ok());
+        protected virtual void Cancel() => EndWork(Result.Exit);
 
         protected virtual void EndWork(Result result) => OnWorkDone?.Invoke(this, result);
     }
@@ -53,7 +58,7 @@ namespace Thundire.MVVM.WPF.Observable.EditForm
             ToEdit = _backup.JsonSerializationDeepCopy();
         }
 
-        protected void EndWork(Result<TModel> result)
+        protected virtual void EndWork(Result<TModel> result)
         {
             OnWorkDone?.Invoke(this, result);
             _backup = null;
