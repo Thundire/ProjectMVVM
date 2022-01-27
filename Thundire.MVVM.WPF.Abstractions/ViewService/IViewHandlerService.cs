@@ -3,6 +3,6 @@
     public interface IViewHandlerService
     {
         IViewOpener Search(string mark);
-        IViewCloser Search(object connector);
+        IViewCloser Search(object key);
     }
 }

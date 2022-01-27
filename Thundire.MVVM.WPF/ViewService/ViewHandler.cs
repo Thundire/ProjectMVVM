@@ -56,17 +56,53 @@ namespace Thundire.MVVM.WPF.ViewService
             return this;
         }
 
-        public IViewOpener OnLoaded(Action<object> onLoaded)
+        public IViewOpener ViewBehaviorOnLoaded<TView>(Action<TView> onLoaded)
         {
             _build.Value.Add(view =>
             {
                 view.CachedView.Loaded += (sender, _) =>
                 {
-                    if (sender is not IView loadedView) throw new InvalidOperationException($"View {sender.GetType().FullName} must inherit IView interface");
-                    onLoaded.Invoke(loadedView.DataContext);
+                    if (sender is not TView loadedView)
+                    {
+                        throw new InvalidOperationException($"View is not of type {typeof(TView).FullName}");
+                    }
+                    onLoaded.Invoke(loadedView);
                 };
                 return view;
             });
+            return this;
+        }
+
+        public IViewOpener DataContextBehaviorOnLoaded<TDataContext>(Action<TDataContext> onLoaded)
+        {
+            _build.Value.Add(view =>
+            {
+                view.CachedView.Loaded += (sender, _) =>
+                {
+                    if (sender is not IView loadedView)
+                    {
+                        throw new InvalidOperationException($"View {sender.GetType().FullName} must inherit IView interface");
+                    }
+
+                    if (loadedView.DataContext is not TDataContext dataContext)
+                    {
+                        throw new InvalidOperationException($"View data context is not of type {typeof(TDataContext).FullName}");
+                    }
+                    onLoaded.Invoke(dataContext);
+                };
+                return view;
+            });
+            return this;
+        }
+
+        public IViewOpener SetDataContext(object dataContext)
+        {
+            _build.Value.Add(view =>
+            {
+                view.CachedView.DataContext = dataContext;
+                return view;
+            });
+
             return this;
         }
 
@@ -75,6 +111,15 @@ namespace Thundire.MVVM.WPF.ViewService
             if(_mark is null) return null;
 
             var view = _viewsCache.Get(_mark);
+            if (_build.IsValueCreated) _build.Value.Aggregate(view, (toAggregate, action) => action(toAggregate));
+            return view.CachedView as TView;
+        }
+
+        public TView? Handle<TView>(object key) where TView : class
+        {
+            if(_mark is null) return null;
+
+            var view = _viewsCache.Get(_mark, key);
             if (_build.IsValueCreated) _build.Value.Aggregate(view, (toAggregate, action) => action(toAggregate));
             return view.CachedView as TView;
         }

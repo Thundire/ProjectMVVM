@@ -7,6 +7,9 @@ namespace Thundire.MVVM.WPF.Abstractions.ViewService
         TView? Handle<TView>() where TView : class;
         IViewOpener WithOwner(object owner);
         IViewOpener OnClose(CloseViewEventHandler onClose);
-        IViewOpener OnLoaded(Action<object> onLoaded);
+        IViewOpener ViewBehaviorOnLoaded<TView>(Action<TView> onLoaded);
+        IViewOpener DataContextBehaviorOnLoaded<TDataContext>(Action<TDataContext> onLoaded);
+        IViewOpener SetDataContext(object dataContext);
+        TView? Handle<TView>(object key) where TView : class;
     }
 }
