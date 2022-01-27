@@ -4,8 +4,6 @@ namespace Thundire.Helpers
 {
     public class ImportHelper<TModel, TId>
     {
-        public readonly Action<TId> UpdateSourceIdAction;
-
         public ImportHelper(Action<TId> updateSourceId, TModel model)
         {
             UpdateSourceIdAction = updateSourceId;
@@ -13,6 +11,7 @@ namespace Thundire.Helpers
         }
 
         public TModel Model { get; }
+        public Action<TId> UpdateSourceIdAction { get; }
 
         public void UpdateSourceId(TId id) => UpdateSourceIdAction.Invoke(id);
     }
