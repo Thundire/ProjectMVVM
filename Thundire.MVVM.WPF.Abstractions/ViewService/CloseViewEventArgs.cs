@@ -6,8 +6,22 @@ namespace Thundire.MVVM.WPF.Abstractions.ViewService
     {
         public EventArgs? InnerArgs { get; init; }
 
-        public CloseViewEventArgs(EventArgs? originalArgs = null) => InnerArgs = originalArgs;
+        public CloseViewEventArgs(EventArgs? originalArgs = null, bool dialogResult = default)
+        {
+            InnerArgs = originalArgs;
+            DialogResult = dialogResult;
+        }
 
         public bool DialogResult { get; init; }
+    }
+
+    public sealed class CloseViewEventArgs<TResult> : CloseViewEventArgs
+    {
+        public CloseViewEventArgs(EventArgs? originalArgs = null, bool dialogResult = default, TResult? result = default)
+            : base(originalArgs, dialogResult) =>
+            Result = result;
+
+        public bool DialogResult { get; init; }
+        public TResult? Result { get; init; }
     }
 }
