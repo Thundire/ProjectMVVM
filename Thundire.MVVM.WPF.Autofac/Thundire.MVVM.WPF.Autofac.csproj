@@ -22,12 +22,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Autofac" Version="6.2.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\DiContainers\Thundire.Core.DIContainer\Thundire.Core.DIContainer.csproj" />
-    <ProjectReference Include="..\Thundire.MVVM.WPF\Thundire.MVVM.WPF.csproj" />
+    <PackageReference Include="Autofac" Version="6.3.0" />
+    <PackageReference Include="Thundire.MVVM.WPF" Version="0.0.3-beta" />
   </ItemGroup>
 
 </Project>

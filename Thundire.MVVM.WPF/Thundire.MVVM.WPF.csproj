@@ -26,16 +26,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.31" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
+    <PackageReference Include="Thundire.Core.DIContainer" Version="0.0.3-beta" />
+    <PackageReference Include="Thundire.MVVM.WPF.Abstractions" Version="0.0.3-beta" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Thundire.MVVM.Core\Thundire.MVVM.Core.csproj" />
-    <ProjectReference Include="..\Thundire.MVVM.WPF.Abstractions\Thundire.MVVM.WPF.Abstractions.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <InternalsVisibleTo Include="Thundire.MVVM.WPF.UnitTests"/>
+    <InternalsVisibleTo Include="Thundire.MVVM.WPF.UnitTests" />
   </ItemGroup>
 
 </Project>

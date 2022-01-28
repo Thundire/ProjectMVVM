@@ -22,8 +22,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DiContainers\Thundire.Core.DIContainer\Thundire.Core.DIContainer.csproj" />
-    <ProjectReference Include="..\Thundire.MVVM.Core\Thundire.MVVM.Core.csproj" />
+    <PackageReference Include="Thundire.Core.DIContainer" Version="0.0.3-beta" />
+    <PackageReference Include="Thundire.MVVM.Core" Version="0.0.3-beta" />
   </ItemGroup>
 
 </Project>
