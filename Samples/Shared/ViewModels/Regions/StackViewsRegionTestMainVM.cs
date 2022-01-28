@@ -1,36 +1,26 @@
-﻿using System.Diagnostics;
-using Autofac_QA_Test.ViewModels;
-
-using System.Windows.Input;
-
+﻿using System.Windows.Input;
 using Thundire.MVVM.Core.Observable;
 using Thundire.MVVM.WPF.Abstractions.Commands;
 using Thundire.MVVM.WPF.Abstractions.Regions;
 
-namespace Autofac_QA_Test.RegionsTests.SinglePageRegionTest
+namespace Shared.ViewModels.Regions
 {
-    public class SinglePageRegionTestMainVM : NotifyBase
+    public class StackViewsRegionTestMainVM : NotifyBase
     {
         private IRegion Region { get; }
 
-        public SinglePageRegionTestMainVM(IRegionsFactory regionsService, IWpfCommandsFactory commandsFactory)
+        public StackViewsRegionTestMainVM(IRegionsFactory regionsService, IWpfCommandsFactory commandsFactory)
         {
-            Region = regionsService.GetRegion(RegionsKeys.SinglePageRegion);
+            Region = regionsService.GetRegion(RegionsKeys.StackViewsRegion);
 
             OpenBarCommand = commandsFactory.Create(OpenBar);
             OpenFooCommand = commandsFactory.Create(OpenFoo);
-            CloseRegionCommand = commandsFactory.Create(() =>
-            {
-                Region.Close();
-                Debug.WriteLine("Closed");
-            });
         }
 
         private void OpenFoo()
         {
             Region.Change(new FooVM());
             Region.Open();
-            Debug.WriteLine("Open");
         }
 
         private void OpenBar()
@@ -41,6 +31,5 @@ namespace Autofac_QA_Test.RegionsTests.SinglePageRegionTest
 
         public ICommand OpenBarCommand { get; }
         public ICommand OpenFooCommand { get; }
-        public ICommand CloseRegionCommand { get; }
     }
 }

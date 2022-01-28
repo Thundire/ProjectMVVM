@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Thundire.MVVM.WPF.Abstractions.PagesNavigator;
 
-namespace Autofac_QA_Test.Models
+namespace Shared.Services
 {
     public interface INavigationGroupDescriptors
     {

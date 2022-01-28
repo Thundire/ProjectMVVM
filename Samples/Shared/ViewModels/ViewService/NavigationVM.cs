@@ -1,20 +1,17 @@
-﻿using Autofac;
-
-using Autofac_QA_Test.Models;
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-
+using Shared.Services;
+using Thundire.Core.DIContainer;
 using Thundire.MVVM.Core.Observable;
 using Thundire.MVVM.WPF.Abstractions.PagesNavigator;
 
-namespace Autofac_QA_Test.ViewModels
+namespace Shared.ViewModels.ViewService
 {
     public class NavigationVM : NotifyBase, INavigationRoot
     {
-        private readonly ILifetimeScope _provider;
+        private readonly IDIContainer _provider;
 
-        public NavigationVM(INavigator navigator, INavigationGroupDescriptors pages, ILifetimeScope provider)
+        public NavigationVM(INavigator navigator, INavigationGroupDescriptors pages, IDIContainer provider)
         {
             _provider = provider;
             Navigator = navigator;

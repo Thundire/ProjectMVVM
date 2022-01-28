@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Autofac_QA_Test.AppConfiguration
+namespace Shared
 {
     public static class ViewsKeys
     {

@@ -1,14 +1,11 @@
-﻿using Autofac_QA_Test.AppConfiguration;
-
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows.Input;
-
 using Thundire.Helpers;
 using Thundire.MVVM.Core.Observable;
 using Thundire.MVVM.WPF.Abstractions.Commands;
 using Thundire.MVVM.WPF.Abstractions.ViewService;
 
-namespace Autofac_QA_Test.ViewModels
+namespace Shared.ViewModels.ViewService
 {
     public class ViewOpenVM : NotifyBase
     {

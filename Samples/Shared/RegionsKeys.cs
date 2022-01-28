@@ -1,4 +1,4 @@
-﻿namespace Autofac_QA_Test.RegionsTests
+﻿namespace Shared
 {
     public class RegionsKeys
     {

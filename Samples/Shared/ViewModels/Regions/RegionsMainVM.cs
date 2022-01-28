@@ -1,10 +1,7 @@
-﻿using Autofac_QA_Test.RegionsTests.SinglePageRegionTest;
-using Autofac_QA_Test.RegionsTests.StackViewsRegionTest;
-
-using Thundire.MVVM.Core.Observable;
+﻿using Thundire.MVVM.Core.Observable;
 using Thundire.MVVM.WPF.Abstractions.Regions;
 
-namespace Autofac_QA_Test.RegionsTests
+namespace Shared.ViewModels.Regions
 {
     public class RegionsMainVM : NotifyBase
     {

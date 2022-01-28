@@ -1,8 +1,8 @@
-﻿using Autofac_QA_Test.RegionsTests;
-
+﻿using Shared.ViewModels.Regions;
+using Shared.ViewModels.ViewService;
 using Thundire.MVVM.Core.Observable;
 
-namespace Autofac_QA_Test.ViewModels
+namespace Shared.ViewModels
 {
     public class MainVM : NotifyBase
     {

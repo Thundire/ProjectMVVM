@@ -1,6 +1,6 @@
 ﻿using Thundire.MVVM.Core.Observable;
 
-namespace Autofac_QA_Test.ViewModels
+namespace Shared.ViewModels
 {
     public class BarVM : NotifyBase
     {

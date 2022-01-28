@@ -1,7 +1,7 @@
 ﻿using Thundire.MVVM.WPF.Abstractions.Commands;
 using Thundire.MVVM.WPF.Observable.EditForm;
 
-namespace Autofac_QA_Test.ViewModels
+namespace Shared.ViewModels.ViewService
 {
     public class ConfirmVM : EditFormVM
     {

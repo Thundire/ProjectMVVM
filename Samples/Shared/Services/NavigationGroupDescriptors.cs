@@ -1,10 +1,8 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.Immutable;
-
 using Thundire.MVVM.WPF.Abstractions.PagesNavigator;
 
-namespace Autofac_QA_Test.Models
+namespace Shared.Services
 {
     public class NavigationGroupDescriptors : INavigationGroupDescriptors
     {
