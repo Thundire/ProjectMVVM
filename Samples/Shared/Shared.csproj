@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Thundire.MVVM.WPF\Thundire.MVVM.WPF.csproj" />
+    <PackageReference Include="Thundire.MVVM.WPF" Version="0.0.3-beta" />
   </ItemGroup>
 
 </Project>
