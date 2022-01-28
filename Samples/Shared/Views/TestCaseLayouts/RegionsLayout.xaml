@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="Shared.Views.TestCaseLayouts.RegionsLayout"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Shared.Views.TestCaseLayouts"
+             xmlns:controls="clr-namespace:Thundire.MVVM.WPF.Controls;assembly=Thundire.MVVM.WPF"
+             xmlns:regions="clr-namespace:Shared.ViewModels.Regions"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             d:DataContext="{d:DesignInstance regions:RegionsMainVM}">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TabControl>
+            <TabControl.Resources>
+                <Style TargetType="ToggleButton">
+                    <Style.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Content" Value="Close"/>
+                        </Trigger>
+
+                        <Trigger Property="IsChecked" Value="False">
+                            <Setter Property="Content" Value="Open"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </TabControl.Resources>
+            <TabItem Header="SinglePageTests" DataContext="{Binding SinglePageRegionMain}">
+                <StackPanel>
+                    <Button Content="Open Foo" Command="{Binding OpenFooCommand}"/>
+                    <Button Content="Open Bar" Command="{Binding OpenBarCommand}"/>
+                    <Button Content="Close Region" Command="{Binding CloseRegionCommand}"/>
+                    <ToggleButton IsChecked="{Binding ElementName=single, Path=IsOpen}"/>
+                    <CheckBox Content="Region Open" IsChecked="{Binding ElementName=single, Path=IsOpen}"/>
+                    <CheckBox Content="Content Visible" IsChecked="{Binding ElementName=single, Path=IsContentVisible}"/>
+                </StackPanel>
+            </TabItem>
+
+            <TabItem Header="StackViewTests" DataContext="{Binding StackViewsRegionMain}">
+                <StackPanel>
+                    <Button Content="Open Foo" Command="{Binding OpenFooCommand}"/>
+                    <Button Content="Open Bar" Command="{Binding OpenBarCommand}"/>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+
+        <controls:RegionView Name="single" Grid.Column="1" Region="{Binding SinglePageRegion}"/>
+        <controls:RegionView Grid.Column="1" Region="{Binding StackViewsRegion}"/>
+    </Grid>
+</UserControl>

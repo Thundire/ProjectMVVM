@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using Thundire.MVVM.WPF.Abstractions.ViewService;
 
-namespace Autofac_QA_Test
+namespace Shared.Views
 {
     public partial class MainWindow : Window, IWindowView
     {

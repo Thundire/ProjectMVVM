@@ -1,13 +1,13 @@
-﻿<Window x:Class="Autofac_QA_Test.Views.NumbersEditor"
+﻿<Window x:Class="Shared.Views.NumbersEditorWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Autofac_QA_Test.Views"
-        xmlns:viewModels="clr-namespace:Autofac_QA_Test.ViewModels"
+        xmlns:local="clr-namespace:Shared.Views"
+        xmlns:viewService="clr-namespace:Shared.ViewModels.ViewService"
         mc:Ignorable="d"
-        Title="NumbersEditor" Height="116" Width="200"
-        d:DataContext="{d:DesignInstance viewModels:NumbersEditFormVM}">
+        Title="NumbersEditorWindow" Height="116" Width="200"
+        d:DataContext="{d:DesignInstance viewService:NumbersEditFormVM}">
     <StackPanel Margin="4">
         <TextBlock Text="Number 1"/>
         <TextBox Text="{Binding ToEdit.Number1}"/>
