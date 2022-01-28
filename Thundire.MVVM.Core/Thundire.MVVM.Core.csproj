@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -21,7 +21,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Thundire.Helpers\Thundire.Helpers.csproj" />
-  </ItemGroup>
+    <PackageReference Include="Thundire.Helpers" Version="0.0.3-beta" />
+  </ItemGroup> 
 
 </Project>
