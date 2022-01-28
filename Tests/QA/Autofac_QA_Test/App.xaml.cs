@@ -2,6 +2,7 @@
 
 using System.Windows;
 using Autofac_QA_Test.AppConfiguration;
+using Shared;
 using Thundire.MVVM.WPF.Abstractions.ViewService;
 
 namespace Autofac_QA_Test

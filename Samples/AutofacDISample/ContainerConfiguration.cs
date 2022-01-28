@@ -5,15 +5,16 @@ using Shared.Services;
 using Shared.ViewModels;
 using Shared.ViewModels.Regions;
 using Shared.ViewModels.ViewService;
-
-using System;
 using Shared.Views;
 using Shared.Views.Pages;
+
+using System;
+
 using Thundire.MVVM.WPF.Abstractions.Commands;
 using Thundire.MVVM.WPF.Autofac;
 using Thundire.MVVM.WPF.Commands;
 
-namespace Autofac_QA_Test.AppConfiguration
+namespace AutofacDISample
 {
     public static class ContainerConfiguration
     {
