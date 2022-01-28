@@ -7,9 +7,9 @@ namespace Thundire.MVVM.WPF.PagesNavigator
 {
     public class PagesInfoRegister : IPagesInfoRegister
     {
-        public PagesInfoRegister(List<PageRegistrationInfo> pages) => Register = pages;
+        public PagesInfoRegister(HashSet<PageRegistrationInfo> pages) => Register = pages;
 
-        private List<PageRegistrationInfo> Register { get; }
+        private HashSet<PageRegistrationInfo> Register { get; }
 
         public IReadOnlyList<PageRegistrationInfo> GetGroup(string group) => Register.Where(info => info.GroupName == @group).ToImmutableList();
 

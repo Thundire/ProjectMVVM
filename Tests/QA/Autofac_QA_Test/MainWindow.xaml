@@ -70,6 +70,10 @@
                     <TextBlock Text="Number 2"/>
                     <TextBox Text="{Binding NumbersVM.Number2}"/>
                     <Button Content="Open Numbers Editor Window" Command="{Binding OpenNumbersEditCommand}" HorizontalAlignment="Right"/>
+
+                    <Border Margin="0,8" BorderBrush="Gray" BorderThickness="2"/>
+
+                    <Button Content="Open Navigation Window" Command="{Binding OpenNavigationViewCommand}"/>
                 </StackPanel>
             </ScrollViewer>
         </TabItem>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-
+using Thundire.MVVM.WPF.Abstractions.PagesNavigator;
 using Thundire.MVVM.WPF.Abstractions.ViewService;
 
 namespace Thundire.MVVM.WPF.ViewService
@@ -89,6 +89,28 @@ namespace Thundire.MVVM.WPF.ViewService
                         throw new InvalidOperationException($"View data context is not of type {typeof(TDataContext).FullName}");
                     }
                     onLoaded.Invoke(dataContext);
+                };
+                return view;
+            });
+            return this;
+        }
+
+        public IViewOpener NavigateOnLoaded(string pageKey)
+        {
+            _build.Value.Add(view =>
+            {
+                view.CachedView.Loaded += (sender, _) =>
+                {
+                    if (sender is not IView loadedView)
+                    {
+                        throw new InvalidOperationException($"View {sender.GetType().FullName} must inherit IView interface");
+                    }
+
+                    if (loadedView.DataContext is not INavigationRoot dataContext)
+                    {
+                        throw new InvalidOperationException($"View data context is not of type {typeof(INavigationRoot).FullName}");
+                    }
+                    dataContext.SetDefaultPage(pageKey);
                 };
                 return view;
             });

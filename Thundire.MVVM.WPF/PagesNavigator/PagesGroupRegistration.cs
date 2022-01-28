@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Thundire.Core.DIContainer;
+
 using Thundire.MVVM.WPF.Abstractions.PagesNavigator;
 
 namespace Thundire.MVVM.WPF.PagesNavigator
@@ -9,20 +9,28 @@ namespace Thundire.MVVM.WPF.PagesNavigator
     public class PagesGroupRegistration : IPagesGroupRegistration
     {
         private readonly string _name;
-        private readonly IDIContainerBuilder _builder;
 
-        public PagesGroupRegistration(string name, IDIContainerBuilder builder)
-        {
-            _name = name;
-            _builder = builder;
-        }
+        public PagesGroupRegistration(string name) => _name = name;
 
         private Dictionary<string, Type> GroupRegister { get; } = new();
 
         public void Register<TPage>(string pageCallName) where TPage : class, INavigablePage
         {
             var page = typeof(TPage);
-            _builder.RegisterType(page, LifeTimeMode.Transient);
+
+            if (GroupRegister.ContainsKey(pageCallName) && GroupRegister.ContainsValue(page))
+            {
+                throw new InvalidOperationException("Page already registered")
+                {
+                    Data =
+                    {
+                        ["GroupName"] = _name,
+                        ["Type"] = page,
+                        ["Key"] = pageCallName
+                    }
+                };
+            }
+
             GroupRegister[pageCallName] = page;
         }
 

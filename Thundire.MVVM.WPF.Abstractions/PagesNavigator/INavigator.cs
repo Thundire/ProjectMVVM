@@ -2,9 +2,11 @@
 {
     public interface INavigator
     {
-        string? CurrentPage { get; }
+        string? CurrentPageKey { get; }
+        object? CurrentDataContext { get; }
 
-        void NavigateTo(string pageName, object data);
+        void ChangeDataContextOfCurrentPage(object dataContext);
+        void NavigateTo(string pageName, object dataContext);
         void UsePagesGroup(string group);
     }
 }

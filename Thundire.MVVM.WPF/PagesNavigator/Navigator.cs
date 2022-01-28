@@ -28,27 +28,48 @@ namespace Thundire.MVVM.WPF.PagesNavigator
 
         private IDictionary<string, INavigablePage> Pages { get; set; }
 
-        public string? CurrentPage { get; private set; }
+        public string? CurrentPageKey { get; private set; }
+        public object? CurrentDataContext { get; private set; }
+        private INavigablePage? CurrentPage { get; set; }
+        
 
         public void UsePagesGroup(string group)
         {
             Pages = _container.GetPagesFromGroup(group);
         }
 
-        public void NavigateTo(string pageName, object data)
+        public void NavigateTo(string pageName, object dataContext)
         {
-            if (!Pages.TryGetValue(pageName, out var page) && _container.GetPage(pageName) is { } containerPage)
+            INavigablePage? nextPage = null;
+            if (Pages.TryGetValue(pageName, out var page))
             {
+                nextPage = page;
+            }
+
+            if (nextPage is null && _container.GetPage(pageName) is { } containerPage)
+            {
+                nextPage = containerPage;
                 Pages.TryAdd(pageName, containerPage);
             }
 
-            if (NavigationService?.Navigate(page, data) is true) CurrentPage = pageName;
+            if (NavigationService?.Navigate(nextPage, dataContext) is true)
+            {
+                CurrentPage = nextPage;
+                CurrentPageKey = pageName;
+                CurrentDataContext = dataContext;
+            }
+        }
+
+        public void ChangeDataContextOfCurrentPage(object dataContext)
+        {
+            if(CurrentPage is null) return;
+            CurrentPage.DataContext = dataContext;
         }
 
         private static void OnLoadComplete(object sender, NavigationEventArgs args)
         {
-            if (args.Content is not INavigablePage page || args.ExtraData is not { } info) return;
-            page.DataContext = info;
+            if (args.Content is not INavigablePage page || args.ExtraData is not { } dataContext) return;
+            page.DataContext = dataContext;
         }
     }
 }

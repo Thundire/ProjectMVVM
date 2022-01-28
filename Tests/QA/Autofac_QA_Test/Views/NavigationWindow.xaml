@@ -1,0 +1,43 @@
+﻿<Window x:Class="Autofac_QA_Test.Views.NavigationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Autofac_QA_Test.Views"
+        xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:behaviors="clr-namespace:Thundire.MVVM.WPF.Behaviors;assembly=Thundire.MVVM.WPF"
+        xmlns:viewModels="clr-namespace:Autofac_QA_Test.ViewModels"
+        xmlns:componentModel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+        xmlns:pagesNavigator="clr-namespace:Thundire.MVVM.WPF.Abstractions.PagesNavigator;assembly=Thundire.MVVM.WPF.Abstractions"
+        mc:Ignorable="d"
+        Title="NavigationWindow" Height="450" Width="800"
+        d:DataContext="{d:DesignInstance viewModels:NavigationVM}">
+    <Window.Resources>
+        <CollectionViewSource x:Key="PagesSource" IsLiveSortingRequested="True" Source="{Binding Pages}">
+            <CollectionViewSource.SortDescriptions>
+                <componentModel:SortDescription PropertyName="Order" />
+            </CollectionViewSource.SortDescriptions>
+        </CollectionViewSource>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListView ItemsSource="{Binding Source={StaticResource PagesSource}}" SelectedItem="{Binding Selected}">
+            <ListView.ItemTemplate>
+                <DataTemplate DataType="{x:Type pagesNavigator:NavigationDescriptor}">
+                    <TextBlock Text="{Binding Title}"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Frame Grid.Column="1" NavigationUIVisibility="Hidden">
+            <b:Interaction.Behaviors>
+                <behaviors:SetNavigator Navigator="{Binding Navigator}"/>
+            </b:Interaction.Behaviors>
+        </Frame>
+    </Grid>
+</Window>

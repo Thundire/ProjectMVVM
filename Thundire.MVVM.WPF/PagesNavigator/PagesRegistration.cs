@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using Thundire.Core.DIContainer;
 using Thundire.MVVM.WPF.Abstractions.PagesNavigator;
 
@@ -9,17 +10,23 @@ namespace Thundire.MVVM.WPF.PagesNavigator
     {
         private readonly IDIContainerBuilder _builder;
 
-        public PagesRegistration(IDIContainerBuilder builder) => _builder = builder;
+        public PagesRegistration(IDIContainerBuilder builder)
+        {
+            _builder = builder;
+            _registeredPages = new HashSet<Type>();
+            Register = new HashSet<PageRegistrationInfo>();
+        }
 
-        private List<PageRegistrationInfo> Register { get; } = new();
+        private HashSet<PageRegistrationInfo> Register { get; }
+        private readonly HashSet<Type> _registeredPages;
 
         public void AddGroup(string groupName, Action<IPagesGroupRegistration> registration)
         {
-            var group = new PagesGroupRegistration(groupName, _builder);
+            var group = new PagesGroupRegistration(groupName);
             registration.Invoke(group);
             foreach (var info in group.GetPages())
             {
-                if (Exist(info.PageName, info.PageType)) throw new InvalidOperationException("Page already registered");
+                _registeredPages.Add(info.PageType);
                 Register.Add(info);
             }
         }
@@ -27,14 +34,18 @@ namespace Thundire.MVVM.WPF.PagesNavigator
         public void AddPage<TPage>(string pageName)
         {
             var pageType = typeof(TPage);
-            if (Exist(pageName, pageType)) throw new InvalidOperationException("Page already registered");
-            _builder.RegisterType(pageType, LifeTimeMode.Transient);
+            _registeredPages.Add(pageType);
             Register.Add(new(pageName, typeof(TPage)));
         }
 
-        public IPagesInfoRegister GetRegister() => new PagesInfoRegister(Register);
+        public IPagesInfoRegister GetRegister()
+        {
+            foreach (var page in _registeredPages)
+            {
+                _builder.RegisterType(page, LifeTimeMode.Transient);
+            }
 
-        private bool Exist(string pageName, Type pageType) =>
-            Register.Exists(info => info.PageName == pageName || info.PageType == pageType);
+            return new PagesInfoRegister(Register);
+        }
     }
 }
