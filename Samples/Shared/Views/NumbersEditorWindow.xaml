@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Shared.Views"
         xmlns:viewService="clr-namespace:Shared.ViewModels.ViewService"
         mc:Ignorable="d"
-        Title="NumbersEditorWindow" Height="116" Width="200"
+        Title="NumbersEditorWindow" Height="146" Width="200"
         d:DataContext="{d:DesignInstance viewService:NumbersEditFormVM}">
     <StackPanel Margin="4">
         <TextBlock Text="Number 1"/>
