@@ -5,6 +5,21 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Version>0.0.3-beta</Version>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Authors>Thundire</Authors>
+    <Description>Library hold Core models for MVVM</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Thundire/ProjectMVVM</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Thundire/ProjectMVVM</RepositoryUrl>
+    <Copyright>ftarxos@gmail.com</Copyright>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Thundire.Helpers\Thundire.Helpers.csproj" />
   </ItemGroup>

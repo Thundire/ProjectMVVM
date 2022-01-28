@@ -6,6 +6,21 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Version>0.0.3-beta</Version>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Authors>Thundire</Authors>
+    <Description>Abstractions of Thundire.MVVM.WPF package</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Thundire/ProjectMVVM</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Thundire/ProjectMVVM</RepositoryUrl>
+    <Copyright>ftarxos@gmail.com</Copyright>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\DiContainers\Thundire.Core.DIContainer\Thundire.Core.DIContainer.csproj" />
     <ProjectReference Include="..\Thundire.MVVM.Core\Thundire.MVVM.Core.csproj" />

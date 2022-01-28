@@ -3,22 +3,22 @@
   <PropertyGroup>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
-
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <PropertyGroup>
-    <Version>0.0.2.1</Version>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Version>0.0.3-beta</Version>
   </PropertyGroup>
 
   <PropertyGroup>
     <Authors>Thundire</Authors>
-    <Description>MVVM package view handler service registration implementation support in Autofac</Description>
-    <Copyright>ftarxos@gmail.com</Copyright>
+    <Description>Autofac wrappers and simplifiers of registration Thundire.MVVM services</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/Thundire/ProjectMVVM.Autofac</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/Thundire/ProjectMVVM.Autofac</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Thundire/ProjectMVVM</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Thundire/ProjectMVVM</RepositoryUrl>
+    <Copyright>ftarxos@gmail.com</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
