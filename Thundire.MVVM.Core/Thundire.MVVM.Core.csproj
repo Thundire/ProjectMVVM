@@ -21,7 +21,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Thundire.Helpers" Version="0.0.3-beta" />
-  </ItemGroup> 
+    <ProjectReference Include="..\Thundire.Helpers\Thundire.Helpers.csproj" />
+  </ItemGroup>
 
 </Project>
