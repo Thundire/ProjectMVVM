@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+
 using Thundire.MVVM.Core.PagesNavigator;
-using Thundire.MVVM.WPF.Abstractions.PagesNavigator;
 using Thundire.MVVM.WPF.Abstractions.ViewService;
 
 namespace Thundire.MVVM.WPF.ViewService
@@ -131,7 +131,7 @@ namespace Thundire.MVVM.WPF.ViewService
 
         public TView? Handle<TView>() where TView : class
         {
-            if(_mark is null) return null;
+            if (_mark is null) return null;
 
             var view = _viewsCache.Get(_mark);
             if (_build.IsValueCreated) _build.Value.Aggregate(view, (toAggregate, action) => action(toAggregate));
@@ -140,7 +140,7 @@ namespace Thundire.MVVM.WPF.ViewService
 
         public TView? Handle<TView>(object key) where TView : class
         {
-            if(_mark is null) return null;
+            if (_mark is null) return null;
 
             var view = _viewsCache.Get(_mark, key);
             if (_build.IsValueCreated) _build.Value.Aggregate(view, (toAggregate, action) => action(toAggregate));
@@ -149,7 +149,7 @@ namespace Thundire.MVVM.WPF.ViewService
 
         public async ValueTask CloseSelf(CloseViewEventArgs args)
         {
-            if(_viewCache is null) return;
+            if (_viewCache is null) return;
             await _viewCache.HandleCloseSelf(args);
         }
     }

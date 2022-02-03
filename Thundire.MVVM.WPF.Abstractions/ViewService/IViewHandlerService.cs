@@ -2,6 +2,8 @@
 {
     public interface IViewHandlerService
     {
+        int CachedLength { get; }
+
         IViewOpener Search(string mark);
         IViewCloser Search(object key);
     }

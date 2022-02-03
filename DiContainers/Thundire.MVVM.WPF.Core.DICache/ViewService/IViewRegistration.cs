@@ -1,7 +1,7 @@
 ﻿using System;
 using Thundire.Core.DIContainer;
 
-namespace Thundire.MVVM.WPF.Abstractions.ViewService
+namespace Thundire.MVVM.WPF.Core.DICache.ViewService
 {
     public interface IViewRegistration
     {
@@ -11,6 +11,6 @@ namespace Thundire.MVVM.WPF.Abstractions.ViewService
         LifeTimeMode ViewModelMode { get; }
         bool HasViewModel { get; }
 
-        ViewRegistration Build();
+        ViewRegistrationDescriptor Build();
     }
 }

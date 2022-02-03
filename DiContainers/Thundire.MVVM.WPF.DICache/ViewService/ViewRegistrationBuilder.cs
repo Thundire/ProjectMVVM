@@ -1,8 +1,10 @@
 ﻿using System;
+
 using Thundire.Core.DIContainer;
 using Thundire.MVVM.WPF.Abstractions.ViewService;
+using Thundire.MVVM.WPF.Core.DICache.ViewService;
 
-namespace Thundire.MVVM.WPF.ViewService
+namespace Thundire.MVVM.WPF.DICache.ViewService
 {
     internal class ViewRegistrationBuilder : IViewRegistrationBuilder, IViewRegistration
     {
@@ -51,7 +53,7 @@ namespace Thundire.MVVM.WPF.ViewService
             return this;
         }
 
-        public ViewRegistration Build() => new(Mark, View, ViewModel);
+        public ViewRegistrationDescriptor Build() => new(Mark, View, ViewModel);
 
         public IViewRegistration AsRegistration() => this;
     }

@@ -4,12 +4,13 @@ using System;
 
 using Thundire.Core.DIContainer;
 using Thundire.MVVM.Core.PagesNavigator;
-using Thundire.MVVM.WPF.Abstractions.PagesNavigator;
 using Thundire.MVVM.WPF.Abstractions.Regions;
 using Thundire.MVVM.WPF.Abstractions.TemplatesCache;
 using Thundire.MVVM.WPF.Abstractions.ViewService;
 using Thundire.MVVM.WPF.Core.DICache.PagesNavigator;
+using Thundire.MVVM.WPF.Core.DICache.ViewService;
 using Thundire.MVVM.WPF.DICache.PagesNavigator;
+using Thundire.MVVM.WPF.DICache.ViewService;
 using Thundire.MVVM.WPF.PagesNavigator;
 using Thundire.MVVM.WPF.Regions;
 using Thundire.MVVM.WPF.TemplatesCache;
@@ -26,11 +27,10 @@ namespace Thundire.MVVM.MicrosoftDIContainer
             services.RegisterDIContainer();
 
             var viewRegister = new ViewRegister(new MSContainerRegistrator(services));
-            registration?.Invoke(viewRegister);
-            viewRegister.Build();
+            registration.Invoke(viewRegister);
 
-
-            services.AddSingleton<IViewRegisterCache>(viewRegister);
+            services.AddSingleton(viewRegister.Build());
+            services.AddSingleton<IViewRegisterCache, ViewRegisterCache>();
             services.AddSingleton<IViewHandlerService, ViewHandlerService>();
         }
 

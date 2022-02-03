@@ -5,12 +5,13 @@ using System;
 
 using Thundire.Core.DIContainer;
 using Thundire.MVVM.Core.PagesNavigator;
-using Thundire.MVVM.WPF.Abstractions.PagesNavigator;
 using Thundire.MVVM.WPF.Abstractions.Regions;
 using Thundire.MVVM.WPF.Abstractions.TemplatesCache;
 using Thundire.MVVM.WPF.Abstractions.ViewService;
 using Thundire.MVVM.WPF.Core.DICache.PagesNavigator;
+using Thundire.MVVM.WPF.Core.DICache.ViewService;
 using Thundire.MVVM.WPF.DICache.PagesNavigator;
+using Thundire.MVVM.WPF.DICache.ViewService;
 using Thundire.MVVM.WPF.PagesNavigator;
 using Thundire.MVVM.WPF.Regions;
 using Thundire.MVVM.WPF.TemplatesCache;
@@ -27,10 +28,10 @@ namespace Thundire.MVVM.WPF.Autofac
             builder.RegisterDIContainer();
 
             var viewRegister = new ViewRegister(new AutofacContainerBuilder(builder));
-            registration?.Invoke(viewRegister);
-            viewRegister.Build();
+            registration.Invoke(viewRegister);
 
-            builder.RegisterInstance(viewRegister).As<IViewRegisterCache>();
+            builder.RegisterInstance(viewRegister.Build());
+            builder.RegisterType<ViewRegisterCache>().As<IViewRegisterCache>();
             builder.RegisterType<ViewHandlerService>().As<IViewHandlerService>();
         }
 

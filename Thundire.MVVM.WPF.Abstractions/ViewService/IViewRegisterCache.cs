@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
-
-namespace Thundire.MVVM.WPF.Abstractions.ViewService
+﻿namespace Thundire.MVVM.WPF.Abstractions.ViewService
 {
     public interface IViewRegisterCache
     {
-        IReadOnlyList<ViewRegistration> Registrations { get; }
+        ViewDescriptor GetView(string mark);
+        bool IsMarkNotRegistered(string mark);
     }
 }

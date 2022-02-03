@@ -1,23 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using Thundire.Core.DIContainer;
+
 using Thundire.MVVM.WPF.Abstractions.ViewService;
 
 namespace Thundire.MVVM.WPF.ViewService
 {
-    public partial class ViewHandlerService : IViewHandlerService, IViewsCache
+    public class ViewHandlerService : IViewHandlerService, IViewsCache
     {
-        private static IDIContainer? _container;
-        private static IReadOnlyList<ViewRegistration>? _registrations;
+        private readonly IViewRegisterCache _registeredViewsCache;
         private static readonly Dictionary<object, View> ViewsCache = new();
-        
-        public ViewHandlerService(IDIContainer container, IViewRegisterCache cache)
+
+        public ViewHandlerService(IViewRegisterCache registeredViewsCache)
         {
-            _container ??= container;
-            _registrations ??= cache.Registrations;
+            _registeredViewsCache = registeredViewsCache;
         }
+
+        public int CachedLength => ViewsCache.Count;
 
         public IViewOpener Search(string mark) => new ViewHandler(mark, this);
         public IViewCloser Search(object key)
@@ -33,58 +32,43 @@ namespace Thundire.MVVM.WPF.ViewService
             return new ViewHandler(view!, this);
         }
 
-        public bool TryGetView(object owner,[NotNullWhen(true)] out View? view)
+        public bool TryGetView(object owner, [NotNullWhen(true)] out View? view)
         {
             return ViewsCache.TryGetValue(owner, out view);
         }
 
         public View Get(string mark)
         {
-            if (_registrations is null || _container is null) throw new InvalidOperationException("View service was not correctly initialized");
-            if (_registrations.FirstOrDefault(r => r.Mark == mark) is not { } registration) throw new InvalidOperationException("Mark was not registered");
+            if (_registeredViewsCache.IsMarkNotRegistered(mark)) throw new InvalidOperationException("Mark was not registered");
 
-            var view = _container.Resolve(registration.View);
-            if (view is not IView subscriber)
-                throw new InvalidOperationException($"Invalid registration of view marked as {mark}");
+            var viewDescriptor = _registeredViewsCache.GetView(mark);
 
-            if (!registration.HasViewModel)
-                return new View(subscriber, mark);
+            if (!viewDescriptor.HasDataContext) return RegisterInCache(mark, viewDescriptor.View);
 
-            var viewModel = _container.Resolve(registration.ViewModel!);
-            subscriber.DataContext = viewModel;
-            
-            return RegisterInCache(viewModel, subscriber);
+            return RegisterInCache(viewDescriptor.DataContext!, viewDescriptor.View, viewDescriptor.DataContext);
         }
 
         public View Get(string mark, object key)
         {
-            if (_registrations is null || _container is null) throw new InvalidOperationException("View service was not correctly initialized");
-            if (_registrations.FirstOrDefault(r => r.Mark == mark) is not { } registration) throw new InvalidOperationException("Mark was not registered");
+            if (_registeredViewsCache.IsMarkNotRegistered(mark)) throw new InvalidOperationException("Mark was not registered");
 
-            var view = _container.Resolve(registration.View);
-            if (view is not IView subscriber)
-                throw new InvalidOperationException($"Invalid registration of view marked as {mark}");
-            
-            if (!registration.HasViewModel)
-                return RegisterInCache(key, subscriber);
+            var viewDescriptor = _registeredViewsCache.GetView(mark);
 
-            var viewModel = _container.Resolve(registration.ViewModel!);
-            subscriber.DataContext = viewModel;
-            
-            return RegisterInCache(viewModel, subscriber);
+            return RegisterInCache(key, viewDescriptor.View, viewDescriptor.DataContext);
         }
 
-        private static View RegisterInCache<TView>(object key, TView view) where TView : class, IView
+        private static View RegisterInCache(object key, IView view, object? dataContext = null)
         {
-            var cache = new View(view, key);
+            var cache = new View(view, key, dataContext);
             cache.OnUnsubscribeFromCache += UnsubscribeFromCache;
             ViewsCache[key] = cache;
             return cache;
         }
 
-        private static void UnsubscribeFromCache(object viewModel)
+        private static void UnsubscribeFromCache(View sender, object key)
         {
-            ViewsCache.Remove(viewModel);
+            ViewsCache.Remove(key);
+            sender.OnUnsubscribeFromCache -= UnsubscribeFromCache;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Thundire.MVVM.WPF.Abstractions.ViewService
+﻿namespace Thundire.MVVM.WPF.Core.DICache.ViewService
 {
     public interface IViewRegistrationBuilder
     {
