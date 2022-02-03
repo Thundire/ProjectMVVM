@@ -38,6 +38,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicrosoftDISample", "Sample
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thundire.MVVM.WPF.Behaviors", "WPF\Thundire.MVVM.WPF.Behaviors\Thundire.MVVM.WPF.Behaviors.csproj", "{B14F2BFE-2EC2-450F-AA17-1F90D96D5910}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thundire.MVVM.WPF.Controls", "WPF\Thundire.MVVM.WPF.Controls\Thundire.MVVM.WPF.Controls.csproj", "{640A5363-D3B6-4F49-A714-D4B825F64B0F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -92,6 +94,10 @@ Global
 		{B14F2BFE-2EC2-450F-AA17-1F90D96D5910}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B14F2BFE-2EC2-450F-AA17-1F90D96D5910}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B14F2BFE-2EC2-450F-AA17-1F90D96D5910}.Release|Any CPU.Build.0 = Release|Any CPU
+		{640A5363-D3B6-4F49-A714-D4B825F64B0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{640A5363-D3B6-4F49-A714-D4B825F64B0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{640A5363-D3B6-4F49-A714-D4B825F64B0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{640A5363-D3B6-4F49-A714-D4B825F64B0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
