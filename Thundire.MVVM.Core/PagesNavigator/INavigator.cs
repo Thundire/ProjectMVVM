@@ -1,4 +1,4 @@
-﻿namespace Thundire.MVVM.WPF.Abstractions.PagesNavigator
+﻿namespace Thundire.MVVM.Core.PagesNavigator
 {
     public interface INavigator
     {

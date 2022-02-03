@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Thundire.MVVM.WPF.Abstractions.PagesNavigator
+namespace Thundire.MVVM.Core.PagesNavigator
 {
     public interface IPagesContainer
     {

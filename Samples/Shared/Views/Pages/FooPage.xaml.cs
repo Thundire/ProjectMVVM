@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using Thundire.MVVM.Core.PagesNavigator;
 using Thundire.MVVM.WPF.Abstractions.PagesNavigator;
 
 namespace Shared.Views.Pages

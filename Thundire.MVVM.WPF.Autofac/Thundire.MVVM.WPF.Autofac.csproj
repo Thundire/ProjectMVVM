@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DiContainers\Thundire.MVVM.WPF.DICache\Thundire.MVVM.WPF.DICache.csproj" />
     <ProjectReference Include="..\Thundire.MVVM.WPF\Thundire.MVVM.WPF.csproj" />
   </ItemGroup>
 

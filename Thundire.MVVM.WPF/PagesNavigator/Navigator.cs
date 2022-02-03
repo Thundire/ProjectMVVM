@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Navigation;
+using Thundire.MVVM.Core.PagesNavigator;
 using Thundire.MVVM.WPF.Abstractions.PagesNavigator;
 
 namespace Thundire.MVVM.WPF.PagesNavigator

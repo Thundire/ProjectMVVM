@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Thundire.MVVM.WPF.Abstractions.PagesNavigator
+namespace Shared.Models
 {
     public class NavigationDescriptor
     {

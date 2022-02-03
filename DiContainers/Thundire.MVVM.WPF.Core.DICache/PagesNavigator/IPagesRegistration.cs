@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Thundire.MVVM.WPF.Abstractions.PagesNavigator
+namespace Thundire.MVVM.WPF.Core.DICache.PagesNavigator
 {
     public interface IPagesRegistration
     {

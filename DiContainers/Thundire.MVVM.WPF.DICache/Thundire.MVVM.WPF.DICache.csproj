@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Thundire.Core.DIContainer\Thundire.Core.DIContainer.csproj" />
+    <ProjectReference Include="..\Thundire.MVVM.WPF.Core.DICache\Thundire.MVVM.WPF.Core.DICache.csproj" />
+  </ItemGroup>
+
+</Project>

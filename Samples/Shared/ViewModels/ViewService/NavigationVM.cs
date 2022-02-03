@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Shared.Models;
 using Shared.Services;
 using Thundire.Core.DIContainer;
 using Thundire.MVVM.Core.Observable;
+using Thundire.MVVM.Core.PagesNavigator;
 using Thundire.MVVM.WPF.Abstractions.PagesNavigator;
 
 namespace Shared.ViewModels.ViewService

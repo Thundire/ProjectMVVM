@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Shared.Views"
         xmlns:componentModel="clr-namespace:System.ComponentModel;assembly=WindowsBase"
-        xmlns:pagesNavigator="clr-namespace:Thundire.MVVM.WPF.Abstractions.PagesNavigator;assembly=Thundire.MVVM.WPF.Abstractions"
         xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:behaviors="clr-namespace:Thundire.MVVM.WPF.Behaviors;assembly=Thundire.MVVM.WPF.Behaviors"
         xmlns:viewService="clr-namespace:Shared.ViewModels.ViewService"
+        xmlns:models="clr-namespace:Shared.Models"
         mc:Ignorable="d"
         Title="NavigationWindow" Height="420" Width="600"
         d:DataContext="{d:DesignInstance viewService:NavigationVM}">
@@ -28,7 +28,7 @@
 
         <ListView ItemsSource="{Binding Source={StaticResource PagesSource}}" SelectedItem="{Binding Selected}">
             <ListView.ItemTemplate>
-                <DataTemplate DataType="{x:Type pagesNavigator:NavigationDescriptor}">
+                <DataTemplate DataType="{x:Type models:NavigationDescriptor}">
                     <TextBlock Text="{Binding Alias}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>

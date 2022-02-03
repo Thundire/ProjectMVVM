@@ -1,10 +1,15 @@
-﻿using System;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+
+using System;
+
 using Thundire.Core.DIContainer;
+using Thundire.MVVM.Core.PagesNavigator;
 using Thundire.MVVM.WPF.Abstractions.PagesNavigator;
 using Thundire.MVVM.WPF.Abstractions.Regions;
 using Thundire.MVVM.WPF.Abstractions.TemplatesCache;
 using Thundire.MVVM.WPF.Abstractions.ViewService;
+using Thundire.MVVM.WPF.Core.DICache.PagesNavigator;
+using Thundire.MVVM.WPF.DICache.PagesNavigator;
 using Thundire.MVVM.WPF.PagesNavigator;
 using Thundire.MVVM.WPF.Regions;
 using Thundire.MVVM.WPF.TemplatesCache;
@@ -24,7 +29,7 @@ namespace Thundire.MVVM.MicrosoftDIContainer
             registration?.Invoke(viewRegister);
             viewRegister.Build();
 
-            
+
             services.AddSingleton<IViewRegisterCache>(viewRegister);
             services.AddSingleton<IViewHandlerService, ViewHandlerService>();
         }
@@ -58,7 +63,7 @@ namespace Thundire.MVVM.MicrosoftDIContainer
 
         private static void RegisterDIContainer(this IServiceCollection services)
         {
-            if(_isDIContainerWrapperRegistered) return;
+            if (_isDIContainerWrapperRegistered) return;
             services.AddSingleton<IDIContainer, MSContainer>();
             _isDIContainerWrapperRegistered = true;
         }

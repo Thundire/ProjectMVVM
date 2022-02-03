@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Thundire.MVVM.WPF.Abstractions.PagesNavigator
+namespace Thundire.MVVM.WPF.Core.DICache.PagesNavigator
 {
     public class PageRegistrationInfo : IEquatable<PageRegistrationInfo?>
     {

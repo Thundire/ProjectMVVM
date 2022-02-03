@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using Thundire.Core.DIContainer;
-using Thundire.MVVM.WPF.Abstractions.PagesNavigator;
+using Thundire.MVVM.WPF.Core.DICache.PagesNavigator;
 
-namespace Thundire.MVVM.WPF.PagesNavigator
+namespace Thundire.MVVM.WPF.DICache.PagesNavigator
 {
     public class PagesRegistration : IPagesRegistration
     {

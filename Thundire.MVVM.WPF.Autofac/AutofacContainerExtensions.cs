@@ -2,11 +2,15 @@
 using Autofac.Builder;
 
 using System;
+
 using Thundire.Core.DIContainer;
+using Thundire.MVVM.Core.PagesNavigator;
 using Thundire.MVVM.WPF.Abstractions.PagesNavigator;
 using Thundire.MVVM.WPF.Abstractions.Regions;
 using Thundire.MVVM.WPF.Abstractions.TemplatesCache;
 using Thundire.MVVM.WPF.Abstractions.ViewService;
+using Thundire.MVVM.WPF.Core.DICache.PagesNavigator;
+using Thundire.MVVM.WPF.DICache.PagesNavigator;
 using Thundire.MVVM.WPF.PagesNavigator;
 using Thundire.MVVM.WPF.Regions;
 using Thundire.MVVM.WPF.TemplatesCache;
