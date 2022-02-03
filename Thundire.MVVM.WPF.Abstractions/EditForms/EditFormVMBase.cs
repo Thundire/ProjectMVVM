@@ -1,7 +1,7 @@
 ﻿using Thundire.MVVM.Core.Observable;
 using Thundire.MVVM.WPF.Abstractions.Commands;
 
-namespace Thundire.MVVM.WPF.Observable.EditForm
+namespace Thundire.MVVM.WPF.Abstractions.EditForms
 {
     public abstract class EditFormVMBase : NotifyBase
     {

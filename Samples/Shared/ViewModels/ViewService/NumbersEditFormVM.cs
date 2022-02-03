@@ -1,7 +1,7 @@
 ﻿using Thundire.Helpers;
 using Thundire.MVVM.WPF.Abstractions.Commands;
+using Thundire.MVVM.WPF.Abstractions.EditForms;
 using Thundire.MVVM.WPF.Abstractions.ViewService;
-using Thundire.MVVM.WPF.Observable.EditForm;
 
 namespace Shared.ViewModels.ViewService
 {

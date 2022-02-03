@@ -2,11 +2,10 @@
 using System.ComponentModel;
 using System.Threading;
 using System.Threading.Tasks;
-
 using Thundire.Helpers;
 using Thundire.MVVM.WPF.Abstractions.Commands;
 
-namespace Thundire.MVVM.WPF.Observable.EditForm
+namespace Thundire.MVVM.WPF.Abstractions.EditForms
 {
     public abstract class EditCreateFormVM<TModel> : EditFormVM<TModel> where TModel : class, INotifyPropertyChanged, IEquatable<TModel>
     {
