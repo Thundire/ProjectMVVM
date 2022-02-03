@@ -29,7 +29,7 @@
         <ListView ItemsSource="{Binding Source={StaticResource PagesSource}}" SelectedItem="{Binding Selected}">
             <ListView.ItemTemplate>
                 <DataTemplate DataType="{x:Type pagesNavigator:NavigationDescriptor}">
-                    <TextBlock Text="{Binding Title}"/>
+                    <TextBlock Text="{Binding Alias}"/>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

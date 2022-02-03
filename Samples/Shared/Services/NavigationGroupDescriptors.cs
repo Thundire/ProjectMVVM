@@ -11,25 +11,21 @@ namespace Shared.Services
         public IReadOnlyCollection<NavigationDescriptor> Pages { get; private set; }
         private ICollection<NavigationDescriptor>? PagesMutable { get; set; }
 
-        public NavigationGroupDescriptors AddDescriptor<TDataContext>(string pageKey, string title)
+        public NavigationGroupDescriptors AddDescriptor<TDataContext>(string pageKey, string alias)
         {
-            PagesMutable?.Add(new NavigationDescriptor()
+            PagesMutable?.Add(new NavigationDescriptor(pageKey, alias)
             {
                 Order = PagesMutable.Count,
-                PageKey = pageKey,
-                Title = title,
                 DataContextType = typeof(TDataContext)
             });
             return this;
         }
 
-        public NavigationGroupDescriptors AddDescriptor(string pageKey, string title)
+        public NavigationGroupDescriptors AddDescriptor(string pageKey, string alias)
         {
-            PagesMutable?.Add(new NavigationDescriptor()
+            PagesMutable?.Add(new NavigationDescriptor(pageKey, alias)
             {
                 Order = PagesMutable.Count,
-                PageKey = pageKey,
-                Title = title
             });
             return this;
         }
