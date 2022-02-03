@@ -10,12 +10,16 @@
         Title="MainWindow" Height="450" Width="800"
         d:DataContext="{d:DesignInstance viewModels:MainVM}">
     <TabControl>
-        <TabItem Header="Regions Tests">
+        <TabItem Header="Regions">
             <testCaseLayouts:RegionsLayout DataContext="{Binding RegionsMainVM}"/>
         </TabItem>
 
-        <TabItem Header="View service tests" IsSelected="True">
+        <TabItem Header="View service">
             <testCaseLayouts:ViewServiceLayout DataContext="{Binding ViewOpenVM}"/>
+        </TabItem>
+
+        <TabItem Header="Commands" IsSelected="True">
+            <testCaseLayouts:CommandsLayout DataContext="{Binding CommandsVM}"/>
         </TabItem>
     </TabControl>
 </Window>

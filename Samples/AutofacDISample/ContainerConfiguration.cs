@@ -9,7 +9,7 @@ using Shared.Views;
 using Shared.Views.Pages;
 
 using System;
-
+using Thundire.MVVM.Core.Commands;
 using Thundire.MVVM.WPF.Abstractions.Commands;
 using Thundire.MVVM.WPF.Autofac;
 using Thundire.MVVM.WPF.Commands;
@@ -32,7 +32,7 @@ namespace AutofacDISample
 
         private static ContainerBuilder RegisterServices(this ContainerBuilder builder)
         {
-            builder.RegisterType<WpfCommandsFactory>().As<IWpfCommandsFactory>();
+            builder.RegisterType<WpfCommandsFactory>().As<IWpfCommandsFactory>().As<IExecutableCommandsFactory>().As<ICommandsFactory>();
             builder
                 .RegisterInstance(new NavigationGroupDescriptors()
                     .AddDescriptor<FooVM>("Foo", "Foo")
@@ -53,6 +53,7 @@ namespace AutofacDISample
             builder.RegisterType<RegionsMainVM>();
             builder.RegisterType<ViewOpenVM>();
             builder.RegisterType<ConfirmVM>();
+            builder.RegisterType<CommandsVM>();
             return builder;
         }
 

@@ -7,6 +7,7 @@ using Shared.ViewModels.Regions;
 using Shared.ViewModels.ViewService;
 using Shared.Views;
 using Shared.Views.Pages;
+using Thundire.MVVM.Core.Commands;
 using Thundire.MVVM.MicrosoftDIContainer;
 using Thundire.MVVM.WPF.Abstractions.Commands;
 using Thundire.MVVM.WPF.Commands;
@@ -17,7 +18,10 @@ namespace MicrosoftDISample
     {
         public static IServiceCollection RegisterServices(this IServiceCollection builder)
         {
-            builder.AddSingleton<IWpfCommandsFactory, WpfCommandsFactory>();
+            builder.AddSingleton<WpfCommandsFactory>();
+            builder.AddSingleton<IWpfCommandsFactory>(provider => provider.GetRequiredService<WpfCommandsFactory>());
+            builder.AddSingleton<IExecutableCommandsFactory>(provider => provider.GetRequiredService<WpfCommandsFactory>());
+            builder.AddSingleton<ICommandsFactory>(provider => provider.GetRequiredService<WpfCommandsFactory>());
             builder
                 .AddSingleton<INavigationGroupDescriptors>(new NavigationGroupDescriptors()
                     .AddDescriptor<FooVM>("Foo", "Foo")
@@ -37,6 +41,7 @@ namespace MicrosoftDISample
             builder.AddSingleton<RegionsMainVM>();
             builder.AddSingleton<ViewOpenVM>();
             builder.AddTransient<ConfirmVM>();
+            builder.AddTransient<CommandsVM>();
 
             return builder;
         }
