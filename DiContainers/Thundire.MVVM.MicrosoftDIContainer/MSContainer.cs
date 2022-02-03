@@ -13,8 +13,16 @@ namespace Thundire.MVVM.MicrosoftDIContainer
             _provider = provider;
         }
 
-        public object Resolve(Type type) => _provider.GetService(type);
+        public object Resolve(Type type)
+        {
+            if (_provider.GetService(type) is not { } service)
+            {
+                throw new InvalidOperationException($"Service to type: {type.FullName} not registered");
+            }
 
-        public TService Resolve<TService>() => _provider.GetRequiredService<TService>();
+            return service;
+        }
+
+        public TService Resolve<TService>() where TService: notnull => _provider.GetRequiredService<TService>();
     }
 }

@@ -19,7 +19,7 @@ namespace Thundire.MVVM.WPF.Autofac
             return result;
         }
 
-        public TService Resolve<TService>()
+        public TService Resolve<TService>() where TService: notnull
         {
             var result = _services.Resolve<TService>();
             return result;

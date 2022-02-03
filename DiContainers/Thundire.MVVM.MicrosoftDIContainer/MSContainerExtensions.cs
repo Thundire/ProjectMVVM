@@ -32,7 +32,7 @@ namespace Thundire.MVVM.MicrosoftDIContainer
         public static void AddRegionsService(
             this IServiceCollection services,
             Action<ITemplatesCacheBuilder> configuration,
-            Action<IRegionsRegistrator> regionsPreregistration = null)
+            Action<IRegionsRegistrator>? regionsPreregistration = null)
         {
             DataTemplatesRegister register = new();
             register.AddTemplates(configuration);
