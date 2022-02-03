@@ -39,7 +39,7 @@ namespace Thundire.MVVM.WPF.PagesNavigator
             Pages = _container.GetPagesFromGroup(group);
         }
 
-        public void NavigateTo(string pageName, object dataContext)
+        public void NavigateTo(string pageName, object? dataContext)
         {
             INavigablePage? nextPage = null;
             if (Pages.TryGetValue(pageName, out var page))

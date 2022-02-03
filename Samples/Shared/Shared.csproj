@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\DiContainers\Thundire.Core.DIContainer\Thundire.Core.DIContainer.csproj" />
     <ProjectReference Include="..\..\Thundire.MVVM.WPF\Thundire.MVVM.WPF.csproj" />
     <ProjectReference Include="..\..\WPF\Thundire.MVVM.WPF.Behaviors\Thundire.MVVM.WPF.Behaviors.csproj" />
     <ProjectReference Include="..\..\WPF\Thundire.MVVM.WPF.Controls\Thundire.MVVM.WPF.Controls.csproj" />

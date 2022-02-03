@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using Shared.Models;
 using Shared.Services;
+
+using System.Collections.Generic;
+using System.Linq;
+
 using Thundire.Core.DIContainer;
 using Thundire.MVVM.Core.Observable;
 using Thundire.MVVM.Core.PagesNavigator;
-using Thundire.MVVM.WPF.Abstractions.PagesNavigator;
 
 namespace Shared.ViewModels.ViewService
 {
@@ -55,7 +57,7 @@ namespace Shared.ViewModels.ViewService
             var dataContext = descriptor.DataContext;
             var dataContextType = descriptor.DataContextType;
 
-            if (Navigator.CurrentPageKey == pageKey)
+            if (string.Equals(Navigator.CurrentPageKey, pageKey, StringComparison.Ordinal))
             {
                 if (ReferenceEquals(dataContext, Navigator.CurrentDataContext)) return;
 

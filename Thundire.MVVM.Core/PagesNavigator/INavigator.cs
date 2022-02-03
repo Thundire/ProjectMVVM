@@ -6,7 +6,7 @@
         object? CurrentDataContext { get; }
 
         void ChangeDataContextOfCurrentPage(object dataContext);
-        void NavigateTo(string pageName, object dataContext);
+        void NavigateTo(string pageName, object? dataContext);
         void UsePagesGroup(string group);
     }
 }
