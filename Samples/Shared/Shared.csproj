@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Thundire.MVVM.WPF\Thundire.MVVM.WPF.csproj" />
+    <ProjectReference Include="..\..\WPF\Thundire.MVVM.WPF.Behaviors\Thundire.MVVM.WPF.Behaviors.csproj" />
   </ItemGroup>
 
 </Project>
