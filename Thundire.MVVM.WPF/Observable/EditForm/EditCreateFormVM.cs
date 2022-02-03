@@ -14,7 +14,7 @@ namespace Thundire.MVVM.WPF.Observable.EditForm
 
         protected EditCreateFormVM(IWpfCommandsFactory commandsFactory, IValidation<TModel> validation) : base(commandsFactory)
         {
-            ConfirmCommand = commandsFactory.Create<TModel>(ConfirmExecute, model => validation.Validate(model) is SuccessResult);
+            ConfirmCommand = commandsFactory.Create<TModel>(ConfirmExecute!, model => validation.Validate(model!) is SuccessResult);
             CancelCommand = commandsFactory.Create(CancelExecute);
             OnConfirm = ConfirmOnCreated;
         }
