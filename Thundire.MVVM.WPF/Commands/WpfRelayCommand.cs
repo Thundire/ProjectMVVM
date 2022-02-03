@@ -6,7 +6,7 @@ using Thundire.MVVM.WPF.Abstractions.Commands;
 
 namespace Thundire.MVVM.WPF.Commands
 {
-    public class WpfRelayCommand : RelayCommand, IWpfCommand, ICommand
+    public class WpfRelayCommand : RelayCommand, IWpfCommand
     {
         private bool _executable = true;
 
@@ -23,11 +23,11 @@ namespace Thundire.MVVM.WPF.Commands
         }
     }
 
-    public class WpfRelayCommand<TParameter> : RelayCommand<TParameter>, IWpfCommand, ICommand
+    public class WpfRelayCommand<TParameter> : RelayCommand<TParameter>, IWpfCommand
     {
         private bool _executable = true;
 
-        public WpfRelayCommand(Action<TParameter> execute, Func<TParameter, bool>? canExecute = null) : base(execute, canExecute)
+        public WpfRelayCommand(Action<TParameter?> execute, Func<TParameter?, bool>? canExecute = null) : base(execute, canExecute)
         {
         }
 

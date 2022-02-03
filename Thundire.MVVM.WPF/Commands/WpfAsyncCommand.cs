@@ -6,11 +6,11 @@ using Thundire.MVVM.WPF.Abstractions.Commands;
 
 namespace Thundire.MVVM.WPF.Commands
 {
-    public class WpfAsyncCommand<TParameter> : AsyncCommand<TParameter>, IWpfCommand
+    public class WpfAsyncCommand : AsyncCommand, IWpfCommand
     {
         private bool _executable = true;
 
-        public WpfAsyncCommand(Func<TParameter, Task> execute, Func<TParameter, bool>? canExecute = null, Action<Exception>? onException = null)
+        public WpfAsyncCommand(Func<Task> execute, Func<bool>? canExecute = null, Action<Exception>? onException = null)
             : base(execute, canExecute, onException)
         {
         }
@@ -24,11 +24,12 @@ namespace Thundire.MVVM.WPF.Commands
         }
     }
 
-    public class WpfAsyncCommand : AsyncCommand, IWpfCommand
+    public class WpfAsyncCommand<TParameter> : AsyncCommand<TParameter>, IWpfCommand
     {
         private bool _executable = true;
 
-        public WpfAsyncCommand(Func<Task> execute, Func<bool>? canExecute = null, Action<Exception>? onException = null) : base(execute, canExecute, onException)
+        public WpfAsyncCommand(Func<TParameter?, Task> execute, Func<TParameter?, bool>? canExecute = null, Action<Exception>? onException = null)
+            : base(execute, canExecute, onException)
         {
         }
 

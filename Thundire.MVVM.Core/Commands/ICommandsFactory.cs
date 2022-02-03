@@ -7,8 +7,8 @@ namespace Thundire.MVVM.Core.Commands
     public interface ICommandsFactory
     {
         ICommand Create(Action execute, Func<bool>? canExecute = null);
-        ICommand Create<T>(Action<T> execute, Func<T, bool>? canExecute = null);
+        ICommand Create<T>(Action<T?> execute, Func<T?, bool>? canExecute = null, bool parameterCanBeNull = false);
         ICommand Create(Func<Task> execute, Func<bool>? canExecute = null);
-        ICommand Create<T>(Func<T, Task> execute, Func<T, bool>? canExecute = null);
+        ICommand Create<T>(Func<T?, Task> execute, Func<T?, bool>? canExecute = null, bool parameterCanBeNull = false);
     }
 }
