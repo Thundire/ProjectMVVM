@@ -20,8 +20,7 @@ namespace Thundire.MVVM.WPF.Abstractions.ViewService
         public CloseViewEventArgs(EventArgs? originalArgs = null, bool dialogResult = default, TResult? result = default)
             : base(originalArgs, dialogResult) =>
             Result = result;
-
-        public bool DialogResult { get; init; }
+        
         public TResult? Result { get; init; }
     }
 }
