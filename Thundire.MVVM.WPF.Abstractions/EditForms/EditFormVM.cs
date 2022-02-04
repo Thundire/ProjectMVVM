@@ -1,5 +1,5 @@
 ﻿using System;
-using System.ComponentModel;
+
 using Thundire.Helpers;
 using Thundire.MVVM.WPF.Abstractions.Commands;
 
@@ -22,7 +22,7 @@ namespace Thundire.MVVM.WPF.Abstractions.EditForms
         protected virtual void EndWork(Result result) => OnWorkDone?.Invoke(this, result);
     }
 
-    public class EditFormVM<TModel> : EditFormVMBase where TModel : class, INotifyPropertyChanged, IEquatable<TModel>
+    public class EditFormVM<TModel> : EditFormVMBase where TModel : IEquatable<TModel>
     {
         // ReSharper disable InconsistentNaming
         protected TModel? _toEdit;
@@ -36,6 +36,8 @@ namespace Thundire.MVVM.WPF.Abstractions.EditForms
         }
 
         public event EventHandler<Result<TModel>>? OnWorkDone;
+
+        public TModel? DefaultBackupValue { private get; set; } = default;
 
         public virtual TModel? ToEdit
         {
@@ -60,7 +62,7 @@ namespace Thundire.MVVM.WPF.Abstractions.EditForms
         protected virtual void EndWork(Result<TModel> result)
         {
             OnWorkDone?.Invoke(this, result);
-            _backup = null;
+            _backup = DefaultBackupValue;
         }
     }
 }
