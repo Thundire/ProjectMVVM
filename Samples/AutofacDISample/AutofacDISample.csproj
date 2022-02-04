@@ -8,7 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\DiContainers\Thundire.MVVM.WPF.Autofac\Thundire.MVVM.WPF.Autofac.csproj" />
+    <PackageReference Include="Thundire.MVVM.WPF.Autofac" Version="0.0.3-gamma" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Shared\Shared.csproj" />
   </ItemGroup>
 

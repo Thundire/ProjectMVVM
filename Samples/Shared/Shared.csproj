@@ -6,9 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\DiContainers\Thundire.Core.DIContainer\Thundire.Core.DIContainer.csproj" />
-    <ProjectReference Include="..\..\src\WPF\Thundire.MVVM.WPF.Behaviors\Thundire.MVVM.WPF.Behaviors.csproj" />
-    <ProjectReference Include="..\..\src\WPF\Thundire.MVVM.WPF.Controls\Thundire.MVVM.WPF.Controls.csproj" />
+    <PackageReference Include="Thundire.Core.DIContainer" Version="0.0.3-gamma" />
+    <PackageReference Include="Thundire.MVVM.WPF.Behaviors" Version="0.0.3-gamma" />
+    <PackageReference Include="Thundire.MVVM.WPF.Controls" Version="0.0.3-gamma" />
   </ItemGroup>
 
 </Project>
