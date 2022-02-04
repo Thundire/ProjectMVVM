@@ -6,6 +6,21 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Version>0.0.3-gamma</Version>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Authors>Thundire</Authors>
+    <Description>Thundire MVVM behaviors</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Thundire/ProjectMVVM</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Thundire/ProjectMVVM</RepositoryUrl>
+    <Copyright>ftarxos@gmail.com</Copyright>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
   </ItemGroup>
