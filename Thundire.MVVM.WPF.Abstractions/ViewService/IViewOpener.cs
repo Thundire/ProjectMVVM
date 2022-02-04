@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace Thundire.MVVM.WPF.Abstractions.ViewService
 {
@@ -15,5 +16,7 @@ namespace Thundire.MVVM.WPF.Abstractions.ViewService
 
         TView? Handle<TView>() where TView : class;
         TView? Handle<TView>(object key) where TView : class;
+        IViewOpener ViewBehaviorOnLoaded<TView>(Func<TView, Task> onLoaded);
+        IViewOpener DataContextBehaviorOnLoaded<TDataContext>(Func<TDataContext, Task> onLoaded);
     }
 }

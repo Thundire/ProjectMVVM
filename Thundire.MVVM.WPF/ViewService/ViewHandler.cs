@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-
+using Thundire.Helpers;
 using Thundire.MVVM.Core.PagesNavigator;
 using Thundire.MVVM.WPF.Abstractions.ViewService;
 
@@ -74,6 +74,23 @@ namespace Thundire.MVVM.WPF.ViewService
             return this;
         }
 
+        public IViewOpener ViewBehaviorOnLoaded<TView>(Func<TView, Task> onLoaded)
+        {
+            _build.Value.Add(view =>
+            {
+                view.CachedView.Loaded += (sender, _) =>
+                {
+                    if (sender is not TView loadedView)
+                    {
+                        throw new InvalidOperationException($"View is not of type {typeof(TView).FullName}");
+                    }
+                    onLoaded.Invoke(loadedView).SafeFireAndForget();
+                };
+                return view;
+            });
+            return this;
+        }
+
         public IViewOpener DataContextBehaviorOnLoaded<TDataContext>(Action<TDataContext> onLoaded)
         {
             _build.Value.Add(view =>
@@ -90,6 +107,28 @@ namespace Thundire.MVVM.WPF.ViewService
                         throw new InvalidOperationException($"View data context is not of type {typeof(TDataContext).FullName}");
                     }
                     onLoaded.Invoke(dataContext);
+                };
+                return view;
+            });
+            return this;
+        }
+
+        public IViewOpener DataContextBehaviorOnLoaded<TDataContext>(Func<TDataContext, Task> onLoaded)
+        {
+            _build.Value.Add(view =>
+            {
+                view.CachedView.Loaded += (sender, _) =>
+                {
+                    if (sender is not IView loadedView)
+                    {
+                        throw new InvalidOperationException($"View {sender.GetType().FullName} must inherit IView interface");
+                    }
+
+                    if (loadedView.DataContext is not TDataContext dataContext)
+                    {
+                        throw new InvalidOperationException($"View data context is not of type {typeof(TDataContext).FullName}");
+                    }
+                    onLoaded.Invoke(dataContext).SafeFireAndForget();
                 };
                 return view;
             });
