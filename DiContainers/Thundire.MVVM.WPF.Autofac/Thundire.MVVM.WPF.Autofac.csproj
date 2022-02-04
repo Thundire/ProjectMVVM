@@ -9,7 +9,7 @@
   <PropertyGroup>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <Version>0.0.3-beta</Version>
+    <Version>0.0.3-gamma</Version>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -26,8 +26,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DiContainers\Thundire.MVVM.WPF.DICache\Thundire.MVVM.WPF.DICache.csproj" />
-    <ProjectReference Include="..\Thundire.MVVM.WPF\Thundire.MVVM.WPF.csproj" />
+    <ProjectReference Include="..\..\Thundire.MVVM.WPF\Thundire.MVVM.WPF.csproj" />
+    <ProjectReference Include="..\Thundire.MVVM.WPF.DICache\Thundire.MVVM.WPF.DICache.csproj" />
   </ItemGroup>
 
 </Project>
