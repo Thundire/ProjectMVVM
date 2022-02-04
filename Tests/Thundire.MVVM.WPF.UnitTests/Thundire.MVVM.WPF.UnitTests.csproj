@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0-windows</TargetFramework>
@@ -21,7 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Thundire.MVVM.WPF\Thundire.MVVM.WPF.csproj" />
+    <ProjectReference Include="..\..\Thundire.Helpers\Thundire.Helpers.csproj" />
+    <ProjectReference Include="..\..\WPF\Thundire.MVVM.WPF\Thundire.MVVM.WPF.csproj" />
   </ItemGroup>
 
 </Project>

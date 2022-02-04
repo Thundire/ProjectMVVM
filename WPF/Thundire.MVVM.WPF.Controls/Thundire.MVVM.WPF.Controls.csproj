@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Thundire.MVVM.WPF.Abstractions\Thundire.MVVM.WPF.Abstractions.csproj" />
+    <ProjectReference Include="..\Thundire.MVVM.WPF.Abstractions\Thundire.MVVM.WPF.Abstractions.csproj" />
   </ItemGroup>
 
   <ItemGroup>
