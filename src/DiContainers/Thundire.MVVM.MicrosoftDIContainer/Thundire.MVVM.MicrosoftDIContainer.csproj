@@ -23,11 +23,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\WPF\Thundire.MVVM.WPF\Thundire.MVVM.WPF.csproj" />
-    <ProjectReference Include="..\Thundire.MVVM.WPF.DICache\Thundire.MVVM.WPF.DICache.csproj" />
+    <PackageReference Include="Thundire.MVVM.WPF" Version="0.0.3-gamma" />
+    <PackageReference Include="Thundire.MVVM.WPF.DICache" Version="0.0.3-gamma" />
   </ItemGroup>
 
 </Project>
