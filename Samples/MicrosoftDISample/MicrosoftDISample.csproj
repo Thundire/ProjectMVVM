@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\DiContainers\Thundire.MVVM.MicrosoftDIContainer\Thundire.MVVM.MicrosoftDIContainer.csproj" />
+    <ProjectReference Include="..\..\src\DiContainers\Thundire.MVVM.MicrosoftDIContainer\Thundire.MVVM.MicrosoftDIContainer.csproj" />
     <ProjectReference Include="..\Shared\Shared.csproj" />
   </ItemGroup>
 

@@ -6,9 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\DiContainers\Thundire.Core.DIContainer\Thundire.Core.DIContainer.csproj" />
-    <ProjectReference Include="..\..\WPF\Thundire.MVVM.WPF.Behaviors\Thundire.MVVM.WPF.Behaviors.csproj" />
-    <ProjectReference Include="..\..\WPF\Thundire.MVVM.WPF.Controls\Thundire.MVVM.WPF.Controls.csproj" />
+    <ProjectReference Include="..\..\src\DiContainers\Thundire.Core.DIContainer\Thundire.Core.DIContainer.csproj" />
+    <ProjectReference Include="..\..\src\WPF\Thundire.MVVM.WPF.Behaviors\Thundire.MVVM.WPF.Behaviors.csproj" />
+    <ProjectReference Include="..\..\src\WPF\Thundire.MVVM.WPF.Controls\Thundire.MVVM.WPF.Controls.csproj" />
   </ItemGroup>
 
 </Project>

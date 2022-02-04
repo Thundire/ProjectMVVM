@@ -21,8 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Thundire.Helpers\Thundire.Helpers.csproj" />
-    <ProjectReference Include="..\..\WPF\Thundire.MVVM.WPF\Thundire.MVVM.WPF.csproj" />
+    <ProjectReference Include="..\..\src\WPF\Thundire.MVVM.WPF\Thundire.MVVM.WPF.csproj" />
   </ItemGroup>
 
 </Project>
