@@ -8,7 +8,7 @@
   <PropertyGroup>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <Version>0.0.3-beta</Version>
+    <Version>0.0.3-gamma</Version>
   </PropertyGroup>
 
   <PropertyGroup>
