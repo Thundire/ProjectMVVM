@@ -22,8 +22,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\WPF\Thundire.MVVM.WPF.Abstractions\Thundire.MVVM.WPF.Abstractions.csproj" />
-    <ProjectReference Include="..\Thundire.Core.DIContainer\Thundire.Core.DIContainer.csproj" />
+    <PackageReference Include="Thundire.Core.DIContainer" Version="0.0.3-gamma" />
+    <PackageReference Include="Thundire.MVVM.WPF.Abstractions" Version="0.0.3-gamma" />
   </ItemGroup>
 
 </Project>

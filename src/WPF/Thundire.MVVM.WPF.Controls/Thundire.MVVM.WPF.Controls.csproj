@@ -22,7 +22,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Thundire.MVVM.WPF.Abstractions\Thundire.MVVM.WPF.Abstractions.csproj" />
+    <PackageReference Include="Thundire.MVVM.WPF.Abstractions" Version="0.0.3-gamma" />
   </ItemGroup>
 
   <ItemGroup>
