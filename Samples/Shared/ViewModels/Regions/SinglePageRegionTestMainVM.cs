@@ -21,6 +21,7 @@ namespace Shared.ViewModels.Regions
                 Region.Close();
                 Debug.WriteLine("Closed");
             });
+            CollapseRegionCommand = commandsFactory.Create(() => Region.Collapse());
         }
 
         private void OpenFoo()
@@ -39,5 +40,6 @@ namespace Shared.ViewModels.Regions
         public ICommand OpenBarCommand { get; }
         public ICommand OpenFooCommand { get; }
         public ICommand CloseRegionCommand { get; }
+        public ICommand CollapseRegionCommand { get; }
     }
 }

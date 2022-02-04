@@ -34,6 +34,13 @@ namespace Thundire.MVVM.WPF.Regions
             OpenRegion(RegionView);
         }
 
+        public void Collapse()
+        {
+            if (RegionView is null) throw RegionViewNullException;
+
+            RegionView.Collapse();
+        }
+
         private static Exception RegionViewNullException => new InvalidOperationException("Not registered RegionView");
 
         protected abstract void ChangeRegion(IRegionView regionView, object content, string? presenterKey = null);

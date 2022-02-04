@@ -113,6 +113,7 @@ namespace Thundire.MVVM.WPF.Controls
         public void Show()
         {
             IsOpen = true;
+            IsContentVisible = true;
         }
 
         public void Close()
@@ -127,6 +128,11 @@ namespace Thundire.MVVM.WPF.Controls
                 ContentPresenter.ContentTemplate = null;
             }
             CurrentData = data;
+        }
+
+        public void Collapse()
+        {
+            IsContentVisible = false;
         }
 
         public void ChangeContent(object content)

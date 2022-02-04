@@ -3,6 +3,7 @@
     public interface IRegion : IViewRegion
     {
         void Change(object content, string? presenterKey = null);
+        void Collapse();
         void Open();
     }
 }

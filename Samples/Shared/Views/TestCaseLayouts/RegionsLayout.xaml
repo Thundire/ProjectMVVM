@@ -33,6 +33,7 @@
                 <StackPanel>
                     <Button Content="Open Foo" Command="{Binding OpenFooCommand}"/>
                     <Button Content="Open Bar" Command="{Binding OpenBarCommand}"/>
+                    <Button Content="Collapse" Command="{Binding CollapseRegionCommand}"/>
                     <Button Content="Close Region" Command="{Binding CloseRegionCommand}"/>
                     <ToggleButton IsChecked="{Binding ElementName=single, Path=IsOpen}"/>
                     <CheckBox Content="Region Open" IsChecked="{Binding ElementName=single, Path=IsOpen}"/>
@@ -44,6 +45,7 @@
                 <StackPanel>
                     <Button Content="Open Foo" Command="{Binding OpenFooCommand}"/>
                     <Button Content="Open Bar" Command="{Binding OpenBarCommand}"/>
+                    <Button Content="Collapse" Command="{Binding CollapseRegionCommand}"/>
                 </StackPanel>
             </TabItem>
         </TabControl>
