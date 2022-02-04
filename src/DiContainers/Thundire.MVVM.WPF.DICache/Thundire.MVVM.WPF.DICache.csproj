@@ -22,7 +22,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Thundire.MVVM.WPF.Core.DICache\Thundire.MVVM.WPF.Core.DICache.csproj" />
+    <PackageReference Include="Thundire.MVVM.WPF.Core.DICache" Version="0.0.3-gamma" />
   </ItemGroup>
 
 </Project>
