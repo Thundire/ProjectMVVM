@@ -38,6 +38,7 @@ namespace Thundire.MVVM.WPF.Abstractions.EditForms
         public event EventHandler<Result<TModel>>? OnWorkDone;
 
         public TModel? DefaultBackupValue { private get; set; } = default;
+        public bool IsBackupEnabled { private get; set; } = true;
 
         public virtual TModel? ToEdit
         {
@@ -45,12 +46,18 @@ namespace Thundire.MVVM.WPF.Abstractions.EditForms
             set
             {
                 _ = Set(ref _toEdit, value);
-                _backup ??= value.JsonSerializationDeepCopy();
+                if(IsBackupEnabled) _backup ??= value.JsonSerializationDeepCopy();
             }
         }
 
         protected virtual void CancelExecute()
         {
+            if (!IsBackupEnabled)
+            {
+                EndWork(Result<TModel>.Exit);
+                return;
+            }
+
             if (Equals(_backup, _toEdit))
             {
                 EndWork(Result<TModel>.Exit);
@@ -62,7 +69,7 @@ namespace Thundire.MVVM.WPF.Abstractions.EditForms
         protected virtual void EndWork(Result<TModel> result)
         {
             OnWorkDone?.Invoke(this, result);
-            _backup = DefaultBackupValue;
+            if (IsBackupEnabled) _backup = DefaultBackupValue;
         }
     }
 }
