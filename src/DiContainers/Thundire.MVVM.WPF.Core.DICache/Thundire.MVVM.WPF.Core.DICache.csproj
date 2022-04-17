@@ -1,29 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <PropertyGroup>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <Version>0.0.3-gamma</Version>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <Authors>Thundire</Authors>
     <Description>Thundire mvvm services cache abstractions in di container</Description>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/Thundire/ProjectMVVM</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/Thundire/ProjectMVVM</RepositoryUrl>
-    <Copyright>ftarxos@gmail.com</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\WPF\Thundire.MVVM.WPF.Abstractions\Thundire.MVVM.WPF.Abstractions.csproj" />
     <ProjectReference Include="..\Thundire.Core.DIContainer\Thundire.Core.DIContainer.csproj" />
   </ItemGroup>
-
 </Project>

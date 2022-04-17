@@ -1,0 +1,13 @@
+<Project>
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <Version>0.0.3</Version>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Authors>Thundire</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Thundire/ProjectMVVM</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Thundire/ProjectMVVM</RepositoryUrl>
+  </PropertyGroup>
+</Project>
