@@ -31,7 +31,7 @@ namespace Shared.ViewModels
                 }
                 model.String = Random.NextDouble().ToString(CultureInfo.InvariantCulture);
                 model.Number = Random.Next(1, 7);
-            }, parameterCanBeNull:true);
+            });
 
             ModelWithValidationCommand = commandsFactory.Create<Model?>(
                 model =>
@@ -40,7 +40,7 @@ namespace Shared.ViewModels
                 },
                 model => model?.Number > 4);
 
-            NumberSimpleCommand = commandsFactory.Create<int?>(i => Number += i, i => i is < 5 or null, parameterCanBeNull:true);
+            NumberSimpleCommand = commandsFactory.Create<int?>(i => Number += i, i => i is < 5 or null);
             NumberWithValidationCommand = commandsFactory.Create<int>(i => Number += i, i => i < 5);
         }
 

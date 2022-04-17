@@ -2,6 +2,7 @@
 using System.Windows.Input;
 
 using Thundire.MVVM.Core.Commands;
+using Thundire.MVVM.WPF.Abstractions;
 using Thundire.MVVM.WPF.Abstractions.Commands;
 
 namespace Thundire.MVVM.WPF.Commands

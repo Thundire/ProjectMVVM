@@ -34,24 +34,15 @@ namespace Thundire.MVVM.Core.Commands
             _canExecute = canExecute ?? (_ => true);
             _onException = onException;
         }
-
-        public bool IsParameterCanBeNull { get; init; }
-
+        
         public override bool CanExecute(object? parameter)
         {
             if (!base.CanExecute(parameter)) return false;
-            if (!IsParameterCanBeNull && parameter is not TParameter) return false;
             return _canExecute?.Invoke((TParameter?)parameter) ?? true;
         }
 
         public override void Execute(object? parameter)
         {
-            if (!IsParameterCanBeNull && parameter is TParameter value)
-            {
-                _execute.Invoke(value).SafeFireAndForget(_onException);
-                return;
-            }
-
             _execute.Invoke((TParameter?)parameter).SafeFireAndForget(_onException);
         }
     }
