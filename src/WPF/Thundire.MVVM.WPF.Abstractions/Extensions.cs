@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Windows;
-
 using Thundire.MVVM.WPF.Abstractions.Commands;
 
-namespace Thundire.MVVM.WPF
+namespace Thundire.MVVM.WPF.Abstractions
 {
     public static class Extensions
     {
