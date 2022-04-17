@@ -32,7 +32,7 @@ namespace AutofacDISample
 
         private static ContainerBuilder RegisterServices(this ContainerBuilder builder)
         {
-            builder.RegisterType<WpfCommandsFactory>().As<IWpfCommandsFactory>().As<IExecutableCommandsFactory>().As<ICommandsFactory>();
+            builder.RegisterType<WpfCommandsFactory>().As<IWpfCommandsFactory>().As<ICommandsFactory>().As<ICommandsFactory>();
             builder
                 .RegisterInstance(new NavigationGroupDescriptors()
                     .AddDescriptor<FooVM>("Foo", "Foo")

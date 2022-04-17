@@ -20,7 +20,7 @@ namespace MicrosoftDISample
         {
             builder.AddSingleton<WpfCommandsFactory>();
             builder.AddSingleton<IWpfCommandsFactory>(provider => provider.GetRequiredService<WpfCommandsFactory>());
-            builder.AddSingleton<IExecutableCommandsFactory>(provider => provider.GetRequiredService<WpfCommandsFactory>());
+            builder.AddSingleton<ICommandsFactory>(provider => provider.GetRequiredService<WpfCommandsFactory>());
             builder.AddSingleton<ICommandsFactory>(provider => provider.GetRequiredService<WpfCommandsFactory>());
             builder
                 .AddSingleton<INavigationGroupDescriptors>(new NavigationGroupDescriptors()
