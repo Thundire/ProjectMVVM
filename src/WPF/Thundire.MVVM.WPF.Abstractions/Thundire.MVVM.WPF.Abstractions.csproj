@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Thundire.MVVM.Core\Thundire.MVVM.Core.csproj" />
+    <PackageReference Include="Thundire.MVVM.Core" Version="0.0.3" />
   </ItemGroup>
+
 </Project>

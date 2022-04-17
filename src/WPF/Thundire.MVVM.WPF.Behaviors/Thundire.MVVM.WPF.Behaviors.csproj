@@ -10,9 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
+    <PackageReference Include="Thundire.MVVM.WPF.Abstractions" Version="0.0.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Thundire.MVVM.WPF.Abstractions\Thundire.MVVM.WPF.Abstractions.csproj" />
-  </ItemGroup>
 </Project>

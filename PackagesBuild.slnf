@@ -1,0 +1,18 @@
+{
+  "solution": {
+    "path": "ProjectMVVM.sln",
+    "projects": [
+      "src\\DiContainers\\Thundire.Core.DIContainer\\Thundire.Core.DIContainer.csproj",
+      "src\\DiContainers\\Thundire.MVVM.MicrosoftDIContainer\\Thundire.MVVM.MicrosoftDIContainer.csproj",
+      "src\\DiContainers\\Thundire.MVVM.WPF.Autofac\\Thundire.MVVM.WPF.Autofac.csproj",
+      "src\\DiContainers\\Thundire.MVVM.WPF.Core.DICache\\Thundire.MVVM.WPF.Core.DICache.csproj",
+      "src\\DiContainers\\Thundire.MVVM.WPF.DICache\\Thundire.MVVM.WPF.DICache.csproj",
+      "src\\Thundire.Helpers\\Thundire.Helpers.csproj",
+      "src\\Thundire.MVVM.Core\\Thundire.MVVM.Core.csproj",
+      "src\\WPF\\Thundire.MVVM.WPF.Abstractions\\Thundire.MVVM.WPF.Abstractions.csproj",
+      "src\\WPF\\Thundire.MVVM.WPF.Behaviors\\Thundire.MVVM.WPF.Behaviors.csproj",
+      "src\\WPF\\Thundire.MVVM.WPF.Controls\\Thundire.MVVM.WPF.Controls.csproj",
+      "src\\WPF\\Thundire.MVVM.WPF\\Thundire.MVVM.WPF.csproj"
+    ]
+  }
+}

@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Thundire.Helpers\Thundire.Helpers.csproj" />
+    <PackageReference Include="Thundire.Helpers" Version="0.0.3" />
   </ItemGroup>
+
 </Project>
